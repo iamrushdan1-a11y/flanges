@@ -42,7 +42,6 @@
             background: linear-gradient(135deg, rgba(30, 64, 175, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
         }
         
-        /* Dashboard Styles */
         .dashboard-grid {
             display: grid;
             grid-template-columns: 280px 1fr;
@@ -180,7 +179,6 @@
             color: #1e40af;
         }
         
-        /* Enhanced Animations */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -197,12 +195,10 @@
         .stagger-delay-3 { transition-delay: 0.3s; }
         .stagger-delay-4 { transition-delay: 0.4s; }
         
-        /* Auth Overlay */
         #auth-overlay {
             z-index: 9999;
         }
         
-        /* Loading Animation */
         .loading-shimmer {
             position: fixed;
             top: 0;
@@ -214,7 +210,6 @@
             transition: left 1.2s cubic-bezier(0.65, 0, 0.35, 1);
         }
         
-        /* Enhanced Chip Styles */
         .flange-chip {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
@@ -238,7 +233,6 @@
             scrollbar-width: none;
         }
         
-        /* Enhanced Cards */
         .feature-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             background: white;
@@ -263,7 +257,6 @@
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
         }
         
-        /* Hero Image Container */
         .hero-image-container {
             width: 100%;
             height: 400px;
@@ -280,7 +273,6 @@
             object-fit: cover;
         }
         
-        /* Enhanced Search */
         .search-container {
             transition: all 0.3s ease;
         }
@@ -290,19 +282,19 @@
             border-color: var(--secondary-blue);
         }
         
-        /* Hidden content until login */
+        /* FIXED: Remove blur filter initially, only apply when authenticated */
         #main-content {
-            filter: blur(8px);
-            pointer-events: none;
+            filter: blur(0);
+            pointer-events: auto;
             transition: filter 0.5s ease;
         }
         
-        body.authenticated #main-content {
-            filter: blur(0);
-            pointer-events: auto;
+        /* FIXED: Only blur when NOT authenticated */
+        body:not(.authenticated) #main-content {
+            filter: blur(8px);
+            pointer-events: none;
         }
         
-        /* Enhanced Table */
         .spec-table {
             border-collapse: separate;
             border-spacing: 0;
@@ -319,7 +311,6 @@
             background: rgba(59, 130, 246, 0.03);
         }
         
-        /* Contact Form */
         .contact-form input:focus,
         .contact-form textarea:focus,
         .contact-form select:focus {
@@ -327,7 +318,6 @@
             border-color: var(--secondary-blue);
         }
         
-        /* Stats Counter */
         .stat-card {
             background: white;
             border-radius: 16px;
@@ -340,7 +330,6 @@
             transform: translateY(-5px);
         }
         
-        /* Mobile Menu */
         .mobile-menu {
             transform: translateX(100%);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -374,12 +363,10 @@
             display: block;
         }
         
-        /* Order Modal Styles */
         #order-modal .hidden {
             display: none !important;
         }
         
-        /* Enhanced Step indicators */
         .step-container {
             position: relative;
             padding: 1.5rem 0;
@@ -474,7 +461,6 @@
             }
         }
         
-        /* Order step animations */
         .order-step {
             animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
@@ -490,7 +476,6 @@
             }
         }
         
-        /* Shimmer effect for loading */
         .shimmer {
             background: linear-gradient(90deg, 
                 #f0f0f0 25%, 
@@ -509,7 +494,6 @@
             }
         }
         
-        /* Enhanced form inputs */
         .form-input-enhanced {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: 2px solid #e5e7eb;
@@ -523,7 +507,6 @@
             transform: translateY(-1px);
         }
         
-        /* Enhanced buttons */
         .btn-gradient {
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             position: relative;
@@ -555,7 +538,6 @@
             left: 100%;
         }
         
-        /* Product Thumbnails */
         .product-thumbnail {
             width: 100%;
             height: 180px;
@@ -594,7 +576,6 @@
             color: #94a3b8;
         }
         
-        /* Product Image Container */
         .product-image-container {
             width: 100%;
             height: 400px;
@@ -612,7 +593,6 @@
             background: #f8fafc;
         }
         
-        /* Gallery Product Cards */
         .gallery-product-card {
             height: 100%;
             transition: all 0.3s ease;
@@ -623,7 +603,6 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
         
-        /* Tabs */
         .tab-button {
             padding: 12px 24px;
             border: none;
@@ -648,7 +627,6 @@
             display: block;
         }
         
-        /* Order Tracking Styles */
         .tracking-container {
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             border-radius: 1.5rem;
@@ -727,7 +705,6 @@
             transform: translateX(4px);
         }
         
-        /* Supplier Chat Modal */
         .chat-modal {
             position: fixed;
             top: 0;
@@ -781,7 +758,6 @@
             background-color: #eff6ff;
         }
         
-        /* Supplier Section */
         .supplier-section {
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             border-radius: 1rem;
@@ -789,7 +765,6 @@
             margin-bottom: 1.5rem;
         }
         
-        /* Fix for Auth Modal on Mobile */
         @media (max-width: 768px) {
             #auth-overlay .bg-white {
                 max-height: 90vh;
@@ -856,23 +831,15 @@
             }
         }
         
-        /* Fix for textarea responsiveness */
         textarea {
             min-height: 100px;
             resize: vertical;
         }
         
-        /* Ensure hero section is at top on load */
         html, body {
             scroll-padding-top: 80px;
         }
         
-        /* Hide order button for visitors */
-        body.visitor-mode .order-button {
-            display: none;
-        }
-        
-        /* Supplier Badge */
         .supplier-badge {
             display: inline-flex;
             align-items: center;
@@ -884,13 +851,34 @@
             font-weight: 600;
             margin-left: 8px;
         }
+        
+        /* FIXED: Image fallback styles */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        img[src=""], 
+        img:not([src]), 
+        img[src="undefined"] {
+            display: none;
+        }
+        
+        .img-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            color: #64748b;
+            font-size: 48px;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
     <div id="transition-loader" class="loading-shimmer"></div>
 
-    <!-- Login/Signup Modal Overlay (UPDATED: added password field to signup) -->
+    <!-- Login/Signup Modal Overlay -->
     <div id="auth-overlay" class="fixed inset-0 bg-slate-900/70 backdrop-blur-lg flex items-center justify-center p-4 z-50">
         <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden p-4 sm:p-6 md:p-8 relative" style="max-height: 90vh; overflow-y: auto;">
             <button onclick="closeAuth()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 z-10">
@@ -905,7 +893,7 @@
                     <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Portal Access</h2>
                     <p class="text-slate-500 mt-2 text-sm md:text-base">Sign in to access technical data and pricing</p>
                 </div>
-                <form class="space-y-4 md:space-y-5" onsubmit="handleAuth(event, 'partner')">
+                <form class="space-y-4 md:space-y-5" onsubmit="loginUser(event)">
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
                         <input type="email" id="login-email" required placeholder="name@company.com" 
@@ -952,7 +940,7 @@
                         <div class="flex-grow border-t border-slate-100"></div>
                     </div>
 
-                    <button type="button" onclick="handleAuth(event, 'visitor')" 
+                    <button type="button" onclick="handleVisitor(event)" 
                             class="w-full py-3 bg-white border-2 border-slate-100 text-slate-700 font-bold rounded-xl hover:border-blue-200 hover:text-blue-600 transition-all flex items-center justify-center gap-3 group text-sm md:text-base">
                         <i class="fas fa-user text-slate-400 group-hover:text-blue-500"></i>
                         <span>Continue as Visitor</span>
@@ -966,31 +954,30 @@
                 </form>
             </div>
 
-            <!-- SIGNUP FORM WITH PASSWORD FIELD (updated) -->
+            <!-- SIGNUP FORM -->
             <div id="signup-form" class="hidden">
                 <div class="text-center mb-6 md:mb-8">
                     <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Create Partner Account</h2>
                     <p class="text-slate-500 mt-2 text-sm md:text-base">Join our industrial network for exclusive access</p>
                 </div>
-                <form class="space-y-4 md:space-y-5" onsubmit="handleAuth(event, 'partner')">
+                <form class="space-y-4 md:space-y-5" onsubmit="signupUser(event)">
                     <div class="grid grid-cols-2 gap-3 md:gap-4">
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">First Name</label>
-                            <input type="text" required 
+                            <input type="text" id="signup-firstname" required 
                                    class="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border-2 border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition text-sm md:text-base">
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Last Name</label>
-                            <input type="text" required 
+                            <input type="text" id="signup-lastname" required 
                                    class="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border-2 border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition text-sm md:text-base">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
-                        <input type="email" required 
+                        <input type="email" id="signup-email" required 
                                class="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border-2 border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition text-sm md:text-base">
                     </div>
-                    <!-- PASSWORD FIELD ADDED HERE -->
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
                         <input type="password" id="signup-password" required placeholder="Create a password" 
@@ -998,12 +985,12 @@
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Company</label>
-                        <input type="text" required 
+                        <input type="text" id="signup-company" required 
                                class="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border-2 border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition text-sm md:text-base">
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Industry</label>
-                        <select class="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border-2 border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition text-sm md:text-base">
+                        <select id="signup-industry" class="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border-2 border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition text-sm md:text-base">
                             <option value="">Select Industry</option>
                             <option value="oil_gas">Oil & Gas</option>
                             <option value="chemical">Chemical Processing</option>
@@ -1060,14 +1047,14 @@
         </div>
     </div>
 
-    <!-- Order Process Modal (unchanged) -->
+    <!-- Order Process Modal -->
     <div id="order-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden relative" style="max-height: 90vh; overflow-y: auto;">
             <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 z-10">
                 <i class="fas fa-times text-2xl"></i>
             </button>
             
-            <!-- Enhanced Step Indicators -->
+            <!-- Step Indicators -->
             <div class="px-4 md:px-8 pt-6 md:pt-8">
                 <div class="mb-6 md:mb-8">
                     <h2 class="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-2">Order Request</h2>
@@ -1352,7 +1339,7 @@
                     </div>
                     
                     <div class="text-sm md:text-base text-slate-500 mb-4 md:mb-6 bg-white p-3 rounded-lg inline-block">
-                        Order Reference: <strong id="order-reference" class="text-blue-600">UF-ORD-${Date.now().toString().slice(-6)}</strong>
+                        Order Reference: <strong id="order-reference" class="text-blue-600">UF-ORD-123456</strong>
                     </div>
                     
                     <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-3 md:p-4 mb-4 md:mb-6 transform transition-all duration-300 hover:scale-[1.02]">
@@ -1509,7 +1496,7 @@
         </div>
     </div>
 
-    <!-- Dashboard Modal (Only for Supplier Accounts) -->
+    <!-- Dashboard Modal -->
     <div id="dashboard-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="bg-white w-full max-w-7xl h-[90vh] rounded-3xl shadow-2xl overflow-hidden relative flex flex-col">
             <div class="px-4 md:px-8 pt-6 md:pt-8 pb-4 border-b border-slate-200">
@@ -1554,7 +1541,7 @@
                 </div>
             </div>
             
-            <!-- Dashboard Content (unchanged) -->
+            <!-- Dashboard Content -->
             <div class="flex-1 overflow-auto p-4 md:p-8">
                 <!-- Overview Tab -->
                 <div id="dashboard-overview" class="tab-content active space-y-6 md:space-y-8">
@@ -2390,7 +2377,7 @@
     </div>
 
     <div id="main-content">
-        <!-- Enhanced Navigation (unchanged) -->
+        <!-- Enhanced Navigation -->
         <nav class="fixed top-0 w-full z-40 glass-nav">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-20 items-center">
@@ -2446,7 +2433,7 @@
             </div>
         </nav>
 
-        <!-- Enhanced Hero Section (unchanged) -->
+        <!-- Enhanced Hero Section -->
         <section id="home" class="pt-32 pb-20 px-4 reveal hero-gradient">
             <div class="max-w-7xl mx-auto">
                 <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -2494,9 +2481,9 @@
                     
                     <div class="flex-1 w-full">
                         <div class="relative">
-                            <!-- Hero Image Container -->
+                            <!-- Hero Image Container - Keep original image tag -->
                             <div class="hero-image-container">
-                                <img src="industry.png.png" alt="Industrial Flange Manufacturing Facility" />
+                                <img src="industry.png.png" alt="Industrial Flange Manufacturing Facility" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback'); this.parentNode.innerHTML='<i class=\'fas fa-industry\'></i>'">
                             </div>
                         </div>
                     </div>
@@ -2615,7 +2602,7 @@
             </div>
         </section>
 
-        <!-- Product Exploration Section (unchanged) -->
+        <!-- Product Exploration Section -->
         <section id="catalog-access" class="bg-white border-y border-slate-200 py-12 md:py-16 overflow-hidden reveal">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex flex-col items-center gap-8 md:gap-10">
@@ -2625,41 +2612,41 @@
                         <p class="text-slate-600 text-base md:text-lg">Browse our extensive range of industrial flanges and precision components</p>
                     </div>
                     
-                    <!-- Product Thumbnails Grid -->
+                    <!-- Product Thumbnails Grid - Keep all original image tags -->
                     <div class="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12 reveal stagger-delay-1">
                         <!-- Weld Neck Flange -->
                         <div class="product-thumbnail" onclick="updateProduct('wnf')">
-                            <img src="weld neck.png" alt="Weld Neck Flange" />
+                            <img src="weld neck.png" alt="Weld Neck Flange" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'product-placeholder\'><i class=\'fas fa-circle-notch\'></i><span class=\'font-semibold mt-2 text-sm\'>Weld Neck</span></div>'">
                         </div>
                         
                         <!-- Long Weld Neck -->
                         <div class="product-thumbnail" onclick="updateProduct('lwn')">
-                            <img src="long weldneck.png" alt="Long Weld Neck Flange" />
+                            <img src="long weldneck.png" alt="Long Weld Neck Flange" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'product-placeholder\'><i class=\'fas fa-arrow-up\'></i><span class=\'font-semibold mt-2 text-sm\'>Long Weld Neck</span></div>'">
                         </div>
                         
                         <!-- Slip-On Flange -->
                         <div class="product-thumbnail" onclick="updateProduct('slipon')">
-                            <img src="slip on flange.png" alt="Slip-On Flange" />
+                            <img src="slip on flange.png" alt="Slip-On Flange" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'product-placeholder\'><i class=\'fas fa-arrows-alt-h\'></i><span class=\'font-semibold mt-2 text-sm\'>Slip-On</span></div>'">
                         </div>
                         
                         <!-- Blind Flange -->
                         <div class="product-thumbnail" onclick="updateProduct('blind')">
-                            <img src="blind.png" alt="Blind Flange" />
+                            <img src="blind.png" alt="Blind Flange" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'product-placeholder\'><i class=\'fas fa-ban\'></i><span class=\'font-semibold mt-2 text-sm\'>Blind</span></div>'">
                         </div>
                         
                         <!-- Puddle Flange -->
                         <div class="product-thumbnail" onclick="updateProduct('puddle')">
-                            <img src="puddle flange.png" alt="Puddle Flange" />
+                            <img src="puddle flange.png" alt="Puddle Flange" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'product-placeholder\'><i class=\'fas fa-water\'></i><span class=\'font-semibold mt-2 text-sm\'>Puddle</span></div>'">
                         </div>
                         
                         <!-- Plasma CNC -->
                         <div class="product-thumbnail" onclick="updateProduct('plasma')">
-                            <img src="plasma cutiing.png" alt="Plasma CNC Cutting" />
+                            <img src="plasma cutiing.png" alt="Plasma CNC Cutting" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'product-placeholder\'><i class=\'fas fa-bolt\'></i><span class=\'font-semibold mt-2 text-sm\'>Plasma CNC</span></div>'">
                         </div>
                         
                         <!-- Profile Cutting -->
                         <div class="product-thumbnail" onclick="updateProduct('profile')">
-                            <img src="images/profile-cutting.jpg" alt="Profile Cutting Services" />
+                            <img src="images/profile-cutting.jpg" alt="Profile Cutting Services" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'product-placeholder\'><i class=\'fas fa-cut\'></i><span class=\'font-semibold mt-2 text-sm\'>Profile</span></div>'">
                         </div>
                         
                         <!-- All Products -->
@@ -2683,10 +2670,10 @@
 
                         <div class="w-full overflow-x-auto no-scrollbar py-2">
                             <div class="flex justify-start lg:justify-center gap-2 md:gap-3 min-w-max px-2" id="suggestion-bar">
-                                <div onclick="updateProduct('wnf')" id="chip-wnf" class="flange-chip active px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
+                                <div onclick="updateProduct('wnf')" id="chip-wnf" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
                                     <i class="fas fa-fire"></i>Weld Neck
                                 </div>
-                                <div onclick="updateProduct('lwn')" id="chip-lwn" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
+                                <div onclick="updateProduct('lwn')" id="chip-lwn" class="flange-chip active px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
                                     <i class="fas fa-ruler-vertical"></i>Long Weld Neck
                                 </div>
                                 <div onclick="updateProduct('slipon')" id="chip-slipon" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
@@ -2711,7 +2698,7 @@
             </div>
         </section>
 
-        <!-- Product Details Section (unchanged) -->
+        <!-- Product Details Section -->
         <section id="products" class="py-12 md:py-20 bg-slate-50 reveal">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="bg-white p-6 md:p-8 lg:p-12 rounded-3xl border border-slate-100 transition-all duration-500 shadow-lg" id="product-card">
@@ -2722,7 +2709,7 @@
                                 <!-- Product Image -->
                                 <div class="flex-1">
                                     <div class="product-image-container" id="product-image-container">
-                                        <img src="long weldneck.png" alt="Long Weld Neck Flange" id="product-main-image" />
+                                        <img src="long weldneck.png" alt="Long Weld Neck Flange" id="product-main-image" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-industry text-8xl text-blue-300\'></i>'">
                                     </div>
                                 </div>
                                 
@@ -2852,7 +2839,7 @@
             </div>
         </section>
 
-        <!-- Detailed Technical Specifications (unchanged) -->
+        <!-- Detailed Technical Specifications -->
         <section id="specifications" class="py-12 md:py-20 bg-slate-900 text-white reveal">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-10 md:mb-14">
@@ -2903,7 +2890,7 @@
             </div>
         </section>
 
-        <!-- Product Gallery Section (unchanged) -->
+        <!-- Product Gallery Section - Keep all original image tags -->
         <section id="product-gallery" class="py-12 md:py-24 bg-white reveal">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12 md:mb-16">
@@ -2916,7 +2903,7 @@
                     <!-- Long Weld Neck -->
                     <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
                         <div class="product-image-container" style="height: 200px;">
-                            <img src="long weldneck.png" alt="Long Weld Neck Flange" style="object-fit: contain;">
+                            <img src="long weldneck.png" alt="Long Weld Neck Flange" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-arrow-up text-6xl text-blue-300\'></i>'" style="object-fit: contain;">
                         </div>
                         <div class="p-4 md:p-6">
                             <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Long Weld Neck Flange</h4>
@@ -2935,7 +2922,7 @@
                     <!-- Weld Neck Flange -->
                     <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
                         <div class="product-image-container" style="height: 200px;">
-                            <img src="weld neck.png" alt="Weld Neck Flange" style="object-fit: contain;">
+                            <img src="weld neck.png" alt="Weld Neck Flange" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-fire text-6xl text-blue-300\'></i>'" style="object-fit: contain;">
                         </div>
                         <div class="p-4 md:p-6">
                             <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Weld Neck Flange</h4>
@@ -2954,7 +2941,7 @@
                     <!-- Slip-On Flange -->
                     <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
                         <div class="product-image-container" style="height: 200px;">
-                            <img src="slip on flange.png" alt="Slip-On Flange" style="object-fit: contain;">
+                            <img src="slip on flange.png" alt="Slip-On Flange" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-arrows-alt-h text-6xl text-blue-300\'></i>'" style="object-fit: contain;">
                         </div>
                         <div class="p-4 md:p-6">
                             <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Slip-On Flange</h4>
@@ -2973,7 +2960,7 @@
                     <!-- Blind Flange -->
                     <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
                         <div class="product-image-container" style="height: 200px;">
-                            <img src="blind.png" alt="Blind Flange" style="object-fit: contain;">
+                            <img src="blind.png" alt="Blind Flange" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-ban text-6xl text-blue-300\'></i>'" style="object-fit: contain;">
                         </div>
                         <div class="p-4 md:p-6">
                             <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Blind Flange</h4>
@@ -2992,7 +2979,7 @@
                     <!-- Puddle Flange -->
                     <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
                         <div class="product-image-container" style="height: 200px;">
-                            <img src="puddle flange.png" alt="Puddle Flange" style="object-fit: contain;">
+                            <img src="puddle flange.png" alt="Puddle Flange" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-water text-6xl text-blue-300\'></i>'" style="object-fit: contain;">
                         </div>
                         <div class="p-4 md:p-6">
                             <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Puddle Flange</h4>
@@ -3011,7 +2998,7 @@
                     <!-- Plasma CNC -->
                     <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
                         <div class="product-image-container" style="height: 200px;">
-                            <img src="plasma cutiing.png" alt="Plasma CNC Cutting" style="object-fit: contain;">
+                            <img src="plasma cutiing.png" alt="Plasma CNC Cutting" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-bolt text-6xl text-blue-300\'></i>'" style="object-fit: contain;">
                         </div>
                         <div class="p-4 md:p-6">
                             <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Plasma CNC Cutting</h4>
@@ -3036,7 +3023,7 @@
             </div>
         </section>
 
-        <!-- "Know More" Deep Dive Section (unchanged) -->
+        <!-- "Know More" Deep Dive Section -->
         <section id="about" class="py-12 md:py-24 bg-white reveal">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 md:gap-16 items-start">
@@ -3137,7 +3124,7 @@
             </div>
         </section>
 
-        <!-- Contact Section (unchanged) -->
+        <!-- Contact Section -->
         <section id="contact" class="py-12 md:py-20 bg-slate-50 reveal">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12 md:mb-16">
@@ -3191,7 +3178,7 @@
             </div>
         </section>
 
-        <!-- Footer (unchanged) -->
+        <!-- Footer -->
         <footer class="bg-slate-900 text-white py-12 md:py-16 px-4">
             <div class="max-w-7xl mx-auto">
                 <div class="grid md:grid-cols-4 gap-8 md:gap-10 mb-8 md:mb-12">
@@ -3258,6 +3245,9 @@
     </div>
 
     <script>
+        // ========== BACKEND CONNECTION ==========
+        const API_BASE_URL = "http://localhost:8080";
+
         // Global Variables
         let currentUserType = 'visitor';
         let isSupplier = false;
@@ -3371,1067 +3361,7 @@
             ]
         };
         
-        // Enhanced Authentication Management
-        function toggleAuthView(view) {
-            document.getElementById('login-form').classList.toggle('hidden', view !== 'login');
-            document.getElementById('signup-form').classList.toggle('hidden', view !== 'signup');
-        }
-        
-        function openAuthModal() {
-            document.getElementById('auth-overlay').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeAuth() {
-            document.getElementById('auth-overlay').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        function setUserType(type) {
-            currentUserType = type;
-            const buttons = document.querySelectorAll('#login-form button[onclick^="setUserType"]');
-            buttons.forEach(btn => {
-                if (btn.textContent.includes(type === 'partner' ? 'Partner' : 'Supplier')) {
-                    btn.classList.add('border-blue-200', 'bg-blue-50', 'text-blue-700');
-                    btn.classList.remove('border-slate-200', 'hover:border-blue-200', 'hover:bg-blue-50');
-                } else {
-                    btn.classList.remove('border-blue-200', 'bg-blue-50', 'text-blue-700');
-                    btn.classList.add('border-slate-200', 'hover:border-blue-200', 'hover:bg-blue-50');
-                }
-            });
-        }
-
-        function handleAuth(event, userType) {
-            if (event) event.preventDefault();
-            const loader = document.getElementById('transition-loader');
-            loader.style.left = '0%';
-            
-            setTimeout(() => {
-                const statusBadge = document.getElementById('user-status');
-                const mobileStatus = document.getElementById('mobile-user-status');
-                
-                // Reset user state
-                isSupplier = false;
-                isAuthenticated = false;
-                selectedSupplier = null;
-                
-                if (userType === 'visitor') {
-                    // Visitor mode
-                    isAuthenticated = false;
-                    currentUser = { type: 'visitor' };
-                    document.body.classList.add('visitor-mode');
-                    
-                    statusBadge.innerText = 'Visitor Mode';
-                    statusBadge.className = 'px-3 py-1.5 bg-blue-50 rounded-full text-xs font-bold text-blue-600 uppercase border border-blue-100';
-                    statusBadge.innerHTML = '<i class="fas fa-user mr-1"></i>Visitor';
-                    
-                    mobileStatus.innerText = 'Visitor Mode';
-                    mobileStatus.className = 'px-3 py-2 bg-blue-50 rounded-lg text-sm font-bold text-blue-600';
-                    
-                    // Update UI for visitor
-                    updateUIForUserType('visitor');
-                } else if (userType === 'supplier' || currentUserType === 'supplier') {
-                    // Supplier mode
-                    isSupplier = true;
-                    isAuthenticated = true;
-                    currentUser = { type: 'supplier', name: 'Supplier User', id: 'SUP001' };
-                    document.body.classList.remove('visitor-mode');
-                    
-                    statusBadge.innerText = 'Supplier';
-                    statusBadge.className = 'px-3 py-1.5 bg-green-50 rounded-full text-xs font-bold text-green-600 uppercase border border-green-100';
-                    statusBadge.innerHTML = '<i class="fas fa-building mr-1"></i>Supplier';
-                    
-                    mobileStatus.innerText = 'Supplier';
-                    mobileStatus.className = 'px-3 py-2 bg-green-50 rounded-lg text-sm font-bold text-green-600';
-                    
-                    // Update UI for supplier
-                    updateUIForUserType('supplier');
-                } else {
-                    // Partner mode
-                    isAuthenticated = true;
-                    currentUser = { type: 'partner', name: 'Partner User', id: 'PART001' };
-                    document.body.classList.remove('visitor-mode');
-                    
-                    statusBadge.innerText = 'Partner';
-                    statusBadge.className = 'px-3 py-1.5 bg-blue-50 rounded-full text-xs font-bold text-blue-600 uppercase border border-blue-100';
-                    statusBadge.innerHTML = '<i class="fas fa-user-shield mr-1"></i>Partner';
-                    
-                    mobileStatus.innerText = 'Partner';
-                    mobileStatus.className = 'px-3 py-2 bg-slate-100 rounded-lg text-sm font-bold text-slate-600';
-                    
-                    // Update UI for partner
-                    updateUIForUserType('partner');
-                    
-                    // Load sample orders for partner
-                    loadSampleOrders();
-                }
-
-                document.getElementById('auth-overlay').classList.add('hidden');
-                document.body.classList.add('authenticated');
-                document.body.style.overflow = 'auto';
-                loader.style.left = '100%';
-                setTimeout(() => loader.style.left = '-100%', 1200);
-                initReveal();
-                updateProduct('lwn');
-                
-                // Scroll to top to show hero section
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                if (isSupplier) {
-                    setTimeout(() => {
-                        showNotification('Welcome to Supplier Dashboard! Access your business analytics and manage orders.', 'success');
-                    }, 500);
-                } else if (userType !== 'visitor') {
-                    setTimeout(() => {
-                        showNotification('Welcome back! You can now connect with suppliers and place orders.', 'success');
-                    }, 500);
-                }
-            }, 1000);
-        }
-
-        function updateUIForUserType(userType) {
-            // Desktop navigation elements
-            const profileBtn = document.getElementById('profile-btn');
-            const dashboardBtn = document.getElementById('dashboard-btn');
-            const supplierDashboardBtn = document.getElementById('supplier-dashboard-btn');
-            const logoutBtn = document.getElementById('logout-btn');
-            const loginBtn = document.getElementById('login-btn');
-            
-            // Mobile menu elements
-            const mobileDashboardLink = document.getElementById('mobile-dashboard-link');
-            const mobileSupplierDashboardLink = document.getElementById('mobile-supplier-dashboard-link');
-            const mobileProfileLink = document.getElementById('mobile-profile-link');
-            const mobileLogoutBtn = document.getElementById('mobile-logout-btn');
-            const mobileLoginBtn = document.getElementById('mobile-login-btn');
-            
-            // Reset all
-            [profileBtn, dashboardBtn, supplierDashboardBtn, logoutBtn, loginBtn,
-             mobileDashboardLink, mobileSupplierDashboardLink, mobileProfileLink, mobileLogoutBtn, mobileLoginBtn]
-            .forEach(el => {
-                if (el) el.classList.add('hidden');
-            });
-            
-            if (userType === 'visitor') {
-                // Show login button for visitors
-                if (loginBtn) loginBtn.classList.remove('hidden');
-                if (mobileLoginBtn) mobileLoginBtn.classList.remove('hidden');
-            } else {
-                // Show logout button for authenticated users
-                if (logoutBtn) logoutBtn.classList.remove('hidden');
-                if (mobileLogoutBtn) mobileLogoutBtn.classList.remove('hidden');
-                
-                // Show profile button for all authenticated users
-                if (profileBtn) profileBtn.classList.remove('hidden');
-                if (mobileProfileLink) mobileProfileLink.classList.remove('hidden');
-                
-                if (userType === 'supplier') {
-                    // Show supplier dashboard
-                    if (supplierDashboardBtn) supplierDashboardBtn.classList.remove('hidden');
-                    if (mobileSupplierDashboardLink) mobileSupplierDashboardLink.classList.remove('hidden');
-                } else {
-                    // Show partner dashboard
-                    if (dashboardBtn) dashboardBtn.classList.remove('hidden');
-                    if (mobileDashboardLink) mobileDashboardLink.classList.remove('hidden');
-                }
-            }
-        }
-
-        function logout() {
-            const loader = document.getElementById('transition-loader');
-            loader.style.left = '0%';
-            setTimeout(() => {
-                document.getElementById('auth-overlay').classList.remove('hidden');
-                document.body.classList.remove('authenticated');
-                document.body.classList.remove('visitor-mode');
-                loader.style.left = '100%';
-                setTimeout(() => loader.style.left = '-100%', 1200);
-                toggleMobileMenu(false);
-                closeDashboard();
-                closeOrderModal();
-                closeTrackingModal();
-                closeChat();
-                isSupplier = false;
-                isAuthenticated = false;
-                currentUser = null;
-                selectedSupplier = null;
-                userOrders = [];
-                chatMessages = [];
-                
-                // Update UI to visitor mode
-                updateUIForUserType('visitor');
-                
-                // Update status badges
-                const statusBadge = document.getElementById('user-status');
-                const mobileStatus = document.getElementById('mobile-user-status');
-                statusBadge.innerText = 'Visitor Mode';
-                statusBadge.className = 'px-3 py-1.5 bg-blue-50 rounded-full text-xs font-bold text-blue-600 uppercase border border-blue-100';
-                statusBadge.innerHTML = '<i class="fas fa-user mr-1"></i>Visitor';
-                
-                mobileStatus.innerText = 'Visitor Mode';
-                mobileStatus.className = 'px-3 py-2 bg-blue-50 rounded-lg text-sm font-bold text-blue-600';
-                
-                // Scroll to top when logging out
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 800);
-        }
-        
-        // Mobile Menu Toggle
-        function toggleMobileMenu(forceClose) {
-            const menu = document.getElementById('mobile-menu');
-            const overlay = document.getElementById('mobile-menu-overlay');
-            
-            if (forceClose === false || (menu.classList.contains('active'))) {
-                menu.classList.remove('active');
-                overlay.classList.remove('active');
-            } else {
-                menu.classList.add('active');
-                overlay.classList.add('active');
-            }
-        }
-
-        // Chat Functions
-        function openChat(supplier) {
-            if (!isAuthenticated) {
-                showNotification('Please login to chat with suppliers.', 'error');
-                openAuthModal();
-                return;
-            }
-            
-            selectedSupplier = supplier;
-            document.getElementById('chat-modal').classList.add('active');
-            document.getElementById('chat-supplier-name').textContent = supplier.name;
-            document.getElementById('chat-supplier-status').textContent = supplier.status;
-            
-            // Load chat messages
-            loadChatMessages();
-        }
-        
-        function closeChat() {
-            document.getElementById('chat-modal').classList.remove('active');
-            selectedSupplier = null;
-        }
-        
-        function sendChatMessage() {
-            const input = document.getElementById('chat-input');
-            const message = input.value.trim();
-            
-            if (!message) return;
-            
-            // Add message to chat
-            const timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            chatMessages.push({
-                id: Date.now(),
-                sender: 'user',
-                text: message,
-                time: timestamp
-            });
-            
-            // Clear input
-            input.value = '';
-            
-            // Update chat display
-            updateChatDisplay();
-            
-            // Simulate supplier response
-            setTimeout(() => {
-                const responses = [
-                    "Thank you for your message. We'll get back to you shortly with a quotation.",
-                    "Can you please share more details about your requirements?",
-                    "We have this product in stock. What quantity do you need?",
-                    "I can provide you with pricing within the next hour.",
-                    "Would you like me to send you our catalog and pricing?"
-                ];
-                
-                const response = responses[Math.floor(Math.random() * responses.length)];
-                const responseTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                
-                chatMessages.push({
-                    id: Date.now() + 1,
-                    sender: 'supplier',
-                    text: response,
-                    time: responseTime
-                });
-                
-                updateChatDisplay();
-            }, 2000);
-        }
-        
-        function loadChatMessages() {
-            // Load existing chat messages or start new
-            if (chatMessages.length === 0) {
-                const timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                chatMessages = [
-                    {
-                        id: 1,
-                        sender: 'supplier',
-                        text: `Hello! I'm ${selectedSupplier.name} from ${selectedSupplier.company}. How can I help you with your ${getCurrentProduct().title} requirements?`,
-                        time: timestamp
-                    }
-                ];
-            }
-            
-            updateChatDisplay();
-        }
-        
-        function updateChatDisplay() {
-            const chatContainer = document.getElementById('chat-messages');
-            chatContainer.innerHTML = chatMessages.map(msg => `
-                <div class="chat-message ${msg.sender === 'user' ? 'sent' : ''}">
-                    <div class="bg-${msg.sender === 'user' ? 'blue' : 'slate'}-100 p-3 rounded-lg">
-                        <p class="text-slate-800">${msg.text}</p>
-                        <p class="text-xs text-slate-500 mt-1 text-right">${msg.time}</p>
-                    </div>
-                </div>
-            `).join('');
-            
-            // Scroll to bottom
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-        
-        // Supplier Functions
-        function loadSuppliersForProduct(productKey) {
-            const productName = document.getElementById('order-product').options[document.getElementById('order-product').selectedIndex].text;
-            document.getElementById('selected-product-name').textContent = productName;
-            
-            const suppliers = supplierData[productKey] || [];
-            const suppliersList = document.getElementById('suppliers-list');
-            const noSuppliersMessage = document.getElementById('no-suppliers-message');
-            
-            if (suppliers.length === 0) {
-                suppliersList.innerHTML = '';
-                noSuppliersMessage.classList.remove('hidden');
-                return;
-            }
-            
-            noSuppliersMessage.classList.add('hidden');
-            suppliersList.innerHTML = suppliers.map(supplier => `
-                <div class="supplier-card bg-white p-4 rounded-xl border-2 border-slate-200 ${selectedSupplier?.id === supplier.id ? 'selected' : ''}" 
-                     onclick="selectSupplier('${productKey}', '${supplier.id}')">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-start gap-3">
-                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-user-tie text-green-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900">${supplier.name}</h4>
-                                <p class="text-slate-600 text-sm">${supplier.company}</p>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                        <span class="text-sm font-medium ml-1">${supplier.rating}</span>
-                                        <span class="text-slate-500 text-xs ml-1">(${supplier.reviews} reviews)</span>
-                                    </div>
-                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">${supplier.status}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <button onclick="event.stopPropagation(); openChat(${JSON.stringify(supplier).replace(/"/g, '&quot;')})" 
-                                class="text-blue-600 hover:text-blue-800">
-                            <i class="fas fa-comment-dots text-lg"></i>
-                        </button>
-                    </div>
-                    <div class="mt-3 grid grid-cols-2 gap-2">
-                        <div class="text-xs">
-                            <span class="text-slate-500">Response:</span>
-                            <span class="font-medium ml-1">${supplier.responseTime}</span>
-                        </div>
-                        <div class="text-xs">
-                            <span class="text-slate-500">Min Order:</span>
-                            <span class="font-medium ml-1">${supplier.minOrder}</span>
-                        </div>
-                        <div class="text-xs">
-                            <span class="text-slate-500">Location:</span>
-                            <span class="font-medium ml-1">${supplier.location}</span>
-                        </div>
-                        <div class="text-xs">
-                            <span class="text-slate-500">Lead Time:</span>
-                            <span class="font-medium ml-1">${supplier.leadTime}</span>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <div class="flex flex-wrap gap-1">
-                            ${supplier.specialization.map(spec => `
-                                <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">${spec}</span>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        function selectSupplier(productKey, supplierId) {
-            const suppliers = supplierData[productKey] || [];
-            selectedSupplier = suppliers.find(s => s.id === supplierId);
-            
-            // Update UI
-            document.querySelectorAll('.supplier-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            const selectedCard = document.querySelector(`[onclick*="${supplierId}"]`);
-            if (selectedCard) {
-                selectedCard.classList.add('selected');
-            }
-            
-            // Update step 3 display
-            document.getElementById('selected-supplier-display').textContent = 
-                selectedSupplier ? `${selectedSupplier.name} (${selectedSupplier.company})` : 'Not selected';
-        }
-        
-        function showAllSuppliers() {
-            showNotification('Showing all available suppliers for this product', 'info');
-        }
-
-        // Dashboard Functions - Only for Supplier Accounts
-        function openDashboard() {
-            // Check if user is authenticated
-            if (!isAuthenticated) {
-                showNotification('Please login to access the dashboard.', 'error');
-                openAuthModal();
-                return;
-            }
-            
-            // Check if user is a supplier
-            if (!isSupplier && currentUser?.type !== 'supplier') {
-                showNotification('Dashboard access is only available for supplier accounts.', 'error');
-                return;
-            }
-            
-            document.getElementById('dashboard-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            initDashboardCharts();
-        }
-        
-        function closeDashboard() {
-            document.getElementById('dashboard-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function switchDashboardTab(tabName) {
-            // Update tab buttons
-            document.querySelectorAll('#dashboard-modal .tab-button').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('onclick').includes(tabName));
-            });
-            
-            // Show selected tab content
-            document.querySelectorAll('#dashboard-modal .tab-content').forEach(content => {
-                content.classList.toggle('active', content.id === `dashboard-${tabName}`);
-                content.classList.toggle('hidden', content.id !== `dashboard-${tabName}`);
-            });
-            
-            // Initialize charts if needed
-            if (tabName === 'analytics') {
-                setTimeout(() => {
-                    initAnalyticsCharts();
-                }, 100);
-            }
-        }
-        
-        // Show Profile Function
-        function showProfile() {
-            if (!isAuthenticated) {
-                showNotification('Please login to view your profile.', 'error');
-                openAuthModal();
-                return;
-            }
-            
-            const userType = currentUser?.type || 'visitor';
-            const userName = currentUser?.name || 'User';
-            
-            showNotification(`Welcome ${userName}! Profile page for ${userType} accounts is under development.`, 'info');
-        }
-        
-        // Order Tracking Functions
-        function openTrackingModal() {
-            document.getElementById('tracking-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            
-            // If user is authenticated, show their orders
-            if (isAuthenticated && currentUser?.type !== 'visitor') {
-                showMyOrders();
-            }
-        }
-        
-        function closeTrackingModal() {
-            document.getElementById('tracking-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function trackOrderWithCode() {
-            const orderId = document.getElementById('order-reference').textContent;
-            if (orderId) {
-                closeOrderModal();
-                setTimeout(() => {
-                    openTrackingModal();
-                    document.getElementById('tracking-input').value = orderId;
-                    searchOrder();
-                }, 500);
-            }
-        }
-        
-        function searchOrder() {
-            const orderId = document.getElementById('tracking-input').value.trim();
-            if (!orderId) {
-                showNotification('Please enter an order ID', 'error');
-                return;
-            }
-            
-            // Show loading state
-            document.getElementById('tracking-empty').classList.add('hidden');
-            document.getElementById('tracking-results').classList.add('hidden');
-            document.getElementById('my-orders-section').classList.add('hidden');
-            document.getElementById('tracking-loading').classList.remove('hidden');
-            
-            // Simulate API call
-            setTimeout(() => {
-                const order = findOrderById(orderId);
-                if (order) {
-                    displayOrderTracking(order);
-                } else {
-                    showNotification('Order not found. Please check your order ID.', 'error');
-                    document.getElementById('tracking-loading').classList.add('hidden');
-                    document.getElementById('tracking-empty').classList.remove('hidden');
-                }
-            }, 1000);
-        }
-        
-        function findOrderById(orderId) {
-            // Check in user orders first
-            const userOrder = userOrders.find(order => 
-                order.id === orderId || 
-                order.reference === orderId ||
-                order.id.toLowerCase().includes(orderId.toLowerCase())
-            );
-            
-            if (userOrder) return userOrder;
-            
-            // Sample orders for demonstration
-            const sampleOrders = [
-                {
-                    id: 'UF-ORD-7842',
-                    reference: 'ORD-7842',
-                    product: 'Weld Neck Flange',
-                    productName: 'Weld Neck Flange DN50',
-                    quantity: 50,
-                    amount: '₹245,000',
-                    date: 'Mar 15, 2024',
-                    status: 'Processing',
-                    estimatedDelivery: 'Mar 25, 2024',
-                    customerName: 'John Doe',
-                    company: 'Oil & Gas Corp',
-                    contact: 'john@example.com',
-                    address: '123 Industrial Park, Mumbai',
-                    supplier: 'Precision Flange Co.',
-                    supplierContact: 'sales@precisionflange.com',
-                    supplierPhone: '+91 9876543210',
-                    shippingMethod: 'Express Freight',
-                    shipmentNumber: 'SHIP-789456123',
-                    timeline: [
-                        { step: 'Order Placed', status: 'completed', date: 'Mar 15, 2024', time: '10:30 AM', details: 'Order received and confirmed' },
-                        { step: 'Payment Received', status: 'completed', date: 'Mar 15, 2024', time: '2:45 PM', details: 'Payment processed successfully' },
-                        { step: 'Production Started', status: 'completed', date: 'Mar 16, 2024', time: '9:00 AM', details: 'Manufacturing in progress' },
-                        { step: 'Quality Check', status: 'current', date: 'Mar 18, 2024', time: 'In progress', details: 'Undergoing final inspection' },
-                        { step: 'Ready for Shipping', status: 'pending', date: 'Mar 20, 2024', time: '--', details: 'Awaiting dispatch' },
-                        { step: 'Shipped', status: 'pending', date: 'Mar 22, 2024', time: '--', details: 'Will be shipped to your address' },
-                        { step: 'Delivered', status: 'pending', date: 'Mar 25, 2024', time: '--', details: 'Estimated delivery date' }
-                    ]
-                }
-            ];
-            
-            return sampleOrders.find(order => 
-                order.id === orderId || 
-                order.reference === orderId ||
-                order.id.toLowerCase().includes(orderId.toLowerCase())
-            );
-        }
-        
-        function displayOrderTracking(order) {
-            // Update order details
-            document.getElementById('tracking-order-id').textContent = order.id;
-            document.getElementById('tracking-product-name').textContent = order.productName;
-            document.getElementById('tracking-status').textContent = order.status;
-            document.getElementById('tracking-quantity').textContent = `${order.quantity} pieces`;
-            document.getElementById('tracking-date').textContent = order.date;
-            document.getElementById('tracking-delivery').textContent = order.estimatedDelivery;
-            document.getElementById('tracking-amount').textContent = order.amount;
-            document.getElementById('tracking-customer-name').textContent = order.customerName;
-            document.getElementById('tracking-company').textContent = order.company;
-            document.getElementById('tracking-contact').textContent = order.contact;
-            document.getElementById('tracking-supplier').textContent = order.supplier;
-            document.getElementById('tracking-supplier-contact').textContent = order.supplierContact;
-            document.getElementById('tracking-supplier-phone').textContent = order.supplierPhone;
-            
-            // Update timeline
-            const timelineContainer = document.getElementById('tracking-timeline');
-            timelineContainer.innerHTML = order.timeline.map((step, index) => `
-                <div class="tracking-step ${step.status === 'completed' ? 'completed' : step.status === 'current' ? 'current' : ''}">
-                    <div class="tracking-step-icon ${step.status === 'completed' ? 'completed' : step.status === 'current' ? 'current' : 'pending'}">
-                        <i class="fas fa-${getStepIcon(step.step)}"></i>
-                    </div>
-                    <div class="tracking-step-content">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
-                            <h5 class="font-bold text-slate-900">${step.step}</h5>
-                            <div class="flex items-center gap-2">
-                                <span class="text-sm text-slate-600">${step.date}</span>
-                                <span class="text-sm text-slate-500">${step.time}</span>
-                            </div>
-                        </div>
-                        <p class="text-slate-600 text-sm">${step.details}</p>
-                    </div>
-                </div>
-            `).join('');
-            
-            // Show results
-            document.getElementById('tracking-loading').classList.add('hidden');
-            document.getElementById('tracking-results').classList.remove('hidden');
-            document.getElementById('my-orders-section').classList.add('hidden');
-        }
-        
-        function getStepIcon(step) {
-            const icons = {
-                'Order Placed': 'shopping-cart',
-                'Payment Received': 'credit-card',
-                'Production Started': 'cogs',
-                'Quality Check': 'clipboard-check',
-                'Ready for Shipping': 'box',
-                'Shipped': 'truck',
-                'Delivered': 'home'
-            };
-            return icons[step] || 'circle';
-        }
-        
-        function showMyOrders() {
-            if (!isAuthenticated || currentUser?.type === 'visitor') {
-                showNotification('Please login to view your orders.', 'error');
-                openAuthModal();
-                return;
-            }
-            
-            document.getElementById('tracking-results').classList.add('hidden');
-            document.getElementById('tracking-empty').classList.add('hidden');
-            document.getElementById('tracking-loading').classList.remove('hidden');
-            document.getElementById('my-orders-section').classList.remove('hidden');
-            
-            // Simulate loading
-            setTimeout(() => {
-                const ordersList = document.getElementById('my-orders-list');
-                ordersList.innerHTML = userOrders.length > 0 ? 
-                    userOrders.map(order => `
-                        <div class="bg-white rounded-xl p-4 border border-slate-200 hover:border-blue-300 transition">
-                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
-                                <div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-box text-blue-600"></i>
-                                        </div>
-                                        <div>
-                                            <h5 class="font-bold text-slate-900">${order.id}</h5>
-                                            <p class="text-sm text-slate-600">${order.productName}</p>
-                                            <p class="text-xs text-slate-500">Supplier: ${order.supplier}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col md:items-end gap-2">
-                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">${order.status}</span>
-                                    <span class="font-bold text-slate-900">${order.amount}</span>
-                                    <button onclick="trackOrderById('${order.id}')" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                                        <i class="fas fa-search mr-1"></i>Track Order
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    `).join('') :
-                    `<div class="text-center py-8">
-                        <i class="fas fa-box-open text-4xl text-slate-300 mb-3"></i>
-                        <p class="text-slate-600">No orders found. Place your first order!</p>
-                    </div>`;
-                
-                document.getElementById('tracking-loading').classList.add('hidden');
-            }, 800);
-        }
-        
-        function trackOrderById(orderId) {
-            document.getElementById('tracking-input').value = orderId;
-            searchOrder();
-        }
-        
-        function downloadInvoice() {
-            showNotification('Invoice download feature is under development.', 'info');
-        }
-        
-        function contactSupplier() {
-            showNotification('Contacting supplier... This would open your email client.', 'info');
-        }
-        
-        function loadSampleOrders() {
-            // Load sample orders for authenticated users
-            userOrders = [
-                {
-                    id: 'UF-ORD-7842',
-                    reference: 'ORD-7842',
-                    product: 'Weld Neck Flange',
-                    productName: 'Weld Neck Flange DN50',
-                    quantity: 50,
-                    amount: '₹245,000',
-                    date: 'Mar 15, 2024',
-                    status: 'Processing',
-                    supplier: 'Precision Flange Co.'
-                }
-            ];
-        }
-
-        // Check Authentication Before Order
-        function checkAuthBeforeOrder(productKey = null) {
-            if (!isAuthenticated || currentUser?.type === 'visitor') {
-                showNotification('Please login or create an account to connect with suppliers.', 'error');
-                openAuthModal();
-                return;
-            }
-            
-            if (productKey) {
-                openOrderModalWithProduct(productKey);
-            } else {
-                openOrderModal();
-            }
-        }
-
-        // Order Modal Functions
-        function openOrderModal() {
-            // Check authentication first
-            if (!isAuthenticated || currentUser?.type === 'visitor') {
-                checkAuthBeforeOrder();
-                return;
-            }
-            
-            document.getElementById('order-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            resetOrderSteps();
-        }
-        
-        function openOrderModalWithProduct(productKey) {
-            // Check authentication first
-            if (!isAuthenticated || currentUser?.type === 'visitor') {
-                checkAuthBeforeOrder(productKey);
-                return;
-            }
-            
-            openOrderModal();
-            // Set the product in the order modal
-            document.getElementById('order-product').value = productKey;
-            loadSuppliersForProduct(productKey);
-        }
-        
-        function closeOrderModal() {
-            document.getElementById('order-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            selectedSupplier = null;
-        }
-
-        function resetOrderSteps() {
-            currentOrderStep = 1;
-            updateStepIndicators();
-            
-            // Hide all steps
-            for (let i = 1; i <= 5; i++) {
-                const stepEl = document.getElementById(`order-step-${i}`);
-                if (stepEl) stepEl.classList.add('hidden');
-            }
-            
-            // Show step 1
-            document.getElementById('order-step-1').classList.remove('hidden');
-            
-            // Reset supplier selection
-            selectedSupplier = null;
-            document.getElementById('selected-supplier-display').textContent = 'Not selected';
-        }
-
-        function updateStepIndicators() {
-            const progress = document.getElementById('step-progress');
-            const stepWidth = 100 / 4; // 5 steps, 4 transitions
-            
-            progress.style.width = `${(currentOrderStep - 1) * stepWidth}%`;
-            
-            // Update step indicators
-            for (let i = 1; i <= 5; i++) {
-                const indicator = document.getElementById(`step-indicator-${i}`);
-                if (indicator) {
-                    if (i < currentOrderStep) {
-                        indicator.classList.remove('pending', 'active');
-                        indicator.classList.add('completed');
-                    } else if (i === currentOrderStep) {
-                        indicator.classList.remove('pending', 'completed');
-                        indicator.classList.add('active');
-                    } else {
-                        indicator.classList.remove('active', 'completed');
-                        indicator.classList.add('pending');
-                    }
-                }
-            }
-        }
-
-        function nextOrderStep(step) {
-            if (step < 1 || step > 5) return;
-            
-            // Validate supplier selection for step 3
-            if (step === 3 && !selectedSupplier) {
-                showNotification('Please select a supplier before proceeding.', 'error');
-                return;
-            }
-            
-            // Update review section before moving to step 4
-            if (step === 4) {
-                updateReviewSection();
-            }
-            
-            // Hide current step
-            document.getElementById(`order-step-${currentOrderStep}`).classList.add('hidden');
-            
-            // Show new step with animation
-            currentOrderStep = step;
-            const nextStep = document.getElementById(`order-step-${step}`);
-            nextStep.classList.remove('hidden');
-            nextStep.style.animation = 'none';
-            setTimeout(() => {
-                nextStep.style.animation = 'slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards';
-            }, 10);
-            
-            // Update step indicators
-            updateStepIndicators();
-        }
-
-        function prevOrderStep(step) {
-            nextOrderStep(step);
-        }
-
-        function updateReviewSection() {
-            // Get values from form
-            const productSelect = document.getElementById('order-product');
-            const productText = productSelect.options[productSelect.selectedIndex].text;
-            const quantity = document.getElementById('order-quantity').value;
-            const materialSelect = document.getElementById('order-material');
-            const materialText = materialSelect.options[materialSelect.selectedIndex].text;
-            const contactMethod = document.querySelector('input[name="contactMethod"]:checked').value;
-            
-            // Update review section
-            document.getElementById('review-product').textContent = productText;
-            document.getElementById('review-supplier').textContent = selectedSupplier ? `${selectedSupplier.name} (${selectedSupplier.company})` : 'Not selected';
-            document.getElementById('review-quantity').textContent = `${quantity} pieces`;
-            document.getElementById('review-material').textContent = materialText;
-            document.getElementById('review-contact').textContent = contactMethod.charAt(0).toUpperCase() + contactMethod.slice(1);
-            
-            // Update confirmation supplier
-            document.getElementById('confirmation-supplier').textContent = selectedSupplier ? selectedSupplier.name : 'Supplier';
-        }
-
-        function submitOrder() {
-            if (!selectedSupplier) {
-                showNotification('Please select a supplier before submitting the order.', 'error');
-                return;
-            }
-            
-            // Get order data
-            const orderData = {
-                id: `UF-ORD-${Date.now().toString().slice(-6)}`,
-                reference: `ORD-${Date.now().toString().slice(-4)}`,
-                product: document.getElementById('order-product').value,
-                productName: document.getElementById('order-product').options[document.getElementById('order-product').selectedIndex].text,
-                quantity: document.getElementById('order-quantity').value,
-                size: document.getElementById('order-size').value,
-                material: document.getElementById('order-material').value,
-                materialName: document.getElementById('order-material').options[document.getElementById('order-material').selectedIndex].text,
-                specs: document.getElementById('order-specs').value,
-                firstName: document.getElementById('order-firstname').value,
-                lastName: document.getElementById('order-lastname').value,
-                email: document.getElementById('order-email').value,
-                phone: document.getElementById('order-phone').value,
-                company: document.getElementById('order-company').value,
-                address: document.getElementById('order-address').value,
-                contactMethod: document.querySelector('input[name="contactMethod"]:checked').value,
-                supplier: selectedSupplier,
-                timestamp: new Date().toISOString(),
-                status: 'Processing',
-                amount: `₹${(parseInt(document.getElementById('order-quantity').value) * 5000).toLocaleString()}`
-            };
-            
-            // Log order data
-            console.log('Order submitted to supplier:', orderData);
-            console.log('Supplier Details:', selectedSupplier);
-            console.log('Order sent to:', selectedSupplier.email);
-            console.log('Supplier will contact:', document.getElementById('order-email').value);
-            
-            // Add to user orders
-            userOrders.unshift({
-                id: orderData.id,
-                reference: orderData.reference,
-                product: orderData.product,
-                productName: orderData.productName,
-                quantity: orderData.quantity,
-                amount: orderData.amount,
-                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-                status: orderData.status,
-                supplier: selectedSupplier.name
-            });
-            
-            // Update order reference
-            document.getElementById('order-reference').textContent = orderData.id;
-            
-            // Show confirmation step
-            nextOrderStep(5);
-            
-            // Simulate sending to supplier
-            simulateSupplierNotification(orderData);
-            
-            // Show success notification
-            showNotification(`Order submitted to ${selectedSupplier.name}! They will contact you shortly.`, 'success');
-        }
-
-        function simulateSupplierNotification(orderData) {
-            console.log('Sending order notification to supplier...');
-            console.log('Supplier Email:', orderData.supplier.email);
-            console.log('Supplier Phone:', orderData.supplier.phone);
-            console.log('Order Details:', {
-                product: orderData.productName,
-                quantity: orderData.quantity,
-                material: orderData.materialName,
-                customer: `${orderData.firstName} ${orderData.lastName}`,
-                company: orderData.company,
-                contact: orderData.email
-            });
-            
-            setTimeout(() => {
-                console.log('Supplier notified successfully!');
-                console.log('Supplier will send:');
-                console.log('1. Quotation to:', orderData.email);
-                console.log('2. Delivery timeline');
-                console.log('3. Proforma invoice');
-                console.log('4. Production schedule');
-            }, 1000);
-        }
-
-        // Chart Initialization
-        function initDashboardCharts() {
-            // Sales Chart
-            const salesCtx = document.getElementById('salesChart').getContext('2d');
-            new Chart(salesCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                    datasets: [{
-                        label: 'Revenue (₹)',
-                        data: [1200000, 1850000, 1500000, 2200000, 2450000, 2847500],
-                        borderColor: '#3b82f6',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) {
-                                    return '₹' + (value / 1000000).toFixed(1) + 'M';
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-        
-        function initAnalyticsCharts() {
-            // Category Chart
-            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
-            new Chart(categoryCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Weld Neck', 'Long Weld Neck', 'Blind Flange', 'Plasma CNC', 'Others'],
-                    datasets: [{
-                        data: [42, 30, 12, 8, 8],
-                        backgroundColor: [
-                            '#3b82f6',
-                            '#10b981',
-                            '#f59e0b',
-                            '#8b5cf6',
-                            '#64748b'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
-            
-            // Performance Chart
-            const performanceCtx = document.getElementById('performanceChart').getContext('2d');
-            new Chart(performanceCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                    datasets: [
-                        {
-                            label: 'Orders',
-                            data: [32, 45, 38, 52, 47, 56],
-                            backgroundColor: '#3b82f6'
-                        },
-                        {
-                            label: 'Revenue (₹L)',
-                            data: [120, 185, 150, 220, 245, 284],
-                            backgroundColor: '#10b981'
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-            
-            // Conversion Chart
-            const conversionCtx = document.getElementById('conversionChart').getContext('2d');
-            new Chart(conversionCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Converted', 'Not Converted'],
-                    datasets: [{
-                        data: [68, 32],
-                        backgroundColor: ['#3b82f6', '#e2e8f0']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '70%',
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
-                }
-            });
-        }
-
-        // Product Data with image references
+        // Product Data
         const productData = {
             lwn: {
                 title: "Long Weld Neck Flange (LWN)",
@@ -4444,7 +3374,6 @@
                     "Precision machined sealing surface",
                     "Ideal for pressure vessel connections"
                 ],
-                image: "long weldneck.png",
                 specs: {
                     general: {
                         "Reference": "ASMEB16.5-900-DN15",
@@ -4475,7 +3404,6 @@
                     "ASME B16.5 compliant design",
                     "Available with RF, RTJ, or FF faces"
                 ],
-                image: "weld neck.png",
                 specs: {
                     general: {
                         "Size Range": "1/2\" to 72\" (DN15 to DN1800)",
@@ -4504,7 +3432,6 @@
                     "Internal and external welding for strength",
                     "Available in raised face or flat face"
                 ],
-                image: "slip on flange.png",
                 specs: {
                     general: {
                         "Size Range": "1/2\" to 60\" (DN15 to DN1500)",
@@ -4532,7 +3459,6 @@
                     "Critical safety shut-off component",
                     "Available with or without jack screw holes"
                 ],
-                image: "blind.png",
                 specs: {
                     general: {
                         "Size Range": "1/2\" to 72\" (DN15 to DN1800)",
@@ -4560,7 +3486,6 @@
                     "Watertight seal with concrete",
                     "Available with or without anchoring studs"
                 ],
-                image: "puddle flange.png",
                 specs: {
                     general: {
                         "Size Range": "DN50 to DN2000",
@@ -4587,7 +3512,6 @@
                     "Superior edge finish with minimal dross",
                     "Nesting optimization for material efficiency"
                 ],
-                image: "plasma cutiing.png",
                 specs: {
                     general: {
                         "Max Plate Size": "3000mm x 6000mm (10' x 20')",
@@ -4614,7 +3538,6 @@
                     "Precision oxy-fuel technology",
                     "Straightness within 1mm per meter"
                 ],
-                image: "images/profile-cutting.jpg",
                 specs: {
                     general: {
                         "Max Thickness": "350mm (14\") carbon steel",
@@ -4633,126 +3556,426 @@
             }
         };
 
-        // Product Functions
-        function downloadProductFiles() {
-            const currentProduct = getCurrentProduct();
-            if (currentProduct && currentProduct.title) {
-                showNotification(`Preparing ${currentProduct.title} technical files for download...`, 'info');
-                setTimeout(() => {
-                    showNotification(`${currentProduct.title} technical files ready for download`, 'success');
-                    const link = document.createElement('a');
-                    link.href = '#';
-                    link.download = `${currentProduct.title.replace(/\s+/g, '_')}_technical_specs.pdf`;
-                    link.click();
-                }, 1500);
+        // ========== AUTHENTICATION FUNCTIONS ==========
+        
+        function loginUser(event) {
+            event.preventDefault();
+
+            // Demo validation (future me backend yaha aayega)
+            const email = document.getElementById("login-email").value;
+            const password = document.getElementById("login-password").value;
+
+            if (email && password) {
+
+                // 🔥 IMPORTANT FIX
+                document.body.classList.add("authenticated");
+                document.getElementById("auth-overlay").style.display = "none";
+
+                // ✅ Persist login (reload safe)
+                localStorage.setItem("isAuthenticated", "true");
+
+            } else {
+                alert("Please enter valid credentials");
             }
         }
 
-        function requestCustomQuote() {
-            checkAuthBeforeOrder();
-            showNotification('Custom quote request form opened', 'info');
+        function signupUser(e) {
+            e.preventDefault();
+
+            const firstName = document.getElementById("signup-firstname").value;
+            const lastName = document.getElementById("signup-lastname").value;
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
+            const company = document.getElementById("signup-company").value;
+
+            fetch(API_BASE_URL + "/auth/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    company
+                })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error('Signup failed');
+                return res.json();
+            })
+            .then(() => {
+                alert("Signup Success");
+                toggleAuthView('login');
+            })
+            .catch(() => alert("Signup Failed"));
         }
 
-        function showAllProducts() {
-            document.getElementById('product-gallery').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
+        function handleVisitor(e) {
+            if(e) e.preventDefault();
+            closeAuth();
+            isAuthenticated = false;
+            currentUser = { type: 'visitor' };
+            updateUIAfterAuth();
+        }
+
+        function updateUIAfterAuth() {
+            // Update UI based on authentication state
+            const statusBadge = document.getElementById('user-status');
+            const mobileStatus = document.getElementById('mobile-user-status');
+            
+            if (isAuthenticated && currentUser.type !== 'visitor') {
+                document.body.classList.add('authenticated');
+                document.body.classList.remove('visitor-mode');
+                
+                statusBadge.innerHTML = `<i class="fas fa-user-shield mr-1"></i>${currentUser.type === 'supplier' ? 'Supplier' : 'Partner'}`;
+                mobileStatus.innerHTML = currentUser.type === 'supplier' ? 'Supplier' : 'Partner';
+                
+                // Show relevant buttons
+                const logoutBtn = document.getElementById('logout-btn');
+                const mobileLogoutBtn = document.getElementById('mobile-logout-btn');
+                const loginBtn = document.getElementById('login-btn');
+                const mobileLoginBtn = document.getElementById('mobile-login-btn');
+                const profileBtn = document.getElementById('profile-btn');
+                const mobileProfileLink = document.getElementById('mobile-profile-link');
+                const dashboardBtn = document.getElementById('dashboard-btn');
+                const mobileDashboardLink = document.getElementById('mobile-dashboard-link');
+                const supplierDashboardBtn = document.getElementById('supplier-dashboard-btn');
+                const mobileSupplierDashboardLink = document.getElementById('mobile-supplier-dashboard-link');
+                
+                if (logoutBtn) logoutBtn.classList.remove('hidden');
+                if (mobileLogoutBtn) mobileLogoutBtn.classList.remove('hidden');
+                if (loginBtn) loginBtn.classList.add('hidden');
+                if (mobileLoginBtn) mobileLoginBtn.classList.add('hidden');
+                if (profileBtn) profileBtn.classList.remove('hidden');
+                if (mobileProfileLink) mobileProfileLink.classList.remove('hidden');
+                
+                if (currentUser.type === 'supplier') {
+                    if (supplierDashboardBtn) supplierDashboardBtn.classList.remove('hidden');
+                    if (mobileSupplierDashboardLink) mobileSupplierDashboardLink.classList.remove('hidden');
+                    if (dashboardBtn) dashboardBtn.classList.add('hidden');
+                    if (mobileDashboardLink) mobileDashboardLink.classList.add('hidden');
+                } else {
+                    if (dashboardBtn) dashboardBtn.classList.remove('hidden');
+                    if (mobileDashboardLink) mobileDashboardLink.classList.remove('hidden');
+                    if (supplierDashboardBtn) supplierDashboardBtn.classList.add('hidden');
+                    if (mobileSupplierDashboardLink) mobileSupplierDashboardLink.classList.add('hidden');
+                }
+            } else {
+                // Visitor mode
+                document.body.classList.remove('authenticated');
+                document.body.classList.add('visitor-mode');
+                
+                statusBadge.innerHTML = '<i class="fas fa-user mr-1"></i>Visitor';
+                mobileStatus.innerHTML = 'Visitor';
+                
+                // Hide authenticated buttons
+                const logoutBtn = document.getElementById('logout-btn');
+                const mobileLogoutBtn = document.getElementById('mobile-logout-btn');
+                const loginBtn = document.getElementById('login-btn');
+                const mobileLoginBtn = document.getElementById('mobile-login-btn');
+                const profileBtn = document.getElementById('profile-btn');
+                const mobileProfileLink = document.getElementById('mobile-profile-link');
+                const dashboardBtn = document.getElementById('dashboard-btn');
+                const mobileDashboardLink = document.getElementById('mobile-dashboard-link');
+                const supplierDashboardBtn = document.getElementById('supplier-dashboard-btn');
+                const mobileSupplierDashboardLink = document.getElementById('mobile-supplier-dashboard-link');
+                
+                if (logoutBtn) logoutBtn.classList.add('hidden');
+                if (mobileLogoutBtn) mobileLogoutBtn.classList.add('hidden');
+                if (loginBtn) loginBtn.classList.remove('hidden');
+                if (mobileLoginBtn) mobileLoginBtn.classList.remove('hidden');
+                if (profileBtn) profileBtn.classList.add('hidden');
+                if (mobileProfileLink) mobileProfileLink.classList.add('hidden');
+                if (dashboardBtn) dashboardBtn.classList.add('hidden');
+                if (mobileDashboardLink) mobileDashboardLink.classList.add('hidden');
+                if (supplierDashboardBtn) supplierDashboardBtn.classList.add('hidden');
+                if (mobileSupplierDashboardLink) mobileSupplierDashboardLink.classList.add('hidden');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('userId');
+            // ⭐ logout using demo approach: remove localStorage flag
+            localStorage.removeItem("isAuthenticated");
+            document.body.classList.remove("authenticated");
+            document.getElementById("auth-overlay").style.display = "flex";
+
+            isAuthenticated = false;
+            currentUser = { type: 'visitor' };
+            updateUIAfterAuth();
+            closeDashboard();
+            closeOrderModal();
+            closeTrackingModal();
+            closeChat();
+            alert('Logged out');
+        }
+
+        // ========== UI FUNCTIONS ==========
+        
+        function toggleAuthView(view) {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            if (view === 'login') {
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+            } else {
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+            }
+        }
+        
+        function openAuthModal() {
+            const overlay = document.getElementById('auth-overlay');
+            if (overlay) {
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeAuth() {
+            const overlay = document.getElementById('auth-overlay');
+            if (overlay) {
+                overlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function setUserType(type) {
+            currentUserType = type;
+            const buttons = document.querySelectorAll('#login-form button[onclick^="setUserType"]');
+            buttons.forEach(btn => {
+                if (btn.textContent.includes(type === 'partner' ? 'Partner' : 'Supplier')) {
+                    btn.classList.add('border-blue-200', 'bg-blue-50', 'text-blue-700');
+                    btn.classList.remove('border-slate-200', 'hover:border-blue-200', 'hover:bg-blue-50');
+                } else {
+                    btn.classList.remove('border-blue-200', 'bg-blue-50', 'text-blue-700');
+                    btn.classList.add('border-slate-200', 'hover:border-blue-200', 'hover:bg-blue-50');
+                }
             });
-            showNotification('Viewing all products gallery', 'info');
         }
 
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-4 right-4 z-50 px-4 md:px-6 py-2 md:py-3 rounded-lg shadow-lg text-white font-medium transform transition-all duration-300 ${type === 'success' ? 'bg-green-600' : type === 'error' ? 'bg-red-600' : 'bg-blue-600'}`;
-            notification.innerHTML = `
-                <div class="flex items-center gap-2 text-sm md:text-base">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-                    <span>${message}</span>
-                </div>
-            `;
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
             
-            document.body.appendChild(notification);
+            if (menu && overlay) {
+                if (menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                    overlay.classList.remove('active');
+                } else {
+                    menu.classList.add('active');
+                    overlay.classList.add('active');
+                }
+            }
+        }
+
+        // Chat Functions
+        function openChat(supplier) {
+            if (!isAuthenticated || currentUser?.type === 'visitor') {
+                alert('Please login to chat with suppliers.');
+                openAuthModal();
+                return;
+            }
             
+            selectedSupplier = supplier;
+            const chatModal = document.getElementById('chat-modal');
+            const chatName = document.getElementById('chat-supplier-name');
+            const chatStatus = document.getElementById('chat-supplier-status');
+            
+            if (chatModal) chatModal.classList.add('active');
+            if (chatName) chatName.textContent = supplier.name;
+            if (chatStatus) chatStatus.textContent = supplier.status;
+            loadChatMessages();
+        }
+        
+        function closeChat() {
+            const chatModal = document.getElementById('chat-modal');
+            if (chatModal) chatModal.classList.remove('active');
+            selectedSupplier = null;
+        }
+        
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            if (!input) return;
+            
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            const timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            chatMessages.push({
+                id: Date.now(),
+                sender: 'user',
+                text: message,
+                time: timestamp
+            });
+            
+            input.value = '';
+            updateChatDisplay();
+            
+            // Simulate supplier response
             setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => notification.remove(), 300);
-            }, 3000);
+                const responses = [
+                    "Thank you for your message. We'll get back to you shortly.",
+                    "Can you please share more details about your requirements?",
+                    "I'll check availability and get back to you.",
+                    "Would you like me to send you our catalog?"
+                ];
+                
+                const response = responses[Math.floor(Math.random() * responses.length)];
+                const responseTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                
+                chatMessages.push({
+                    id: Date.now() + 1,
+                    sender: 'supplier',
+                    text: response,
+                    time: responseTime
+                });
+                
+                updateChatDisplay();
+            }, 2000);
         }
-
-        function getCurrentProduct() {
-            const activeChip = document.querySelector('.flange-chip.active');
-            if (activeChip) {
-                const chipId = activeChip.id.replace('chip-', '');
-                return productData[chipId];
+        
+        function loadChatMessages() {
+            if (chatMessages.length === 0) {
+                const timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                chatMessages = [
+                    {
+                        id: 1,
+                        sender: 'supplier',
+                        text: `Hello! I'm from ${selectedSupplier ? selectedSupplier.name : 'our company'}. How can I help you?`,
+                        time: timestamp
+                    }
+                ];
             }
-            return productData.lwn;
+            updateChatDisplay();
         }
-
-        function updateProduct(key) {
-            currentProductKey = key;
-            const data = productData[key] || productData.lwn;
+        
+        function updateChatDisplay() {
+            const chatContainer = document.getElementById('chat-messages');
+            if (!chatContainer) return;
             
-            // Update active chip
-            document.querySelectorAll('.flange-chip').forEach(c => c.classList.remove('active'));
-            const activeChip = document.getElementById(`chip-${key}`);
-            if (activeChip) activeChip.classList.add('active');
-
-            // Update product image
-            const productImage = document.getElementById('product-main-image');
-            if (data.image && productImage) {
-                productImage.src = data.image;
-                productImage.alt = data.title;
-            }
-
-            // Update product info
-            document.getElementById('current-product-name').textContent = data.title;
-
-            // Update product details
-            document.getElementById('p-title').innerText = data.title;
-            document.getElementById('p-desc').innerText = data.desc;
-            
-            // Update features
-            const featuresContainer = document.getElementById('p-features');
-            featuresContainer.innerHTML = data.features.map((f, i) => `
-                <div class="feature-card p-4 md:p-5 rounded-2xl opacity-100 reveal stagger-delay-${i % 4}">
-                    <div class="flex items-start gap-3 md:gap-4">
-                        <div class="mt-1 w-7 h-7 md:w-8 md:h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-check text-white text-xs md:text-sm"></i>
-                        </div>
-                        <span class="text-slate-700 font-semibold text-sm md:text-base">${f}</span>
+            chatContainer.innerHTML = chatMessages.map(msg => `
+                <div class="chat-message ${msg.sender === 'user' ? 'sent' : ''}">
+                    <div class="bg-${msg.sender === 'user' ? 'blue' : 'slate'}-100 p-3 rounded-lg">
+                        <p class="text-slate-800">${msg.text}</p>
+                        <p class="text-xs text-slate-500 mt-1 text-right">${msg.time}</p>
                     </div>
                 </div>
             `).join('');
-
-            // Update specifications
-            document.getElementById('spec-title').innerText = `${data.title} - Technical Specifications`;
-            renderSpecTables(data.specs);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+        
+        // Supplier Functions
+        function loadSuppliersForProduct(productKey) {
+            const productSelect = document.getElementById('order-product');
+            const productNameEl = document.getElementById('selected-product-name');
+            if (productSelect && productNameEl) {
+                const productName = productSelect.options[productSelect.selectedIndex]?.text || 'Product';
+                productNameEl.textContent = productName;
+            }
             
-            // Update suppliers list
-            updateProductSuppliers(key);
+            const suppliers = supplierData[productKey] || [];
+            const suppliersList = document.getElementById('suppliers-list');
+            const noSuppliersMessage = document.getElementById('no-suppliers-message');
             
-            // Animate product card
-            const productCard = document.getElementById('product-card');
-            productCard.style.opacity = '0';
-            productCard.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                productCard.style.opacity = '1';
-                productCard.style.transform = 'translateY(0)';
-                initReveal();
-                
-                document.getElementById('products').scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }, 50);
+            if (!suppliersList || !noSuppliersMessage) return;
             
-            showNotification(`Loaded ${data.title} details`, 'success');
+            if (suppliers.length === 0) {
+                suppliersList.innerHTML = '';
+                noSuppliersMessage.classList.remove('hidden');
+                return;
+            }
+            
+            noSuppliersMessage.classList.add('hidden');
+            suppliersList.innerHTML = suppliers.map(supplier => {
+                const escapedSupplier = JSON.stringify(supplier).replace(/"/g, '&quot;');
+                return `
+                <div class="supplier-card bg-white p-4 rounded-xl border-2 border-slate-200" onclick="selectSupplier('${productKey}', '${supplier.id}')">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user-tie text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">${supplier.name}</h4>
+                                <p class="text-slate-600 text-sm">${supplier.company}</p>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
+                                        <span class="text-sm font-medium ml-1">${supplier.rating}</span>
+                                        <span class="text-slate-500 text-xs ml-1">(${supplier.reviews})</span>
+                                    </div>
+                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">${supplier.status}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="event.stopPropagation(); openChat(${escapedSupplier})" 
+                                class="text-blue-600 hover:text-blue-800">
+                            <i class="fas fa-comment-dots text-lg"></i>
+                        </button>
+                    </div>
+                    <div class="mt-3 grid grid-cols-2 gap-2">
+                        <div class="text-xs">
+                            <span class="text-slate-500">Response:</span>
+                            <span class="font-medium ml-1">${supplier.responseTime}</span>
+                        </div>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Min Order:</span>
+                            <span class="font-medium ml-1">${supplier.minOrder}</span>
+                        </div>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Location:</span>
+                            <span class="font-medium ml-1">${supplier.location}</span>
+                        </div>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Lead Time:</span>
+                            <span class="font-medium ml-1">${supplier.leadTime}</span>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="flex flex-wrap gap-1">
+                            ${supplier.specialization.map(spec => `
+                                <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">${spec}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+        }
+        
+        function selectSupplier(productKey, supplierId) {
+            const suppliers = supplierData[productKey] || [];
+            selectedSupplier = suppliers.find(s => s.id === supplierId);
+            
+            document.querySelectorAll('.supplier-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            const selectedCard = document.querySelector(`[onclick*="${supplierId}"]`);
+            if (selectedCard) {
+                selectedCard.classList.add('selected');
+            }
+            
+            const displayEl = document.getElementById('selected-supplier-display');
+            if (displayEl) {
+                displayEl.textContent = 
+                    selectedSupplier ? `${selectedSupplier.name} (${selectedSupplier.company})` : 'Not selected';
+            }
+        }
+        
+        function showAllSuppliers() {
+            alert('Showing all available suppliers for this product');
         }
         
         function updateProductSuppliers(productKey) {
             const suppliers = supplierData[productKey] || [];
             const suppliersList = document.getElementById('dynamic-suppliers-list');
             const productSuppliersList = document.getElementById('product-suppliers-list');
+            
+            if (!suppliersList || !productSuppliersList) return;
             
             if (suppliers.length === 0) {
                 suppliersList.innerHTML = `
@@ -4765,8 +3988,9 @@
                 return;
             }
             
-            // Update main suppliers list
-            suppliersList.innerHTML = suppliers.slice(0, 2).map(supplier => `
+            suppliersList.innerHTML = suppliers.slice(0, 2).map(supplier => {
+                const escapedSupplier = JSON.stringify(supplier).replace(/"/g, '&quot;');
+                return `
                 <div class="supplier-card bg-white p-4 rounded-xl border border-slate-200 hover:border-blue-300 transition">
                     <div class="flex items-start justify-between">
                         <div class="flex items-start gap-3">
@@ -4785,7 +4009,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button onclick="openChat(${JSON.stringify(supplier).replace(/"/g, '&quot;')})" 
+                        <button onclick="openChat(${escapedSupplier})" 
                                 class="text-blue-600 hover:text-blue-800">
                             <i class="fas fa-comment-dots"></i>
                         </button>
@@ -4802,10 +4026,11 @@
                         <i class="fas fa-shopping-cart mr-2"></i>Order Now
                     </button>
                 </div>
-            `).join('');
+            `}).join('');
             
-            // Update product info suppliers list
-            productSuppliersList.innerHTML = suppliers.slice(0, 3).map(supplier => `
+            productSuppliersList.innerHTML = suppliers.slice(0, 3).map(supplier => {
+                const escapedSupplier = JSON.stringify(supplier).replace(/"/g, '&quot;');
+                return `
                 <div class="flex items-center justify-between py-2 border-b border-slate-700/50 last:border-0">
                     <div class="flex items-center gap-2">
                         <i class="fas fa-user-tie text-blue-400"></i>
@@ -4813,17 +4038,368 @@
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="text-xs bg-green-900 text-green-300 px-2 py-0.5 rounded">${supplier.rating} ★</span>
-                        <button onclick="openChat(${JSON.stringify(supplier).replace(/"/g, '&quot;')})" 
+                        <button onclick="openChat(${escapedSupplier})" 
                                 class="text-blue-400 hover:text-blue-300">
                             <i class="fas fa-comment"></i>
                         </button>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
+        }
+
+        // Dashboard Functions
+        function openDashboard() {
+            if (!isAuthenticated || currentUser?.type === 'visitor') {
+                alert('Please login to access the dashboard.');
+                openAuthModal();
+                return;
+            }
+            
+            if (currentUser?.type !== 'supplier') {
+                alert('Dashboard access is only available for supplier accounts.');
+                return;
+            }
+            
+            const dashboard = document.getElementById('dashboard-modal');
+            if (dashboard) {
+                dashboard.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                initDashboardCharts();
+            }
+        }
+        
+        function closeDashboard() {
+            const dashboard = document.getElementById('dashboard-modal');
+            if (dashboard) {
+                dashboard.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        function switchDashboardTab(tabName) {
+            document.querySelectorAll('#dashboard-modal .tab-button').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('onclick').includes(tabName));
+            });
+            
+            document.querySelectorAll('#dashboard-modal .tab-content').forEach(content => {
+                content.classList.toggle('active', content.id === `dashboard-${tabName}`);
+                content.classList.toggle('hidden', content.id !== `dashboard-${tabName}`);
+            });
+            
+            if (tabName === 'analytics') {
+                setTimeout(() => {
+                    initAnalyticsCharts();
+                }, 100);
+            }
+        }
+        
+        function showProfile() {
+            if (!isAuthenticated) {
+                alert('Please login to view your profile.');
+                openAuthModal();
+                return;
+            }
+            alert('Profile page is under development.');
+        }
+
+        // Order Tracking Functions
+        function openTrackingModal() {
+            const modal = document.getElementById('tracking-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeTrackingModal() {
+            const modal = document.getElementById('tracking-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        function trackOrderWithCode() {
+            const orderRef = document.getElementById('order-reference');
+            if (orderRef) {
+                const orderId = orderRef.textContent;
+                closeOrderModal();
+                setTimeout(() => {
+                    openTrackingModal();
+                    const input = document.getElementById('tracking-input');
+                    if (input) input.value = orderId;
+                    searchOrder();
+                }, 500);
+            }
+        }
+        
+        function searchOrder() {
+            const input = document.getElementById('tracking-input');
+            if (!input) return;
+            
+            const orderId = input.value.trim();
+            if (!orderId) {
+                alert('Please enter an order ID');
+                return;
+            }
+            
+            const emptyEl = document.getElementById('tracking-empty');
+            const resultsEl = document.getElementById('tracking-results');
+            const ordersEl = document.getElementById('my-orders-section');
+            const loadingEl = document.getElementById('tracking-loading');
+            
+            if (emptyEl) emptyEl.classList.add('hidden');
+            if (resultsEl) resultsEl.classList.add('hidden');
+            if (ordersEl) ordersEl.classList.add('hidden');
+            if (loadingEl) loadingEl.classList.remove('hidden');
+            
+            setTimeout(() => {
+                if (loadingEl) loadingEl.classList.add('hidden');
+                if (resultsEl) resultsEl.classList.remove('hidden');
+            }, 1000);
+        }
+        
+        function showMyOrders() {
+            if (!isAuthenticated || currentUser?.type === 'visitor') {
+                alert('Please login to view your orders.');
+                openAuthModal();
+                return;
+            }
+            
+            const resultsEl = document.getElementById('tracking-results');
+            const emptyEl = document.getElementById('tracking-empty');
+            const loadingEl = document.getElementById('tracking-loading');
+            const ordersEl = document.getElementById('my-orders-section');
+            
+            if (resultsEl) resultsEl.classList.add('hidden');
+            if (emptyEl) emptyEl.classList.add('hidden');
+            if (loadingEl) loadingEl.classList.remove('hidden');
+            if (ordersEl) ordersEl.classList.remove('hidden');
+            
+            setTimeout(() => {
+                if (loadingEl) loadingEl.classList.add('hidden');
+            }, 800);
+        }
+        
+        function downloadInvoice() {
+            alert('Invoice download feature is under development.');
+        }
+        
+        function contactSupplier() {
+            alert('Contacting supplier... This would open your email client.');
+        }
+
+        // Order Functions
+        function checkAuthBeforeOrder(productKey = null) {
+            if (!isAuthenticated || currentUser?.type === 'visitor') {
+                alert('Please login or create an account to connect with suppliers.');
+                openAuthModal();
+                return;
+            }
+            
+            if (productKey) {
+                openOrderModalWithProduct(productKey);
+            } else {
+                openOrderModal();
+            }
+        }
+
+        function openOrderModal() {
+            if (!isAuthenticated || currentUser?.type === 'visitor') {
+                checkAuthBeforeOrder();
+                return;
+            }
+            
+            const modal = document.getElementById('order-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                resetOrderSteps();
+            }
+        }
+        
+        function openOrderModalWithProduct(productKey) {
+            if (!isAuthenticated || currentUser?.type === 'visitor') {
+                checkAuthBeforeOrder(productKey);
+                return;
+            }
+            
+            openOrderModal();
+            const productSelect = document.getElementById('order-product');
+            if (productSelect) {
+                productSelect.value = productKey;
+                loadSuppliersForProduct(productKey);
+            }
+        }
+        
+        function closeOrderModal() {
+            const modal = document.getElementById('order-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+            selectedSupplier = null;
+        }
+
+        function resetOrderSteps() {
+            currentOrderStep = 1;
+            updateStepIndicators();
+            
+            for (let i = 1; i <= 5; i++) {
+                const stepEl = document.getElementById(`order-step-${i}`);
+                if (stepEl) stepEl.classList.add('hidden');
+            }
+            
+            const step1 = document.getElementById('order-step-1');
+            if (step1) step1.classList.remove('hidden');
+            
+            selectedSupplier = null;
+            const displayEl = document.getElementById('selected-supplier-display');
+            if (displayEl) displayEl.textContent = 'Not selected';
+        }
+
+        function updateStepIndicators() {
+            const progress = document.getElementById('step-progress');
+            if (progress) {
+                const stepWidth = 100 / 4;
+                progress.style.width = `${(currentOrderStep - 1) * stepWidth}%`;
+            }
+            
+            for (let i = 1; i <= 4; i++) {
+                const indicator = document.getElementById(`step-indicator-${i}`);
+                if (indicator) {
+                    if (i < currentOrderStep) {
+                        indicator.classList.remove('pending', 'active');
+                        indicator.classList.add('completed');
+                    } else if (i === currentOrderStep) {
+                        indicator.classList.remove('pending', 'completed');
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active', 'completed');
+                        indicator.classList.add('pending');
+                    }
+                }
+            }
+        }
+
+        function nextOrderStep(step) {
+            if (step < 1 || step > 5) return;
+            
+            if (step === 3 && !selectedSupplier) {
+                alert('Please select a supplier before proceeding.');
+                return;
+            }
+            
+            if (step === 4) {
+                updateReviewSection();
+            }
+            
+            const currentStep = document.getElementById(`order-step-${currentOrderStep}`);
+            if (currentStep) currentStep.classList.add('hidden');
+            
+            currentOrderStep = step;
+            const nextStep = document.getElementById(`order-step-${step}`);
+            if (nextStep) nextStep.classList.remove('hidden');
+            
+            updateStepIndicators();
+        }
+
+        function prevOrderStep(step) {
+            nextOrderStep(step);
+        }
+
+        function updateReviewSection() {
+            const productSelect = document.getElementById('order-product');
+            const productText = productSelect ? (productSelect.options[productSelect.selectedIndex]?.text || '-') : '-';
+            const quantity = document.getElementById('order-quantity')?.value || '0';
+            const materialSelect = document.getElementById('order-material');
+            const materialText = materialSelect ? (materialSelect.options[materialSelect.selectedIndex]?.text || '-') : '-';
+            const contactMethod = document.querySelector('input[name="contactMethod"]:checked')?.value || 'email';
+            
+            const reviewProduct = document.getElementById('review-product');
+            const reviewSupplier = document.getElementById('review-supplier');
+            const reviewQuantity = document.getElementById('review-quantity');
+            const reviewMaterial = document.getElementById('review-material');
+            const reviewContact = document.getElementById('review-contact');
+            const confirmationSupplier = document.getElementById('confirmation-supplier');
+            
+            if (reviewProduct) reviewProduct.textContent = productText;
+            if (reviewSupplier) reviewSupplier.textContent = selectedSupplier ? `${selectedSupplier.name} (${selectedSupplier.company})` : 'Not selected';
+            if (reviewQuantity) reviewQuantity.textContent = `${quantity} pieces`;
+            if (reviewMaterial) reviewMaterial.textContent = materialText;
+            if (reviewContact) reviewContact.textContent = contactMethod.charAt(0).toUpperCase() + contactMethod.slice(1);
+            if (confirmationSupplier) confirmationSupplier.textContent = selectedSupplier ? selectedSupplier.name : 'Supplier';
+        }
+
+        function submitOrder() {
+            if (!selectedSupplier) {
+                alert('Please select a supplier before submitting the order.');
+                return;
+            }
+            
+            const orderRef = document.getElementById('order-reference');
+            if (orderRef) {
+                const orderId = 'UF-ORD-' + Math.floor(100000 + Math.random() * 900000);
+                orderRef.textContent = orderId;
+            }
+            
+            nextOrderStep(5);
+            
+            alert(`Order submitted to ${selectedSupplier.name}! They will contact you shortly.`);
+        }
+
+        // Product Functions
+        function updateProduct(key) {
+            currentProductKey = key;
+            const data = productData[key] || productData.lwn;
+            
+            document.querySelectorAll('.flange-chip').forEach(c => c.classList.remove('active'));
+            const activeChip = document.getElementById(`chip-${key}`);
+            if (activeChip) activeChip.classList.add('active');
+            
+            const currentProductEl = document.getElementById('current-product-name');
+            const pTitle = document.getElementById('p-title');
+            const pDesc = document.getElementById('p-desc');
+            
+            if (currentProductEl) currentProductEl.textContent = data.title;
+            if (pTitle) pTitle.innerText = data.title;
+            if (pDesc) pDesc.innerText = data.desc;
+            
+            const featuresContainer = document.getElementById('p-features');
+            if (featuresContainer) {
+                featuresContainer.innerHTML = data.features.map((f, i) => `
+                    <div class="feature-card p-4 md:p-5 rounded-2xl opacity-100 reveal stagger-delay-${i % 4}">
+                        <div class="flex items-start gap-3 md:gap-4">
+                            <div class="mt-1 w-7 h-7 md:w-8 md:h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-white text-xs md:text-sm"></i>
+                            </div>
+                            <span class="text-slate-700 font-semibold text-sm md:text-base">${f}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const specTitle = document.getElementById('spec-title');
+            if (specTitle) specTitle.innerText = `${data.title} - Technical Specifications`;
+            renderSpecTables(data.specs);
+            updateProductSuppliers(key);
+            
+            const productCard = document.getElementById('product-card');
+            if (productCard) {
+                productCard.style.opacity = '0';
+                productCard.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    productCard.style.opacity = '1';
+                    productCard.style.transform = 'translateY(0)';
+                    const productsSection = document.getElementById('products');
+                    if (productsSection) productsSection.scrollIntoView({ behavior: 'smooth' });
+                }, 50);
+            }
         }
 
         function renderSpecTables(specs) {
             const container = document.getElementById('spec-tables-container');
+            if (!container) return;
             container.innerHTML = ''; 
 
             const categories = [
@@ -4865,6 +4441,16 @@
             });
         }
 
+        function downloadProductFiles() {
+            const currentProduct = getCurrentProduct();
+            alert(`Preparing ${currentProduct.title} technical files for download...`);
+        }
+
+        function showAllProducts() {
+            const gallery = document.getElementById('product-gallery');
+            if (gallery) gallery.scrollIntoView({ behavior: 'smooth' });
+        }
+
         function handleSearch(query) {
             const term = query.toLowerCase().trim();
             if (term.length < 2) return;
@@ -4872,12 +4458,15 @@
             for (const [key, data] of Object.entries(productData)) {
                 if (data.title.toLowerCase().includes(term) || 
                     key.includes(term) || 
-                    data.desc.toLowerCase().includes(term) ||
-                    data.features.some(f => f.toLowerCase().includes(term))) {
+                    data.desc.toLowerCase().includes(term)) {
                     updateProduct(key);
                     break;
                 }
             }
+        }
+
+        function getCurrentProduct() {
+            return productData[currentProductKey] || productData.lwn;
         }
 
         function initReveal() {
@@ -4888,86 +4477,196 @@
                         entry.target.classList.add('active');
                     }
                 });
-            }, { 
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
+            }, { threshold: 0.1 });
             reveals.forEach(r => observer.observe(r));
         }
+
+        // Chart Functions
+        function initDashboardCharts() {
+            const salesCtx = document.getElementById('salesChart')?.getContext('2d');
+            if (salesCtx) {
+                new Chart(salesCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Revenue (₹)',
+                            data: [1200000, 1850000, 1500000, 2200000, 2450000, 2847500],
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return '₹' + (value / 1000000).toFixed(1) + 'M';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        
+        function initAnalyticsCharts() {
+            const categoryCtx = document.getElementById('categoryChart')?.getContext('2d');
+            if (categoryCtx) {
+                new Chart(categoryCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Weld Neck', 'Long Weld Neck', 'Blind Flange', 'Plasma CNC', 'Others'],
+                        datasets: [{
+                            data: [42, 30, 12, 8, 8],
+                            backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#64748b']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom' } }
+                    }
+                });
+            }
+            
+            const performanceCtx = document.getElementById('performanceChart')?.getContext('2d');
+            if (performanceCtx) {
+                new Chart(performanceCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [
+                            {
+                                label: 'Orders',
+                                data: [32, 45, 38, 52, 47, 56],
+                                backgroundColor: '#3b82f6'
+                            },
+                            {
+                                label: 'Revenue (₹L)',
+                                data: [120, 185, 150, 220, 245, 284],
+                                backgroundColor: '#10b981'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+            }
+            
+            const conversionCtx = document.getElementById('conversionChart')?.getContext('2d');
+            if (conversionCtx) {
+                new Chart(conversionCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Converted', 'Not Converted'],
+                        datasets: [{
+                            data: [68, 32],
+                            backgroundColor: ['#3b82f6', '#e2e8f0']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+        }
+
+        // Handle image errors
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add error handlers to all images
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const parent = this.parentNode;
+                    if (parent && !parent.querySelector('.img-fallback')) {
+                        parent.classList.add('img-fallback');
+                        const icon = document.createElement('i');
+                        icon.className = 'fas fa-industry';
+                        parent.appendChild(icon);
+                    }
+                });
+            });
+        });
 
         // Initialize
         window.onload = () => {
             setUserType('partner');
             updateProduct('lwn');
             initReveal();
-            updateUIForUserType('visitor');
+            updateUIAfterAuth();
             
-            // Ensure hero section is at top on page load
-            window.scrollTo(0, 0);
+            const productSelect = document.getElementById('order-product');
+            if (productSelect) {
+                productSelect.addEventListener('change', function() {
+                    const selectedValue = this.value;
+                    if (selectedValue && selectedValue !== 'custom') {
+                        loadSuppliersForProduct(selectedValue);
+                    }
+                });
+            }
             
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', (e) => {
-                const mobileMenu = document.getElementById('mobile-menu');
-                const menuBtn = document.querySelector('button[onclick="toggleMobileMenu()"]');
-                const overlay = document.getElementById('mobile-menu-overlay');
-                
-                if (mobileMenu && mobileMenu.classList.contains('active') && 
-                    !mobileMenu.contains(e.target) && 
-                    menuBtn && !menuBtn.contains(e.target) &&
-                    overlay && overlay.contains(e.target)) {
-                    toggleMobileMenu(false);
-                }
-            });
+            const chatInput = document.getElementById('chat-input');
+            if (chatInput) {
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendChatMessage();
+                    }
+                });
+            }
             
-            // Close modals on escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     const orderModal = document.getElementById('order-modal');
-                    if (orderModal && !orderModal.classList.contains('hidden')) {
-                        closeOrderModal();
-                    }
                     const dashboardModal = document.getElementById('dashboard-modal');
-                    if (dashboardModal && !dashboardModal.classList.contains('hidden')) {
-                        closeDashboard();
-                    }
-                    const authModal = document.getElementById('auth-overlay');
-                    if (authModal && !authModal.classList.contains('hidden')) {
-                        closeAuth();
-                    }
+                    const authOverlay = document.getElementById('auth-overlay');
                     const trackingModal = document.getElementById('tracking-modal');
-                    if (trackingModal && !trackingModal.classList.contains('hidden')) {
-                        closeTrackingModal();
-                    }
                     const chatModal = document.getElementById('chat-modal');
-                    if (chatModal && chatModal.classList.contains('active')) {
-                        closeChat();
-                    }
                     const mobileMenu = document.getElementById('mobile-menu');
-                    if (mobileMenu && mobileMenu.classList.contains('active')) {
-                        toggleMobileMenu(false);
-                    }
-                }
-            });
-            
-            // Initialize order modal with current product
-            document.getElementById('order-product').addEventListener('change', function() {
-                const selectedValue = this.value;
-                if (selectedValue && selectedValue !== 'custom') {
-                    loadSuppliersForProduct(selectedValue);
-                    const product = productData[selectedValue];
-                    if (product) {
-                        document.getElementById('order-material').value = 'stainless';
-                    }
-                }
-            });
-            
-            // Chat input enter key support
-            document.getElementById('chat-input').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    sendChatMessage();
+                    
+                    if (orderModal && !orderModal.classList.contains('hidden')) closeOrderModal();
+                    if (dashboardModal && !dashboardModal.classList.contains('hidden')) closeDashboard();
+                    if (authOverlay && !authOverlay.classList.contains('hidden')) closeAuth();
+                    if (trackingModal && !trackingModal.classList.contains('hidden')) closeTrackingModal();
+                    if (chatModal && chatModal.classList.contains('active')) closeChat();
+                    if (mobileMenu && mobileMenu.classList.contains('active')) toggleMobileMenu();
                 }
             });
         };
+
+        //  New: Check authentication state on every page load
+        window.addEventListener("DOMContentLoaded", function () {
+            if (localStorage.getItem("isAuthenticated") === "true") {
+                document.body.classList.add("authenticated");
+                document.getElementById("auth-overlay").style.display = "none";
+                // also set local flags for consistency
+                isAuthenticated = true;
+                currentUser = { type: 'partner' }; // default to partner for demo
+                updateUIAfterAuth();
+            } else {
+                document.body.classList.remove("authenticated");
+                document.getElementById("auth-overlay").style.display = "flex";
+                isAuthenticated = false;
+                currentUser = { type: 'visitor' };
+                updateUIAfterAuth();
+            }
+        });
+
     </script>
 </body>
-</html>
+</html>>
