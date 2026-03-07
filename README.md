@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* ===== RESET & VARIABLES ===== */
         :root {
@@ -32,12 +31,10 @@
             transition: filter 0.5s ease;
         }
         
-        /* Auth overlay is hidden by default for visitors */
         #auth-overlay {
             display: none;
         }
         
-        /* Show auth overlay only when not authenticated and not in visitor mode */
         body.require-auth #auth-overlay {
             display: flex;
         }
@@ -47,30 +44,21 @@
             pointer-events: none;
         }
         
-        /* Visitor mode - no blur */
         body.visitor-mode #main-content {
             filter: blur(0);
             pointer-events: auto;
         }
         
-        /* Authenticated mode - no blur */
         body.authenticated #main-content {
             filter: blur(0);
             pointer-events: auto;
         }
         
-        /* Order button should always be clickable */
         .order-button {
             pointer-events: auto;
             cursor: pointer;
             position: relative;
             z-index: 10;
-        }
-        
-        /* ===== FIXED PASSWORD FIELD STYLES ===== */
-        input[type="password"] {
-            -webkit-text-security: disc;
-            font-family: 'Inter', sans-serif;
         }
         
         /* ===== GLASS NAVIGATION ===== */
@@ -246,18 +234,6 @@
         .stagger-delay-3 { transition-delay: 0.3s; }
         .stagger-delay-4 { transition-delay: 0.4s; }
         
-        /* ===== LOADING SHIMMER ===== */
-        .loading-shimmer {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.8), transparent);
-            z-index: 2000;
-            transition: left 1.2s cubic-bezier(0.65, 0, 0.35, 1);
-        }
-        
         .flange-chip {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
@@ -330,12 +306,6 @@
             border-color: var(--secondary-blue);
         }
         
-        /* ===== FIXED IMAGE FALLBACK STYLES ===== */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        
         img.error,
         img:not([src]),
         img[src=""],
@@ -354,7 +324,6 @@
             height: 100%;
         }
         
-        /* ===== SPEC TABLE STYLES ===== */
         .spec-table {
             border-collapse: separate;
             border-spacing: 0;
@@ -371,7 +340,6 @@
             background: rgba(59, 130, 246, 0.03);
         }
         
-        /* ===== CONTACT FORM STYLES ===== */
         .contact-form input:focus,
         .contact-form textarea:focus,
         .contact-form select:focus {
@@ -379,7 +347,6 @@
             border-color: var(--secondary-blue);
         }
         
-        /* ===== MOBILE MENU STYLES ===== */
         .mobile-menu {
             transform: translateX(100%);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -413,7 +380,6 @@
             display: block;
         }
         
-        /* ===== ORDER MODAL STYLES ===== */
         #order-modal .hidden {
             display: none !important;
         }
@@ -527,7 +493,6 @@
             }
         }
         
-        /* ===== SHIMMER LOADING ANIMATION ===== */
         .shimmer {
             background: linear-gradient(90deg, 
                 #f0f0f0 25%, 
@@ -829,7 +794,6 @@
             margin-left: 8px;
         }
         
-        /* ===== LOADING SPINNER ===== */
         .loading-spinner {
             display: inline-block;
             width: 20px;
@@ -857,7 +821,6 @@
             z-index: 10000;
         }
         
-        /* ===== ERROR MESSAGE STYLES ===== */
         .error-message {
             background-color: #fee2e2;
             border: 1px solid #fecaca;
@@ -909,7 +872,6 @@
             color: #3b82f6;
         }
         
-        /* ===== VALIDATION STYLES ===== */
         .input-error {
             border-color: #ef4444 !important;
         }
@@ -921,7 +883,92 @@
             display: block;
         }
         
-        /* ===== RESPONSIVE FIXES ===== */
+        .product-form {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .product-form input,
+        .product-form select,
+        .product-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .product-form input:focus,
+        .product-form select:focus,
+        .product-form textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            outline: none;
+        }
+        
+        .product-form label {
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 4px;
+            display: block;
+        }
+        
+        .action-button {
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .action-button.edit {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .action-button.edit:hover {
+            background: #bfdbfe;
+        }
+        
+        .action-button.delete {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .action-button.delete:hover {
+            background: #fecaca;
+        }
+        
+        .action-button.view {
+            background: #e2e8f0;
+            color: #475569;
+        }
+        
+        .action-button.view:hover {
+            background: #cbd5e1;
+        }
+        
+        .action-button.approve {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .action-button.approve:hover {
+            background: #bbf7d0;
+        }
+        
+        .action-button.reject {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .action-button.reject:hover {
+            background: #fecaca;
+        }
+        
         @media (max-width: 768px) {
             #auth-overlay .bg-white {
                 max-height: 90vh;
@@ -1031,7 +1078,6 @@
             }
         }
         
-        /* ===== FIXED CLASS NAME CONFLICTS ===== */
         .bg-gradient {
             background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
         }
@@ -1071,8 +1117,6 @@
         </div>
     </div>
 
-    <div id="transition-loader" class="loading-shimmer"></div>
-
     <!-- Login/Signup Modal Overlay -->
     <div id="auth-overlay" class="fixed inset-0 bg-slate-900/70 backdrop-blur-lg flex items-center justify-center p-4 z-50">
         <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden p-4 sm:p-6 md:p-8 relative" style="max-height: 90vh; overflow-y: auto;">
@@ -1101,13 +1145,6 @@
                         <input type="password" id="login-password" required placeholder="••••••••" 
                                class="w-full px-4 md:px-5 py-3 rounded-xl border-2 border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition text-sm md:text-base">
                         <span class="validation-message hidden" id="login-password-error"></span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <label class="flex items-center">
-                            <input type="checkbox" id="remember-me" class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
-                            <span class="ml-2 text-sm text-slate-600">Remember me</span>
-                        </label>
-                        <a href="#" class="text-sm text-blue-600 font-medium hover:text-blue-800">Forgot password?</a>
                     </div>
                     
                     <!-- User Type Selection -->
@@ -1199,9 +1236,27 @@
                             <option value="other">Other</option>
                         </select>
                     </div>
+                    
+                    <!-- Account Type Selection for Signup -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Account Type</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="flex items-center p-3 border-2 border-blue-200 bg-blue-50 text-blue-700 rounded-lg cursor-pointer">
+                                <input type="radio" name="signup-type" value="partner" checked class="mr-2">
+                                <i class="fas fa-user-shield mr-2"></i>
+                                Partner
+                            </label>
+                            <label class="flex items-center p-3 border-2 border-slate-200 hover:border-blue-200 rounded-lg cursor-pointer">
+                                <input type="radio" name="signup-type" value="supplier" class="mr-2">
+                                <i class="fas fa-building mr-2"></i>
+                                Supplier
+                            </label>
+                        </div>
+                    </div>
+                    
                     <button type="submit" 
                             class="w-full py-3 md:py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold rounded-xl hover:from-blue-700 hover:to-blue-900 transition-all shadow-lg shadow-blue-100 text-sm md:text-base">
-                        <i class="fas fa-user-plus mr-2"></i>Create Partner Profile
+                        <i class="fas fa-user-plus mr-2"></i>Create Account
                     </button>
                     <p class="text-center text-sm text-slate-500 mt-6 md:mt-8">
                         Already have an account? <button type="button" onclick="toggleAuthView('login')" 
@@ -1246,7 +1301,7 @@
         </div>
     </div>
 
-    <!-- Order Process Modal -->
+    <!-- Order Process Modal (Visible only to partners, hidden for suppliers) -->
     <div id="order-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden relative" style="max-height: 90vh; overflow-y: auto;">
             <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 z-10">
@@ -1309,14 +1364,7 @@
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Product *</label>
                         <select id="order-product" class="w-full px-4 md:px-5 py-3 md:py-3.5 rounded-xl form-input-enhanced focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm md:text-base" onchange="loadSuppliersForProduct(this.value)">
                             <option value="">Select Product</option>
-                            <option value="wnf">Weld Neck Flange</option>
-                            <option value="lwn">Long Weld Neck Flange</option>
-                            <option value="slipon">Slip-On Flange</option>
-                            <option value="blind">Blind Flange</option>
-                            <option value="puddle">Puddle Flange</option>
-                            <option value="plasma">Plasma CNC Cutting</option>
-                            <option value="profile">Profile Cutting Services</option>
-                            <option value="custom">Custom Requirements</option>
+                            <!-- Products will be loaded dynamically from API -->
                         </select>
                         <span class="validation-message hidden" id="order-product-error"></span>
                     </div>
@@ -1362,7 +1410,7 @@
             <div id="order-step-2" class="p-4 md:p-8 hidden order-step">
                 <div class="supplier-section">
                     <h3 class="text-lg md:text-xl font-bold text-slate-900 mb-4">Available Suppliers for <span id="selected-product-name">Product</span></h3>
-                    <p class="text-slate-600 mb-4 text-sm md:text-base">Select a supplier to chat with them directly before ordering</p>
+                    <p class="text-slate-600 mb-4 text-sm md:text-base">Select a supplier to place your order</p>
                     
                     <div class="space-y-4" id="suppliers-list">
                         <!-- Suppliers will be loaded here dynamically -->
@@ -1373,7 +1421,7 @@
                             <i class="fas fa-users text-slate-400 text-2xl"></i>
                         </div>
                         <h4 class="text-lg font-bold text-slate-700 mb-2">No Suppliers Available</h4>
-                        <p class="text-slate-500 max-w-md mx-auto">No registered suppliers are available for this product at the moment.</p>
+                        <p class="text-slate-500 max-w-md mx-auto">No suppliers are available for this product at the moment.</p>
                         <button onclick="prevOrderStep(1)" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
                             Go Back
                         </button>
@@ -1706,14 +1754,14 @@
         </div>
     </div>
 
-    <!-- Dashboard Modal -->
+    <!-- Dashboard Modal (Supplier Only) -->
     <div id="dashboard-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="bg-white w-full max-w-7xl h-[90vh] rounded-3xl shadow-2xl overflow-hidden relative flex flex-col">
             <div class="px-4 md:px-8 pt-6 md:pt-8 pb-4 border-b border-slate-200">
                 <div class="flex justify-between items-center">
                     <div>
                         <h2 class="text-xl md:text-3xl font-bold text-slate-900">Supplier Dashboard</h2>
-                        <p class="text-slate-600 mt-1 text-sm md:text-base">Manage your orders, inventory, and customer interactions</p>
+                        <p class="text-slate-600 mt-1 text-sm md:text-base">Manage your products, inventory, and incoming orders</p>
                     </div>
                     <div class="flex items-center gap-3 md:gap-4">
                         <div class="relative group">
@@ -1734,19 +1782,13 @@
                         <i class="fas fa-chart-bar mr-2"></i>Overview
                     </button>
                     <button onclick="switchDashboardTab('orders')" class="tab-button whitespace-nowrap text-sm md:text-base">
-                        <i class="fas fa-shopping-cart mr-2"></i>Orders
+                        <i class="fas fa-shopping-cart mr-2"></i>Incoming Orders
                     </button>
                     <button onclick="switchDashboardTab('inventory')" class="tab-button whitespace-nowrap text-sm md:text-base">
-                        <i class="fas fa-boxes mr-2"></i>Inventory
+                        <i class="fas fa-boxes mr-2"></i>Manage Products
                     </button>
                     <button onclick="switchDashboardTab('customers')" class="tab-button whitespace-nowrap text-sm md:text-base">
                         <i class="fas fa-users mr-2"></i>Customers
-                    </button>
-                    <button onclick="switchDashboardTab('analytics')" class="tab-button whitespace-nowrap text-sm md:text-base">
-                        <i class="fas fa-chart-line mr-2"></i>Analytics
-                    </button>
-                    <button onclick="switchDashboardTab('settings')" class="tab-button whitespace-nowrap text-sm md:text-base">
-                        <i class="fas fa-cog mr-2"></i>Settings
                     </button>
                 </div>
             </div>
@@ -1761,9 +1803,9 @@
                             <div class="flex justify-between items-start">
                                 <div>
                                     <p class="text-sm opacity-90">Total Revenue</p>
-                                    <h3 class="text-2xl md:text-3xl font-bold mt-2">₹2,847,500</h3>
+                                    <h3 class="text-2xl md:text-3xl font-bold mt-2" id="dashboard-total-revenue">₹0</h3>
                                     <p class="text-sm mt-2 flex items-center">
-                                        <i class="fas fa-arrow-up mr-1"></i> 12.5% from last month
+                                        <i class="fas fa-arrow-up mr-1"></i>From completed orders
                                     </p>
                                 </div>
                                 <div class="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-lg flex items-center justify-center">
@@ -1775,10 +1817,10 @@
                         <div class="stat-card orders">
                             <div class="flex justify-between items-start">
                                 <div>
-                                    <p class="text-sm opacity-90">Active Orders</p>
-                                    <h3 class="text-2xl md:text-3xl font-bold mt-2">47</h3>
+                                    <p class="text-sm opacity-90">Incoming Orders</p>
+                                    <h3 class="text-2xl md:text-3xl font-bold mt-2" id="dashboard-incoming-orders">0</h3>
                                     <p class="text-sm mt-2 flex items-center">
-                                        <i class="fas fa-clock mr-1"></i> 8 pending approval
+                                        <i class="fas fa-clock mr-1"></i> <span id="dashboard-pending-orders">0</span> pending approval
                                     </p>
                                 </div>
                                 <div class="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-lg flex items-center justify-center">
@@ -1790,25 +1832,10 @@
                         <div class="stat-card customers">
                             <div class="flex justify-between items-start">
                                 <div>
-                                    <p class="text-sm opacity-90">Active Customers</p>
-                                    <h3 class="text-2xl md:text-3xl font-bold mt-2">156</h3>
+                                    <p class="text-sm opacity-90">Active Products</p>
+                                    <h3 class="text-2xl md:text-3xl font-bold mt-2" id="dashboard-total-products">0</h3>
                                     <p class="text-sm mt-2 flex items-center">
-                                        <i class="fas fa-user-plus mr-1"></i> +12 this month
-                                    </p>
-                                </div>
-                                <div class="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-users text-xl md:text-2xl"></i>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="stat-card">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <p class="text-sm opacity-90">Inventory Value</p>
-                                    <h3 class="text-2xl md:text-3xl font-bold mt-2">₹5,620,000</h3>
-                                    <p class="text-sm mt-2 flex items-center">
-                                        <i class="fas fa-box mr-1"></i> 87 items in stock
+                                        <i class="fas fa-box mr-1"></i>In your inventory
                                     </p>
                                 </div>
                                 <div class="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-lg flex items-center justify-center">
@@ -1816,182 +1843,50 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Charts and Recent Orders -->
-                    <div class="grid lg:grid-cols-2 gap-6 md:gap-8">
-                        <!-- Sales Chart -->
-                        <div class="dashboard-card">
-                            <h3 class="font-bold text-lg text-slate-900 mb-4">Revenue Trend</h3>
-                            <div class="h-64">
-                                <canvas id="salesChart"></canvas>
-                            </div>
-                        </div>
                         
-                        <!-- Recent Orders -->
-                        <div class="dashboard-card">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="font-bold text-lg text-slate-900">Recent Orders</h3>
-                                <a href="#" class="text-blue-600 text-sm font-medium hover:text-blue-800">View All</a>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                                    <div>
-                                        <div class="font-medium">#ORD-7842</div>
-                                        <div class="text-sm text-slate-500">Weld Neck Flange</div>
-                                    </div>
-                                    <div class="text-right">
-                                        <div class="font-medium">₹245,000</div>
-                                        <span class="badge badge-warning">Processing</span>
-                                    </div>
+                        <div class="stat-card">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="text-sm opacity-90">Total Customers</p>
+                                    <h3 class="text-2xl md:text-3xl font-bold mt-2" id="dashboard-total-customers">0</h3>
+                                    <p class="text-sm mt-2 flex items-center">
+                                        <i class="fas fa-user-plus mr-1"></i>Unique customers
+                                    </p>
                                 </div>
-                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                                    <div>
-                                        <div class="font-medium">#ORD-7841</div>
-                                        <div class="text-sm text-slate-500">Long Weld Neck</div>
-                                    </div>
-                                    <div class="text-right">
-                                        <div class="font-medium">₹187,500</div>
-                                        <span class="badge badge-success">Shipped</span>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                                    <div>
-                                        <div class="font-medium">#ORD-7840</div>
-                                        <div class="text-sm text-slate-500">Blind Flange</div>
-                                    </div>
-                                    <div class="text-right">
-                                        <div class="font-medium">₹92,300</div>
-                                        <span class="badge badge-danger">Pending</span>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                                    <div>
-                                        <div class="font-medium">#ORD-7839</div>
-                                        <div class="text-sm text-slate-500">Plasma CNC Cutting</div>
-                                    </div>
-                                    <div class="text-right">
-                                        <div class="font-medium">₹315,800</div>
-                                        <span class="badge badge-info">Approved</span>
-                                    </div>
+                                <div class="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-users text-xl md:text-2xl"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Quick Stats -->
-                    <div class="grid md:grid-cols-3 gap-4 md:gap-6">
-                        <div class="dashboard-card">
-                            <h3 class="font-bold text-lg text-slate-900 mb-4">Order Status</h3>
-                            <div class="space-y-3">
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-sm">Pending Approval</span>
-                                        <span class="text-sm font-medium">8</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 17%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-sm">In Production</span>
-                                        <span class="text-sm font-medium">15</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 32%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-sm">Ready to Ship</span>
-                                        <span class="text-sm font-medium">12</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 26%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-sm">Delivered</span>
-                                        <span class="text-sm font-medium">12</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 26%"></div>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Recent Orders -->
+                    <div class="dashboard-card">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-bold text-lg text-slate-900">Recent Incoming Orders</h3>
+                            <a href="#" onclick="switchDashboardTab('orders')" class="text-blue-600 text-sm font-medium hover:text-blue-800">View All</a>
                         </div>
-                        
-                        <div class="dashboard-card">
-                            <h3 class="font-bold text-lg text-slate-900 mb-4">Top Products</h3>
-                            <div class="space-y-3">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-fire text-blue-600"></i>
-                                        </div>
-                                        <div>
-                                            <div class="font-medium">Weld Neck Flange</div>
-                                            <div class="text-sm text-slate-500">₹1.2M revenue</div>
-                                        </div>
-                                    </div>
-                                    <div class="text-lg font-bold">42%</div>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-ruler-vertical text-green-600"></i>
-                                        </div>
-                                        <div>
-                                            <div class="font-medium">Long Weld Neck</div>
-                                            <div class="text-sm text-slate-500">₹850K revenue</div>
-                                        </div>
-                                    </div>
-                                    <div class="text-lg font-bold">30%</div>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-bolt text-purple-600"></i>
-                                        </div>
-                                        <div>
-                                            <div class="font-medium">Plasma CNC</div>
-                                            <div class="text-sm text-slate-500">₹620K revenue</div>
-                                        </div>
-                                    </div>
-                                    <div class="text-lg font-bold">22%</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="dashboard-card">
-                            <h3 class="font-bold text-lg text-slate-900 mb-4">Quick Actions</h3>
-                            <div class="space-y-3">
-                                <button class="w-full py-3 bg-blue-50 text-blue-700 rounded-lg font-medium hover:bg-blue-100 transition flex items-center justify-center gap-2">
-                                    <i class="fas fa-plus"></i> Add New Product
-                                </button>
-                                <button class="w-full py-3 bg-green-50 text-green-700 rounded-lg font-medium hover:bg-green-100 transition flex items-center justify-center gap-2">
-                                    <i class="fas fa-file-invoice"></i> Create Invoice
-                                </button>
-                                <button class="w-full py-3 bg-purple-50 text-purple-700 rounded-lg font-medium hover:bg-purple-100 transition flex items-center justify-center gap-2">
-                                    <i class="fas fa-chart-bar"></i> Generate Report
-                                </button>
-                                <button class="w-full py-3 bg-orange-50 text-orange-700 rounded-lg font-medium hover:bg-orange-100 transition flex items-center justify-center gap-2">
-                                    <i class="fas fa-box"></i> Update Inventory
-                                </button>
+                        <div class="space-y-4" id="dashboard-recent-orders">
+                            <div class="text-center py-4 text-slate-500">
+                                No orders yet
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Orders Tab -->
+                <!-- Incoming Orders Tab -->
                 <div id="dashboard-orders" class="tab-content hidden">
                     <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-xl md:text-2xl font-bold text-slate-900">Order Management</h3>
-                        <button class="px-3 md:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
-                            <i class="fas fa-plus"></i> New Order
-                        </button>
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-900">Incoming Order Management</h3>
+                        <div class="flex gap-2">
+                            <select id="order-status-filter" class="px-3 py-2 border border-slate-300 rounded-lg text-sm" onchange="filterOrders()">
+                                <option value="all">All Orders</option>
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="shipped">Shipped</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
                     </div>
                     
                     <div class="table-container">
@@ -2008,90 +1903,10 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="orders-table-body">
                                 <tr>
-                                    <td class="font-medium">#ORD-7842</td>
-                                    <td>Oil & Gas Corp</td>
-                                    <td>Weld Neck Flange</td>
-                                    <td>50</td>
-                                    <td class="font-bold">₹245,000</td>
-                                    <td><span class="badge badge-warning">Processing</span></td>
-                                    <td>2024-03-15</td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="text-green-600 hover:text-green-800">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">#ORD-7841</td>
-                                    <td>PowerGen Ltd</td>
-                                    <td>Long Weld Neck</td>
-                                    <td>25</td>
-                                    <td class="font-bold">₹187,500</td>
-                                    <td><span class="badge badge-success">Shipped</span></td>
-                                    <td>2024-03-14</td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="text-green-600 hover:text-green-800">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">#ORD-7840</td>
-                                    <td>Marine Solutions</td>
-                                    <td>Blind Flange</td>
-                                    <td>100</td>
-                                    <td class="font-bold">₹92,300</td>
-                                    <td><span class="badge badge-danger">Pending</span></td>
-                                    <td>2024-03-13</td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="text-green-600 hover:text-green-800">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">#ORD-7839</td>
-                                    <td>Chemical Process</td>
-                                    <td>Plasma CNC Cutting</td>
-                                    <td>1</td>
-                                    <td class="font-bold">₹315,800</td>
-                                    <td><span class="badge badge-info">Approved</span></td>
-                                    <td>2024-03-12</td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="text-green-600 hover:text-green-800">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">#ORD-7838</td>
-                                    <td>Construction Co</td>
-                                    <td>Slip-On Flange</td>
-                                    <td>200</td>
-                                    <td class="font-bold">₹156,400</td>
-                                    <td><span class="badge badge-success">Delivered</span></td>
-                                    <td>2024-03-10</td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="text-green-600 hover:text-green-800">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
+                                    <td colspan="8" class="text-center py-8 text-slate-500">
+                                        No orders found
                                     </td>
                                 </tr>
                             </tbody>
@@ -2099,21 +1914,90 @@
                     </div>
                 </div>
                 
-                <!-- Inventory Tab -->
+                <!-- Manage Products Tab -->
                 <div id="dashboard-inventory" class="tab-content hidden">
                     <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-xl md:text-2xl font-bold text-slate-900">Inventory Management</h3>
-                        <button class="px-3 md:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
-                            <i class="fas fa-plus"></i> Add Stock
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-900">Product Management</h3>
+                        <button onclick="showAddProductForm()" class="px-3 md:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
+                            <i class="fas fa-plus"></i> Add New Product
                         </button>
+                    </div>
+                    
+                    <!-- Add/Edit Product Form -->
+                    <div id="product-form-container" class="hidden mb-6">
+                        <div class="dashboard-card">
+                            <h4 class="font-bold text-lg text-slate-900 mb-4" id="product-form-title">Add New Product</h4>
+                            <form id="product-form" class="space-y-4" onsubmit="saveProduct(event)">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Product Name *</label>
+                                        <input type="text" id="product-name" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Product Key *</label>
+                                        <input type="text" id="product-key" placeholder="e.g., lwn, wnf, custom" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" required>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Description</label>
+                                    <textarea id="product-description" rows="3" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"></textarea>
+                                </div>
+                                
+                                <div class="grid md:grid-cols-3 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Price (₹) *</label>
+                                        <input type="number" id="product-price" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Stock Quantity *</label>
+                                        <input type="number" id="product-stock" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Unit *</label>
+                                        <input type="text" id="product-unit" value="pieces" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Category</label>
+                                        <select id="product-category" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                            <option value="flanges">Flanges</option>
+                                            <option value="fittings">Pipe Fittings</option>
+                                            <option value="cutting">Cutting Services</option>
+                                            <option value="custom">Custom Products</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Material</label>
+                                        <input type="text" id="product-material" placeholder="e.g., Carbon Steel, Stainless Steel" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Specifications</label>
+                                    <textarea id="product-specs" rows="2" placeholder="Size range, pressure ratings, etc." class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"></textarea>
+                                </div>
+                                
+                                <div class="flex gap-3 pt-4">
+                                    <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
+                                        Save Product
+                                    </button>
+                                    <button type="button" onclick="cancelProductForm()" class="px-6 py-2 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300 transition">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
                         <div class="dashboard-card">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <div class="text-sm text-slate-500">Total Items</div>
-                                    <div class="text-2xl md:text-3xl font-bold mt-1">87</div>
+                                    <div class="text-sm text-slate-500">Total Products</div>
+                                    <div class="text-2xl md:text-3xl font-bold mt-1" id="dashboard-product-count">0</div>
                                 </div>
                                 <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                                     <i class="fas fa-boxes text-blue-600 text-lg md:text-xl"></i>
@@ -2124,7 +2008,7 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <div class="text-sm text-slate-500">Low Stock Items</div>
-                                    <div class="text-2xl md:text-3xl font-bold mt-1">12</div>
+                                    <div class="text-2xl md:text-3xl font-bold mt-1" id="dashboard-low-stock">0</div>
                                 </div>
                                 <div class="w-10 h-10 md:w-12 md:h-12 bg-red-100 rounded-lg flex items-center justify-center">
                                     <i class="fas fa-exclamation-triangle text-red-600 text-lg md:text-xl"></i>
@@ -2135,7 +2019,7 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <div class="text-sm text-slate-500">Out of Stock</div>
-                                    <div class="text-2xl md:text-3xl font-bold mt-1">3</div>
+                                    <div class="text-2xl md:text-3xl font-bold mt-1" id="dashboard-out-of-stock">0</div>
                                 </div>
                                 <div class="w-10 h-10 md:w-12 md:h-12 bg-orange-100 rounded-lg flex items-center justify-center">
                                     <i class="fas fa-times-circle text-orange-600 text-lg md:text-xl"></i>
@@ -2149,93 +2033,19 @@
                             <thead>
                                 <tr>
                                     <th>Product</th>
-                                    <th>SKU</th>
-                                    <th>Current Stock</th>
-                                    <th>Reorder Level</th>
-                                    <th>Value</th>
+                                    <th>Key</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Unit</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="products-table-body">
                                 <tr>
-                                    <td class="font-medium">Weld Neck Flange DN50</td>
-                                    <td>SKU-WNF-50</td>
-                                    <td>250</td>
-                                    <td>100</td>
-                                    <td class="font-bold">₹1,250,000</td>
-                                    <td><span class="badge badge-success">In Stock</span></td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="text-red-600 hover:text-red-800">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">Long Weld Neck DN100</td>
-                                    <td>SKU-LWN-100</td>
-                                    <td>85</td>
-                                    <td>50</td>
-                                    <td class="font-bold">₹850,000</td>
-                                    <td><span class="badge badge-warning">Low Stock</span></td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="text-red-600 hover:text-red-800">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">Blind Flange DN80</td>
-                                    <td>SKU-BF-80</td>
-                                    <td>0</td>
-                                    <td>25</td>
-                                    <td class="font-bold">₹0</td>
-                                    <td><span class="badge badge-danger">Out of Stock</span></td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="text-red-600 hover:text-red-800">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">Slip-On Flange DN40</td>
-                                    <td>SKU-SOF-40</td>
-                                    <td>120</td>
-                                    <td>75</td>
-                                    <td class="font-bold">₹480,000</td>
-                                    <td><span class="badge badge-success">In Stock</span></td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="text-red-600 hover:text-red-800">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">Puddle Flange DN150</td>
-                                    <td>SKU-PF-150</td>
-                                    <td>45</td>
-                                    <td>30</td>
-                                    <td class="font-bold">₹675,000</td>
-                                    <td><span class="badge badge-warning">Low Stock</span></td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="text-red-600 hover:text-red-800">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                    <td colspan="8" class="text-center py-8 text-slate-500">
+                                        No products added yet. Click "Add New Product" to get started.
                                     </td>
                                 </tr>
                             </tbody>
@@ -2247,9 +2057,6 @@
                 <div id="dashboard-customers" class="tab-content hidden">
                     <div class="flex justify-between items-center mb-6">
                         <h3 class="text-xl md:text-2xl font-bold text-slate-900">Customer Management</h3>
-                        <button class="px-3 md:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
-                            <i class="fas fa-user-plus"></i> Add Customer
-                        </button>
                     </div>
                     
                     <div class="grid md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
@@ -2260,7 +2067,7 @@
                                 </div>
                                 <div>
                                     <div class="text-sm text-slate-500">Total Customers</div>
-                                    <div class="text-2xl md:text-3xl font-bold mt-1">156</div>
+                                    <div class="text-2xl md:text-3xl font-bold mt-1" id="dashboard-customer-count">0</div>
                                 </div>
                             </div>
                         </div>
@@ -2271,7 +2078,7 @@
                                 </div>
                                 <div>
                                     <div class="text-sm text-slate-500">Active Customers</div>
-                                    <div class="text-2xl md:text-3xl font-bold mt-1">128</div>
+                                    <div class="text-2xl md:text-3xl font-bold mt-1" id="dashboard-active-customers">0</div>
                                 </div>
                             </div>
                         </div>
@@ -2281,8 +2088,8 @@
                                     <i class="fas fa-medal text-purple-600 text-xl md:text-2xl"></i>
                                 </div>
                                 <div>
-                                    <div class="text-sm text-slate-500">Premium Clients</div>
-                                    <div class="text-2xl md:text-3xl font-bold mt-1">42</div>
+                                    <div class="text-sm text-slate-500">Total Orders</div>
+                                    <div class="text-2xl md:text-3xl font-bold mt-1" id="dashboard-total-orders">0</div>
                                 </div>
                             </div>
                         </div>
@@ -2294,256 +2101,21 @@
                                 <tr>
                                     <th>Customer</th>
                                     <th>Company</th>
-                                    <th>Industry</th>
+                                    <th>Email</th>
                                     <th>Total Orders</th>
                                     <th>Total Spent</th>
                                     <th>Last Order</th>
-                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="customers-table-body">
                                 <tr>
-                                    <td class="font-medium">Rajesh Kumar</td>
-                                    <td>Oil & Gas Corp</td>
-                                    <td>Oil & Gas</td>
-                                    <td>24</td>
-                                    <td class="font-bold">₹2,450,000</td>
-                                    <td>2024-03-15</td>
-                                    <td><span class="badge badge-success">Active</span></td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="text-green-600 hover:text-green-800">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">Priya Sharma</td>
-                                    <td>PowerGen Ltd</td>
-                                    <td>Power Generation</td>
-                                    <td>18</td>
-                                    <td class="font-bold">₹1,875,000</td>
-                                    <td>2024-03-14</td>
-                                    <td><span class="badge badge-success">Active</span></td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="text-green-600 hover:text-green-800">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">Amit Patel</td>
-                                    <td>Marine Solutions</td>
-                                    <td>Marine & Offshore</td>
-                                    <td>12</td>
-                                    <td class="font-bold">₹923,000</td>
-                                    <td>2024-03-13</td>
-                                    <td><span class="badge badge-success">Active</span></td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="text-green-600 hover:text-green-800">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">Suresh Nair</td>
-                                    <td>Chemical Process</td>
-                                    <td>Chemical</td>
-                                    <td>8</td>
-                                    <td class="font-bold">₹1,580,000</td>
-                                    <td>2024-02-28</td>
-                                    <td><span class="badge badge-warning">Inactive</span></td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="text-green-600 hover:text-green-800">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">Meena Reddy</td>
-                                    <td>Construction Co</td>
-                                    <td>Construction</td>
-                                    <td>15</td>
-                                    <td class="font-bold">₹1,564,000</td>
-                                    <td>2024-03-10</td>
-                                    <td><span class="badge badge-success">Active</span></td>
-                                    <td>
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="text-green-600 hover:text-green-800">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
+                                    <td colspan="7" class="text-center py-8 text-slate-500">
+                                        No customers yet
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-                
-                <!-- Analytics Tab -->
-                <div id="dashboard-analytics" class="tab-content hidden">
-                    <div class="mb-6">
-                        <h3 class="text-xl md:text-2xl font-bold text-slate-900">Business Analytics</h3>
-                        <p class="text-slate-600 mt-2 text-sm md:text-base">Detailed insights and performance metrics</p>
-                    </div>
-                    
-                    <div class="grid lg:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
-                        <div class="dashboard-card">
-                            <h4 class="font-bold text-lg text-slate-900 mb-4">Revenue by Product Category</h4>
-                            <div class="h-64">
-                                <canvas id="categoryChart"></canvas>
-                            </div>
-                        </div>
-                        <div class="dashboard-card">
-                            <h4 class="font-bold text-lg text-slate-900 mb-4">Monthly Performance</h4>
-                            <div class="h-64">
-                                <canvas id="performanceChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-3 gap-4 md:gap-6">
-                        <div class="dashboard-card">
-                            <h4 class="font-bold text-lg text-slate-900 mb-4">Order Conversion Rate</h4>
-                            <div class="text-center py-6 md:py-8">
-                                <div class="relative inline-block">
-                                    <canvas id="conversionChart" width="200" height="200"></canvas>
-                                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                                        <div class="text-2xl md:text-3xl font-bold text-blue-600">68%</div>
-                                        <div class="text-sm text-slate-500">Conversion</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="dashboard-card">
-                            <h4 class="font-bold text-lg text-slate-900 mb-4">Top Performing Industries</h4>
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span>Oil & Gas</span>
-                                        <span class="font-medium">42%</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 42%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span>Power Generation</span>
-                                        <span class="font-medium">28%</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 28%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span>Chemical</span>
-                                        <span class="font-medium">18%</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 18%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span>Marine</span>
-                                        <span class="font-medium">12%</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 12%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="dashboard-card">
-                            <h4 class="font-bold text-lg text-slate-900 mb-4">Customer Retention</h4>
-                            <div class="text-center py-6 md:py-8">
-                                <div class="text-4xl md:text-5xl font-bold text-green-600 mb-2">92%</div>
-                                <div class="text-slate-600">Retention Rate</div>
-                                <div class="text-sm text-slate-500 mt-4">Industry Average: 85%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Settings Tab -->
-                <div id="dashboard-settings" class="tab-content hidden">
-                    <div class="mb-6">
-                        <h3 class="text-xl md:text-2xl font-bold text-slate-900">Account Settings</h3>
-                        <p class="text-slate-600 mt-2 text-sm md:text-base">Manage your supplier account preferences</p>
-                    </div>
-                    
-                    <div class="grid lg:grid-cols-2 gap-6 md:gap-8">
-                        <div class="dashboard-card">
-                            <h4 class="font-bold text-lg text-slate-900 mb-4">Company Information</h4>
-                            <form class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Company Name</label>
-                                    <input type="text" value="Ultimate Flange Manufacturing" class="w-full px-3 md:px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Contact Email</label>
-                                    <input type="email" value="supplier@ultimateflange.com" class="w-full px-3 md:px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Phone Number</label>
-                                    <input type="tel" value="+91 7307709671" class="w-full px-3 md:px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
-                                </div>
-                                <button type="button" class="w-full py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
-                                    Update Information
-                                </button>
-                            </form>
-                        </div>
-                        
-                        <div class="dashboard-card">
-                            <h4 class="font-bold text-lg text-slate-900 mb-4">Notification Preferences</h4>
-                            <div class="space-y-3">
-                                <label class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                                    <div>
-                                        <div class="font-medium">New Order Notifications</div>
-                                        <div class="text-sm text-slate-500">Get notified for new orders</div>
-                                    </div>
-                                    <input type="checkbox" checked class="w-6 h-6 text-blue-600 rounded">
-                                </label>
-                                <label class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                                    <div>
-                                        <div class="font-medium">Low Stock Alerts</div>
-                                        <div class="text-sm text-slate-500">Receive low inventory alerts</div>
-                                    </div>
-                                    <input type="checkbox" checked class="w-6 h-6 text-blue-600 rounded">
-                                </label>
-                                <label class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                                    <div>
-                                        <div class="font-medium">Payment Notifications</div>
-                                        <div class="text-sm text-slate-500">Get payment status updates</div>
-                                    </div>
-                                    <input type="checkbox" class="w-6 h-6 text-blue-600 rounded">
-                                </label>
-                                <label class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                                    <div>
-                                        <div class="font-medium">Monthly Reports</div>
-                                        <div class="text-sm text-slate-500">Receive monthly sales reports</div>
-                                    </div>
-                                    <input type="checkbox" checked class="w-6 h-6 text-blue-600 rounded">
-                                </label>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -2568,8 +2140,7 @@
             <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-blue-600 font-medium py-3 border-b border-slate-100">Know More</a>
             <a href="#contact" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-blue-600 font-medium py-3 border-b border-slate-100">Contact</a>
             <a href="#" onclick="toggleMobileMenu(); openTrackingModal();" class="block text-slate-700 hover:text-blue-600 font-medium py-3 border-b border-slate-100">Track Order</a>
-            <a href="#" onclick="toggleMobileMenu(); openDashboard();" id="mobile-dashboard-link" class="block text-slate-700 hover:text-blue-600 font-medium py-3 border-b border-slate-100 hidden">My Account</a>
-            <a href="#" onclick="toggleMobileMenu(); openDashboard();" id="mobile-supplier-dashboard-link" class="block text-slate-700 hover:text-blue-600 font-medium py-3 border-b border-slate-100 hidden">Supplier Dashboard</a>
+            <a href="#" onclick="toggleMobileMenu(); openDashboard();" id="mobile-dashboard-link" class="block text-slate-700 hover:text-blue-600 font-medium py-3 border-b border-slate-100 hidden">Supplier Dashboard</a>
             <a href="#" onclick="toggleMobileMenu(); showProfile();" id="mobile-profile-link" class="block text-slate-700 hover:text-blue-600 font-medium py-3 border-b border-slate-100 hidden">My Profile</a>
             
             <div class="pt-6 border-t border-slate-200">
@@ -2618,9 +2189,6 @@
                                 <i class="fas fa-user-circle mr-1"></i>My Profile
                             </button>
                             <button onclick="openDashboard()" id="dashboard-btn" class="text-slate-400 hover:text-blue-600 transition text-xs font-bold uppercase tracking-wider hidden">
-                                <i class="fas fa-chart-bar mr-1"></i>My Account
-                            </button>
-                            <button onclick="openDashboard()" id="supplier-dashboard-btn" class="text-slate-400 hover:text-blue-600 transition text-xs font-bold uppercase tracking-wider hidden">
                                 <i class="fas fa-building mr-1"></i>Supplier Dashboard
                             </button>
                             <button onclick="logout()" id="logout-btn" class="text-slate-400 hover:text-red-600 transition text-xs font-bold uppercase tracking-wider hidden">
@@ -2629,7 +2197,7 @@
                             <button onclick="openAuthModal()" id="login-btn" class="text-slate-400 hover:text-blue-600 transition text-xs font-bold uppercase tracking-wider">
                                 <i class="fas fa-sign-in-alt mr-1"></i>Login
                             </button>
-                            <button onclick="checkAuthBeforeOrder()" class="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-900 transition shadow-md order-button">
+                            <button onclick="checkAuthBeforeOrder()" id="order-now-btn" class="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-900 transition shadow-md order-button">
                                 <i class="fas fa-file-invoice-dollar mr-2"></i>Order Now
                             </button>
                         </div>
@@ -2691,9 +2259,10 @@
                     
                     <div class="flex-1 w-full">
                         <div class="relative">
-                            <!-- Hero Image Container with Fallback -->
                             <div class="hero-image-container" id="hero-image-container">
-                                <img src="industry.png" alt="Industrial Flange Manufacturing Facility" onerror="handleImageError(this)">
+                                <div class="img-fallback">
+                                    <i class="fas fa-industry"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2822,50 +2391,9 @@
                         <p class="text-slate-600 text-base md:text-lg">Browse our extensive range of industrial flanges and precision components</p>
                     </div>
                     
-                    <!-- Product Thumbnails Grid with Fixed Image Paths -->
-                    <div class="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12 reveal stagger-delay-1">
-                        <!-- Weld Neck Flange -->
-                        <div class="product-thumbnail" onclick="updateProduct('wnf')">
-                            <img src="weld-neck.png" alt="Weld Neck Flange" onerror="handleImageError(this, 'Weld Neck')">
-                        </div>
-                        
-                        <!-- Long Weld Neck -->
-                        <div class="product-thumbnail" onclick="updateProduct('lwn')">
-                            <img src="long-weldneck.png" alt="Long Weld Neck Flange" onerror="handleImageError(this, 'Long Weld Neck')">
-                        </div>
-                        
-                        <!-- Slip-On Flange -->
-                        <div class="product-thumbnail" onclick="updateProduct('slipon')">
-                            <img src="slip-on-flange.png" alt="Slip-On Flange" onerror="handleImageError(this, 'Slip-On')">
-                        </div>
-                        
-                        <!-- Blind Flange -->
-                        <div class="product-thumbnail" onclick="updateProduct('blind')">
-                            <img src="blind.png" alt="Blind Flange" onerror="handleImageError(this, 'Blind')">
-                        </div>
-                        
-                        <!-- Puddle Flange -->
-                        <div class="product-thumbnail" onclick="updateProduct('puddle')">
-                            <img src="puddle-flange.png" alt="Puddle Flange" onerror="handleImageError(this, 'Puddle')">
-                        </div>
-                        
-                        <!-- Plasma CNC -->
-                        <div class="product-thumbnail" onclick="updateProduct('plasma')">
-                            <img src="plasma-cutting.png" alt="Plasma CNC Cutting" onerror="handleImageError(this, 'Plasma CNC')">
-                        </div>
-                        
-                        <!-- Profile Cutting -->
-                        <div class="product-thumbnail" onclick="updateProduct('profile')">
-                            <img src="profile-cutting.jpg" alt="Profile Cutting Services" onerror="handleImageError(this, 'Profile')">
-                        </div>
-                        
-                        <!-- All Products -->
-                        <div class="product-thumbnail bg-gradient-to-br from-blue-600 to-blue-800" onclick="showAllProducts()">
-                            <div class="product-placeholder text-white">
-                                <i class="fas fa-boxes text-2xl md:text-3xl"></i>
-                                <span class="font-semibold mt-2 text-sm md:text-base">View All Products</span>
-                            </div>
-                        </div>
+                    <!-- Product Thumbnails Grid -->
+                    <div class="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12 reveal stagger-delay-1" id="product-thumbnails">
+                        <!-- Products will be loaded dynamically from API -->
                     </div>
                     
                     <div class="w-full flex flex-col lg:flex-row items-center justify-center gap-4 md:gap-6">
@@ -2880,27 +2408,7 @@
 
                         <div class="w-full overflow-x-auto no-scrollbar py-2">
                             <div class="flex justify-start lg:justify-center gap-2 md:gap-3 min-w-max px-2" id="suggestion-bar">
-                                <div onclick="updateProduct('wnf')" id="chip-wnf" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
-                                    <i class="fas fa-fire"></i>Weld Neck
-                                </div>
-                                <div onclick="updateProduct('lwn')" id="chip-lwn" class="flange-chip active px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
-                                    <i class="fas fa-ruler-vertical"></i>Long Weld Neck
-                                </div>
-                                <div onclick="updateProduct('slipon')" id="chip-slipon" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
-                                    <i class="fas fa-sliders-h"></i>Slip-On
-                                </div>
-                                <div onclick="updateProduct('blind')" id="chip-blind" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
-                                    <i class="fas fa-ban"></i>Blind
-                                </div>
-                                <div onclick="updateProduct('puddle')" id="chip-puddle" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
-                                    <i class="fas fa-water"></i>Puddle
-                                </div>
-                                <div onclick="updateProduct('plasma')" id="chip-plasma" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
-                                    <i class="fas fa-bolt"></i>Plasma CNC
-                                </div>
-                                <div onclick="updateProduct('profile')" id="chip-profile" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
-                                    <i class="fas fa-cut"></i>Profile Cutting
-                                </div>
+                                <!-- Chips will be loaded dynamically from API -->
                             </div>
                         </div>
                     </div>
@@ -2919,7 +2427,9 @@
                                 <!-- Product Image -->
                                 <div class="flex-1">
                                     <div class="product-image-container" id="product-image-container">
-                                        <img src="long-weldneck.png" alt="Long Weld Neck Flange" id="product-main-image" onerror="handleImageError(this, 'Long Weld Neck')">
+                                        <div class="img-fallback">
+                                            <i class="fas fa-industry"></i>
+                                        </div>
                                     </div>
                                 </div>
                                 
@@ -2936,34 +2446,24 @@
                                             </div>
                                             <div>
                                                 <div class="text-xs md:text-sm text-blue-300 mb-1">Reference Code</div>
-                                                <div class="font-medium">ASMEB16.5-900-DN15</div>
+                                                <div class="font-medium" id="product-reference">ASMEB16.5-900-DN15</div>
                                             </div>
                                             <div>
                                                 <div class="text-xs md:text-sm text-blue-300 mb-1">Standard</div>
-                                                <div class="font-medium">ASME B16.5</div>
+                                                <div class="font-medium" id="product-standard">ASME B16.5</div>
                                             </div>
                                             <div>
                                                 <div class="text-xs md:text-sm text-blue-300 mb-1">Nominal Diameter</div>
-                                                <div class="font-medium">DN15 (1/2")</div>
+                                                <div class="font-medium" id="product-diameter">DN15 (1/2")</div>
                                             </div>
                                             <div>
                                                 <div class="text-xs md:text-sm text-blue-300 mb-1">Pressure Rating</div>
-                                                <div class="font-medium">Class 900 (150#)</div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="space-y-2 md:space-y-3">
-                                            <h5 class="font-bold text-lg mb-2">Available Suppliers</h5>
-                                            <div id="product-suppliers-list" class="text-xs md:text-sm text-slate-300 space-y-2">
-                                                <!-- Suppliers will be loaded here -->
+                                                <div class="font-medium" id="product-pressure">Class 900 (150#)</div>
                                             </div>
                                         </div>
                                         
                                         <div class="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-slate-700">
-                                            <button onclick="downloadProductFiles()" class="w-full py-2.5 md:py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition mb-2 md:mb-3 text-sm md:text-base">
-                                                <i class="fas fa-download mr-2"></i>Download Technical Files
-                                            </button>
-                                            <button onclick="checkAuthBeforeOrder()" class="w-full py-2.5 md:py-3 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-700 transition text-sm md:text-base order-button">
+                                            <button onclick="checkAuthBeforeOrder()" id="product-order-btn" class="w-full py-2.5 md:py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition mb-2 md:mb-3 text-sm md:text-base order-button">
                                                 <i class="fas fa-shopping-cart mr-2"></i>Order Now
                                             </button>
                                         </div>
@@ -2980,17 +2480,11 @@
                                     <span class="px-2 md:px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-bold">Class 900</span>
                                     <span class="px-2 md:px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-xs font-bold">CAD Available</span>
                                     <span class="px-2 md:px-3 py-1 bg-orange-50 text-orange-700 rounded-full text-xs font-bold">DN15</span>
-                                    <span class="supplier-badge">
-                                        <i class="fas fa-users mr-1"></i>Multiple Suppliers
-                                    </span>
                                 </div>
                             </div>
                             <div class="flex gap-2 md:gap-3 mt-4 md:mt-0">
                                 <button onclick="checkAuthBeforeOrder()" class="px-4 md:px-6 py-2.5 md:py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg font-bold shadow-md hover:from-blue-700 hover:to-blue-900 transition flex items-center gap-2 text-sm md:text-base order-button">
                                     <i class="fas fa-shopping-cart"></i>Order Now
-                                </button>
-                                <button onclick="downloadProductFiles()" class="px-4 md:px-6 py-2.5 md:py-3 bg-slate-100 text-slate-700 rounded-lg font-bold hover:bg-slate-200 transition flex items-center gap-2 text-sm md:text-base">
-                                    <i class="fas fa-download"></i>Download Specifications
                                 </button>
                             </div>
                         </div>
@@ -3002,44 +2496,22 @@
                             <!-- Features will be populated by JavaScript -->
                         </div>
                         
-                        <!-- Available Suppliers Section -->
-                        <div class="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-4 md:p-6 mb-6 md:mb-8">
-                            <h4 class="text-lg md:text-xl font-bold text-slate-900 mb-3 md:mb-4 flex items-center gap-2">
-                                <i class="fas fa-user-tie text-blue-600"></i>Available Suppliers
-                            </h4>
-                            <p class="text-slate-600 mb-4 text-sm md:text-base">Connect with verified suppliers for this product. Chat with them directly before placing your order.</p>
-                            <div id="dynamic-suppliers-list" class="grid md:grid-cols-2 gap-3 md:gap-4">
-                                <!-- Suppliers will be dynamically loaded here -->
-                            </div>
-                            <button onclick="showAllSuppliers()" class="mt-4 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition text-sm font-medium">
-                                <i class="fas fa-eye mr-2"></i>View All Suppliers
-                            </button>
-                        </div>
-                        
                         <!-- Additional Product Info -->
                         <div class="bg-blue-50 rounded-2xl p-4 md:p-6 mb-6 md:mb-8">
                             <h4 class="text-lg md:text-xl font-bold text-slate-900 mb-3 md:mb-4 flex items-center gap-2">
-                                <i class="fas fa-cube text-blue-600"></i>Documentation Available
+                                <i class="fas fa-cube text-blue-600"></i>Specifications
                             </h4>
                             <div class="grid md:grid-cols-2 gap-4 md:gap-6">
                                 <div>
-                                    <h5 class="font-bold text-slate-800 mb-2">Technical Documents</h5>
-                                    <ul class="text-slate-600 space-y-1 text-sm md:text-base">
-                                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>Detailed technical data sheets</li>
-                                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>Material certification (EN 10204 3.1)</li>
-                                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>Dimensional drawings with tolerances</li>
-                                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>Pressure-temperature ratings</li>
-                                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>Installation and maintenance guides</li>
+                                    <h5 class="font-bold text-slate-800 mb-2">Technical Specifications</h5>
+                                    <ul class="text-slate-600 space-y-1 text-sm md:text-base" id="product-specs-list">
+                                        <!-- Specs will be populated -->
                                     </ul>
                                 </div>
                                 <div>
-                                    <h5 class="font-bold text-slate-800 mb-2">File Formats Available</h5>
-                                    <ul class="text-slate-600 space-y-1 text-sm md:text-base">
-                                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>PDF (Technical data sheets)</li>
-                                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>STEP (CAD integration)</li>
-                                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>DWG (AutoCAD compatible)</li>
-                                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>IGES (Engineering design)</li>
-                                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>Excel (Material specifications)</li>
+                                    <h5 class="font-bold text-slate-800 mb-2">Material Options</h5>
+                                    <ul class="text-slate-600 space-y-1 text-sm md:text-base" id="product-materials-list">
+                                        <!-- Materials will be populated -->
                                     </ul>
                                 </div>
                             </div>
@@ -3060,47 +2532,10 @@
                 <div class="grid lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12" id="spec-tables-container">
                     <!-- Tables dynamically injected here -->
                 </div>
-                
-                <!-- Standards Compliance -->
-                <div class="bg-slate-800/50 rounded-3xl p-6 md:p-8">
-                    <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 flex items-center gap-3">
-                        <i class="fas fa-certificate text-blue-400"></i>Standards & Compliance
-                    </h3>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                        <div class="bg-slate-900/50 p-4 md:p-5 rounded-2xl">
-                            <div class="text-blue-400 text-2xl mb-2">
-                                <i class="fas fa-balance-scale"></i>
-                            </div>
-                            <h4 class="font-bold text-base md:text-lg mb-2">ASME Standards</h4>
-                            <p class="text-slate-400 text-xs md:text-sm">B16.5, B16.47, B31.3, Section VIII Div. 1</p>
-                        </div>
-                        <div class="bg-slate-900/50 p-4 md:p-5 rounded-2xl">
-                            <div class="text-blue-400 text-2xl mb-2">
-                                <i class="fas fa-globe-europe"></i>
-                            </div>
-                            <h4 class="font-bold text-base md:text-lg mb-2">European Standards</h4>
-                            <p class="text-slate-400 text-xs md:text-sm">EN 1092-1, PED 2014/68/EU, ATEX</p>
-                        </div>
-                        <div class="bg-slate-900/50 p-4 md:p-5 rounded-2xl">
-                            <div class="text-blue-400 text-2xl mb-2">
-                                <i class="fas fa-industry"></i>
-                            </div>
-                            <h4 class="font-bold text-base md:text-lg mb-2">Material Standards</h4>
-                            <p class="text-slate-400 text-xs md:text-sm">ASTM A105, A182, A350, A694</p>
-                        </div>
-                        <div class="bg-slate-900/50 p-4 md:p-5 rounded-2xl">
-                            <div class="text-blue-400 text-2xl mb-2">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h4 class="font-bold text-base md:text-lg mb-2">Quality Certifications</h4>
-                            <p class="text-slate-400 text-xs md:text-sm">ISO 9001:2015, PED, NORSOK, API</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Product Gallery Section with Fixed Image Paths -->
+        <!-- Product Gallery Section -->
         <section id="product-gallery" class="py-12 md:py-24 bg-white reveal">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12 md:mb-16">
@@ -3109,124 +2544,12 @@
                     <p class="text-slate-600 max-w-3xl mx-auto text-base md:text-lg">Click on any product to view detailed specifications and technical information</p>
                 </div>
                 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    <!-- Long Weld Neck -->
-                    <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
-                        <div class="product-image-container" style="height: 200px;">
-                            <img src="long-weldneck.png" alt="Long Weld Neck Flange" onerror="handleImageError(this, 'Long Weld Neck')" style="object-fit: contain;">
-                        </div>
-                        <div class="p-4 md:p-6">
-                            <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Long Weld Neck Flange</h4>
-                            <p class="text-slate-600 mb-3 md:mb-4 text-sm md:text-base">ASME B16.5 Class 900 DN15 with extended hub design</p>
-                            <div class="flex gap-2 md:gap-3">
-                                <button onclick="updateProduct('lwn')" class="flex-1 py-2 md:py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition text-xs md:text-sm">
-                                    <i class="fas fa-info-circle mr-2"></i>View Details
-                                </button>
-                                <button onclick="checkAuthBeforeOrder('lwn')" class="flex-1 py-2 md:py-2.5 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300 transition text-xs md:text-sm">
-                                    <i class="fas fa-shopping-cart mr-2"></i>Order
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Weld Neck Flange -->
-                    <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
-                        <div class="product-image-container" style="height: 200px;">
-                            <img src="weld-neck.png" alt="Weld Neck Flange" onerror="handleImageError(this, 'Weld Neck')" style="object-fit: contain;">
-                        </div>
-                        <div class="p-4 md:p-6">
-                            <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Weld Neck Flange</h4>
-                            <p class="text-slate-600 mb-3 md:mb-4 text-sm md:text-base">High-pressure applications with tapered hub design</p>
-                            <div class="flex gap-2 md:gap-3">
-                                <button onclick="updateProduct('wnf')" class="flex-1 py-2 md:py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition text-xs md:text-sm">
-                                    <i class="fas fa-info-circle mr-2"></i>View Details
-                                </button>
-                                <button onclick="checkAuthBeforeOrder('wnf')" class="flex-1 py-2 md:py-2.5 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300 transition text-xs md:text-sm">
-                                    <i class="fas fa-shopping-cart mr-2"></i>Order
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slip-On Flange -->
-                    <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
-                        <div class="product-image-container" style="height: 200px;">
-                            <img src="slip-on-flange.png" alt="Slip-On Flange" onerror="handleImageError(this, 'Slip-On')" style="object-fit: contain;">
-                        </div>
-                        <div class="p-4 md:p-6">
-                            <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Slip-On Flange</h4>
-                            <p class="text-slate-600 mb-3 md:mb-4 text-sm md:text-base">Cost-effective solution for standard pressure duty</p>
-                            <div class="flex gap-2 md:gap-3">
-                                <button onclick="updateProduct('slipon')" class="flex-1 py-2 md:py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition text-xs md:text-sm">
-                                    <i class="fas fa-info-circle mr-2"></i>View Details
-                                </button>
-                                <button onclick="checkAuthBeforeOrder('slipon')" class="flex-1 py-2 md:py-2.5 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300 transition text-xs md:text-sm">
-                                    <i class="fas fa-shopping-cart mr-2"></i>Order
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Blind Flange -->
-                    <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
-                        <div class="product-image-container" style="height: 200px;">
-                            <img src="blind.png" alt="Blind Flange" onerror="handleImageError(this, 'Blind')" style="object-fit: contain;">
-                        </div>
-                        <div class="p-4 md:p-6">
-                            <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Blind Flange</h4>
-                            <p class="text-slate-600 mb-3 md:mb-4 text-sm md:text-base">System closure and pressure isolation</p>
-                            <div class="flex gap-2 md:gap-3">
-                                <button onclick="updateProduct('blind')" class="flex-1 py-2 md:py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition text-xs md:text-sm">
-                                    <i class="fas fa-info-circle mr-2"></i>View Details
-                                </button>
-                                <button onclick="checkAuthBeforeOrder('blind')" class="flex-1 py-2 md:py-2.5 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300 transition text-xs md:text-sm">
-                                    <i class="fas fa-shopping-cart mr-2"></i>Order
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Puddle Flange -->
-                    <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
-                        <div class="product-image-container" style="height: 200px;">
-                            <img src="puddle-flange.png" alt="Puddle Flange" onerror="handleImageError(this, 'Puddle')" style="object-fit: contain;">
-                        </div>
-                        <div class="p-4 md:p-6">
-                            <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Puddle Flange</h4>
-                            <p class="text-slate-600 mb-3 md:mb-4 text-sm md:text-base">Waterproofing for pipe penetrations</p>
-                            <div class="flex gap-2 md:gap-3">
-                                <button onclick="updateProduct('puddle')" class="flex-1 py-2 md:py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition text-xs md:text-sm">
-                                    <i class="fas fa-info-circle mr-2"></i>View Details
-                                </button>
-                                <button onclick="checkAuthBeforeOrder('puddle')" class="flex-1 py-2 md:py-2.5 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300 transition text-xs md:text-sm">
-                                    <i class="fas fa-shopping-cart mr-2"></i>Order
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Plasma CNC -->
-                    <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
-                        <div class="product-image-container" style="height: 200px;">
-                            <img src="plasma-cutting.png" alt="Plasma CNC Cutting" onerror="handleImageError(this, 'Plasma CNC')" style="object-fit: contain;">
-                        </div>
-                        <div class="p-4 md:p-6">
-                            <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">Plasma CNC Cutting</h4>
-                            <p class="text-slate-600 mb-3 md:mb-4 text-sm md:text-base">High-precision automated cutting service</p>
-                            <div class="flex gap-2 md:gap-3">
-                                <button onclick="updateProduct('plasma')" class="flex-1 py-2 md:py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition text-xs md:text-sm">
-                                    <i class="fas fa-info-circle mr-2"></i>View Details
-                                </button>
-                                <button onclick="checkAuthBeforeOrder('plasma')" class="flex-1 py-2 md:py-2.5 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300 transition text-xs md:text-sm">
-                                    <i class="fas fa-shopping-cart mr-2"></i>Order
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="gallery-products">
+                    <!-- Products will be loaded dynamically from API -->
                 </div>
                 
                 <div class="text-center mt-12 md:mt-16">
-                    <button onclick="showAllProducts()" class="px-6 md:px-8 py-3 md:py-3.5 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold rounded-xl hover:from-blue-700 hover:to-blue-900 transition shadow-lg text-sm md:text-base">
+                    <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" class="px-6 md:px-8 py-3 md:py-3.5 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold rounded-xl hover:from-blue-700 hover:to-blue-900 transition shadow-lg text-sm md:text-base">
                         <i class="fas fa-boxes mr-2"></i>View All Products Catalog
                     </button>
                 </div>
@@ -3404,12 +2727,8 @@
                     
                     <div>
                         <h4 class="font-bold text-lg mb-4 md:mb-6">Products</h4>
-                        <ul class="space-y-2 md:space-y-3 text-slate-400 text-sm">
-                            <li><a href="#" onclick="updateProduct('lwn'); return false;" class="hover:text-white transition">Long Weld Neck Flanges</a></li>
-                            <li><a href="#" onclick="updateProduct('wnf'); return false;" class="hover:text-white transition">Weld Neck Flanges</a></li>
-                            <li><a href="#" onclick="updateProduct('slipon'); return false;" class="hover:text-white transition">Slip-On Flanges</a></li>
-                            <li><a href="#" onclick="updateProduct('blind'); return false;" class="hover:text-white transition">Blind Flanges</a></li>
-                            <li><a href="#" onclick="updateProduct('plasma'); return false;" class="hover:text-white transition">Plasma CNC Cutting</a></li>
+                        <ul class="space-y-2 md:space-y-3 text-slate-400 text-sm" id="footer-products">
+                            <!-- Products will be loaded dynamically -->
                         </ul>
                     </div>
                     
@@ -3417,9 +2736,7 @@
                         <h4 class="font-bold text-lg mb-4 md:mb-6">Resources</h4>
                         <ul class="space-y-2 md:space-y-3 text-slate-400 text-sm">
                             <li><a href="#" onclick="document.getElementById('specifications').scrollIntoView({behavior:'smooth'}); return false;" class="hover:text-white transition">Technical Specifications</a></li>
-                            <li><a href="#" onclick="downloadProductFiles(); return false;" class="hover:text-white transition">CAD Drawings</a></li>
                             <li><a href="#" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'}); return false;" class="hover:text-white transition">Material Selection Guide</a></li>
-                            <li><a href="#" class="hover:text-white transition">Installation Manuals</a></li>
                             <li><a href="#" onclick="showAllProducts(); return false;" class="hover:text-white transition">Product Catalog</a></li>
                         </ul>
                     </div>
@@ -3429,8 +2746,6 @@
                         <ul class="space-y-2 md:space-y-3 text-slate-400 text-sm">
                             <li><a href="#" onclick="checkAuthBeforeOrder(); return false;" class="hover:text-white transition">Connect with Suppliers</a></li>
                             <li><a href="#" onclick="openTrackingModal(); return false;" class="hover:text-white transition">Track Order</a></li>
-                            <li><a href="#" class="hover:text-white transition">Payment Terms</a></li>
-                            <li><a href="#" class="hover:text-white transition">Order Tracking</a></li>
                             <li><a href="#" onclick="openDashboard(); return false;" class="hover:text-white transition">Supplier Portal</a></li>
                         </ul>
                     </div>
@@ -3455,10 +2770,8 @@
     </div>
 
     <script>
-        // ========== CONFIGURATION ==========
-        const API_BASE_URL = "http://localhost:8080"; // Will be moved to environment variable
-        const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 minutes in milliseconds
-        let sessionTimeoutId = null;
+        // ========== API CONFIGURATION ==========
+        const API_BASE_URL = 'https://my-backend-production-c587.up.railway.app/api';
 
         // ========== GLOBAL STATE MANAGEMENT ==========
         let appState = {
@@ -3471,416 +2784,150 @@
             selectedSupplier: null,
             userOrders: [],
             chatMessages: {},
-            charts: {} // Store chart instances for cleanup
+            authToken: null
         };
 
-        // ========== SUPPLIER DATA (Will be moved to backend) ==========
-        const supplierData = {
-            'lwn': [
-                {
-                    id: 'sup1',
-                    name: 'Precision Flange Co.',
-                    company: 'Precision Manufacturing Ltd.',
-                    rating: 4.8,
-                    reviews: 142,
-                    responseTime: '2 hours',
-                    specialization: ['ASME B16.5', 'High Pressure', 'Pressure Vessel'],
-                    location: 'Mumbai, India',
-                    email: 'sales@precisionflange.com',
-                    phone: '+91 9876543210',
-                    status: 'Online',
-                    minOrder: '₹50,000',
-                    leadTime: '2-3 weeks'
-                },
-                {
-                    id: 'sup2',
-                    name: 'SteelTech Industries',
-                    company: 'SteelTech Manufacturing',
-                    rating: 4.6,
-                    reviews: 89,
-                    responseTime: '4 hours',
-                    specialization: ['Carbon Steel', 'Stainless Steel', 'Alloy'],
-                    location: 'Pune, India',
-                    email: 'orders@steeltech.com',
-                    phone: '+91 9876543211',
-                    status: 'Online',
-                    minOrder: '₹25,000',
-                    leadTime: '3-4 weeks'
-                },
-                {
-                    id: 'sup3',
-                    name: 'Global Forge Ltd.',
-                    company: 'Global Forge Corporation',
-                    rating: 4.9,
-                    reviews: 256,
-                    responseTime: '1 hour',
-                    specialization: ['Forged Flanges', 'Heavy Duty', 'Custom'],
-                    location: 'Delhi, India',
-                    email: 'info@globalforge.com',
-                    phone: '+91 9876543212',
-                    status: 'Away',
-                    minOrder: '₹1,00,000',
-                    leadTime: '4-5 weeks'
-                }
-            ],
-            'wnf': [
-                {
-                    id: 'sup4',
-                    name: 'WeldMaster Corp',
-                    company: 'WeldMaster Industries',
-                    rating: 4.7,
-                    reviews: 178,
-                    responseTime: '3 hours',
-                    specialization: ['Weld Neck', 'High Temperature', 'Cryogenic'],
-                    location: 'Chennai, India',
-                    email: 'sales@weldmaster.com',
-                    phone: '+91 9876543213',
-                    status: 'Online',
-                    minOrder: '₹75,000',
-                    leadTime: '2-3 weeks'
-                }
-            ],
-            'slipon': [
-                {
-                    id: 'sup5',
-                    name: 'Standard Flange Co.',
-                    company: 'Standard Manufacturing',
-                    rating: 4.5,
-                    reviews: 95,
-                    responseTime: '6 hours',
-                    specialization: ['Slip-On', 'Standard Pressure', 'Budget'],
-                    location: 'Ahmedabad, India',
-                    email: 'info@standardflange.com',
-                    phone: '+91 9876543214',
-                    status: 'Online',
-                    minOrder: '₹20,000',
-                    leadTime: '1-2 weeks'
-                }
-            ],
-            'blind': [
-                {
-                    id: 'sup6',
-                    name: 'Blind Flange Specialists',
-                    company: 'BFS Manufacturing',
-                    rating: 4.8,
-                    reviews: 112,
-                    responseTime: '2 hours',
-                    specialization: ['Blind Flanges', 'Pressure Isolation', 'Custom'],
-                    location: 'Bangalore, India',
-                    email: 'sales@bfs.com',
-                    phone: '+91 9876543215',
-                    status: 'Online',
-                    minOrder: '₹30,000',
-                    leadTime: '2-3 weeks'
-                }
-            ]
-        };
-        
-        // ========== PRODUCT DATA ==========
-        const productData = {
-            lwn: {
-                title: "Long Weld Neck Flange (LWN)",
-                desc: "ASME B16.5 Class 900 DN15 Long Weld Neck flange with extended hub design for pressure vessel applications. Engineered for high-pressure systems where reliability and structural integrity are critical. Manufactured with full traceability and compliance to international standards.",
-                features: [
-                    "ASME B16.5 Class 900 compliant",
-                    "Nominal Diameter: DN15 (1/2\")",
-                    "Extended hub for stress distribution",
-                    "Full material traceability",
-                    "Precision machined sealing surface",
-                    "Ideal for pressure vessel connections"
-                ],
-                specs: {
-                    general: {
-                        "Reference": "ASMEB16.5-900-DN15",
-                        "Standard": "ASME B16.5",
-                        "Nominal Pressure": "150",
-                        "Nominal Diameter": "15 mm (1/2\")",
-                        "Design": "Flange ASME B16.5 - ASME 900 - Long Weld Neck",
-                        "Supplier": "CAMAN",
-                        "OmniClass23": "23.27.45.29"
-                    },
-                    materials: {
-                        "Stainless Steel": "ASTM A182 F316/316L, F304/304L",
-                        "Carbon Steel": "ASTM A105, A350 LF2",
-                        "Alloy Steel": "ASTM A182 F11, F22, F91",
-                        "Duplex Steel": "A182 F51 (2205), F53 (2507)",
-                        "Special Alloys": "Inconel 625, Monel 400, Hastelloy"
-                    }
-                }
-            },
-            wnf: {
-                title: "Weld Neck Flange (WNF)",
-                desc: "High-performance flanges engineered for severe service conditions, featuring a long tapered hub that reduces stress concentrations and improves fatigue resistance. Ideal for high-pressure, high-temperature, and cryogenic applications.",
-                features: [
-                    "Designed for high-pressure systems (up to 2500#)",
-                    "Long tapered hub reduces stress concentration",
-                    "Matches pipe internal diameter for smooth flow",
-                    "Certified for high-temperature and cryogenic service",
-                    "ASME B16.5 compliant design",
-                    "Available with RF, RTJ, or FF faces"
-                ],
-                specs: {
-                    general: {
-                        "Size Range": "1/2\" to 72\" (DN15 to DN1800)",
-                        "Standards": "ANSI B16.5, B16.47, ASME Section VIII",
-                        "Pressure Ratings": "150# to 2500# (PN6 to PN420)",
-                        "Face Types": "RF, RTJ, FF, LMF",
-                        "Bolt Circle": "Per ASME B16.5 tables",
-                        "Thickness": "Schedule 10 to XXS"
-                    },
-                    materials: {
-                        "Stainless Steel": "A182 F316/304L, F316H, F321",
-                        "Carbon Steel": "A105, A350 LF2, A694 F52",
-                        "Alloy Steel": "A182 F11, F22, F91",
-                        "Duplex/Super Duplex": "F51 (2205), F53 (2507)",
-                        "Nickel Alloys": "Inconel 625, Monel 400, Hastelloy"
-                    }
-                }
-            },
-            slipon: {
-                title: "Slip-On Flange",
-                desc: "A cost-effective flange solution that slides over the pipe and is welded both inside and outside for strength. Easier to align than weld neck flanges and suitable for lower pressure applications.",
-                features: [
-                    "Lower installation cost and time",
-                    "Easy alignment during installation",
-                    "Suitable for standard pressure duty",
-                    "Internal and external welding for strength",
-                    "Available in raised face or flat face"
-                ],
-                specs: {
-                    general: {
-                        "Size Range": "1/2\" to 60\" (DN15 to DN1500)",
-                        "Standards": "ANSI B16.5, B16.47, EN 1092-1",
-                        "Pressure Ratings": "150# to 600# (PN6 to PN100)",
-                        "Face Types": "RF, FF",
-                        "Hub Length": "Shorter than weld neck",
-                        "Weight": "Approximately 1/3 less than WNF"
-                    },
-                    materials: {
-                        "Stainless Steel": "A182 F304L, F316L",
-                        "Carbon Steel": "A105, A350 LF2",
-                        "Alloy Steel": "Limited grades available",
-                        "Mild Steel": "S235JR, S355JR"
-                    }
-                }
-            },
-            blind: {
-                title: "Blind Flange",
-                desc: "Used to seal the end of a piping system, pressure vessel, or valve. Designed to handle high stress from internal pressure and provide a positive shut-off for maintenance or future expansion.",
-                features: [
-                    "Pressure isolation and system closure",
-                    "Removable for maintenance access",
-                    "Solid forged construction for strength",
-                    "Critical safety shut-off component",
-                    "Available with or without jack screw holes"
-                ],
-                specs: {
-                    general: {
-                        "Size Range": "1/2\" to 72\" (DN15 to DN1800)",
-                        "Standards": "B16.5, B16.47, EN 1092-1",
-                        "Pressure Ratings": "150# to 2500#",
-                        "Face Types": "RF, RTJ, FF",
-                        "Thickness": "Per ASME B16.5 Table 8",
-                        "Test Pressure": "1.5x rated pressure"
-                    },
-                    materials: {
-                        "Stainless Steel": "A182 F316L, F304L",
-                        "Carbon Steel": "A105, A350 LF2",
-                        "Alloy Steel": "A182 F22, F11",
-                        "Lining Options": "Rubber, PTFE, Glass"
-                    }
-                }
-            },
-            puddle: {
-                title: "Puddle Flange",
-                desc: "Specialty flange used in construction to prevent fluid seepage where pipes pass through concrete walls or foundations. Provides a watertight seal between pipe and structure.",
-                features: [
-                    "Waterproofing for pipe penetrations",
-                    "Cast iron or fabricated construction",
-                    "Civil engineering standard compliance",
-                    "Watertight seal with concrete",
-                    "Available with or without anchoring studs"
-                ],
-                specs: {
-                    general: {
-                        "Size Range": "DN50 to DN2000",
-                        "Standards": "EN1092-1, BS4504, AWWA",
-                        "Pressure Ratings": "PN6, PN10, PN16",
-                        "Application": "Water Treatment, Sewage",
-                        "Seal Type": "Rubber gasket or mechanical"
-                    },
-                    materials: {
-                        "Stainless Steel": "316 / 304, 1.4404 / 1.4301",
-                        "Carbon Steel": "Galvanized S235, S355",
-                        "Coating": "Fusion Bonded Epoxy, Hot Dip Galv",
-                        "Other Materials": "Ductile Iron EN-GJS-400-15"
-                    }
-                }
-            },
-            plasma: {
-                title: "Plasma CNC Cutting",
-                desc: "High-precision automated plasma cutting service for custom plate shapes, flange blanks, and structural components with tight tolerances and superior edge quality.",
-                features: [
-                    "Cutting capacity up to 100mm thickness",
-                    "Complex CAD geometry translation",
-                    "Fast turnaround (3-5 business days)",
-                    "Superior edge finish with minimal dross",
-                    "Nesting optimization for material efficiency"
-                ],
-                specs: {
-                    general: {
-                        "Max Plate Size": "3000mm x 6000mm (10' x 20')",
-                        "Thickness Range": "3mm to 100mm (1/8\" to 4\")",
-                        "Tolerance": "± 1.5mm (± 0.060\")",
-                        "Edge Quality": "Ra 25-50 μm, minimal HAZ",
-                        "Bevel Cutting": "Up to 45 degrees"
-                    },
-                    materials: {
-                        "Mild Steel": "S235, S355, A36, A572",
-                        "Stainless Steel": "304, 316, 310, 321",
-                        "Aluminium": "5083, 6082, 5052",
-                        "Wear Plate": "Hardox 400/500, AR400/500"
-                    }
-                }
-            },
-            profile: {
-                title: "Profile Cutting Services",
-                desc: "Heavy-duty oxy-fuel profile cutting for thick carbon steel sections, base plates, and structural components used in bridges, buildings, and heavy machinery.",
-                features: [
-                    "Extreme thickness capability (300mm+)",
-                    "Structural integrity preservation",
-                    "Massive scale capacity",
-                    "Precision oxy-fuel technology",
-                    "Straightness within 1mm per meter"
-                ],
-                specs: {
-                    general: {
-                        "Max Thickness": "350mm (14\") carbon steel",
-                        "Width Capacity": "Up to 4000mm (13')",
-                        "Accuracy": "± 2mm (± 0.080\")",
-                        "Beveling": "Available up to 30 degrees",
-                        "Surface Finish": "As-cut or machined"
-                    },
-                    materials: {
-                        "Structural Steel": "S275, S355, A992",
-                        "Pressure Vessel": "A516 Grade 70, A537",
-                        "Marine Grade": "Grade A, AH32, DH36",
-                        "Hardness": "Consistent through-cut up to 400 HB"
-                    }
-                }
-            }
-        };
-
-        // ========== UTILITY FUNCTIONS ==========
-        
-        function showLoading(message = 'Loading...') {
-            const overlay = document.getElementById('loading-overlay');
-            const messageEl = document.getElementById('loading-message');
-            if (overlay && messageEl) {
-                messageEl.textContent = message;
-                overlay.classList.remove('hidden');
-            }
-        }
-
-        function hideLoading() {
-            const overlay = document.getElementById('loading-overlay');
-            if (overlay) {
-                overlay.classList.add('hidden');
-            }
-        }
-
-        function showError(containerId, message) {
-            const container = document.getElementById(containerId);
-            if (container) {
-                container.innerHTML = `
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span>${message}</span>
-                `;
-                container.classList.remove('hidden');
-                
-                // Auto hide after 5 seconds
-                setTimeout(() => {
-                    container.classList.add('hidden');
-                }, 5000);
-            } else {
-                alert(message);
-            }
-        }
-
-        function showSuccess(containerId, message) {
-            const container = document.getElementById(containerId);
-            if (container) {
-                container.innerHTML = `
-                    <i class="fas fa-check-circle"></i>
-                    <span>${message}</span>
-                `;
-                container.classList.remove('hidden');
-                container.className = 'success-message';
-                
-                setTimeout(() => {
-                    container.classList.add('hidden');
-                }, 5000);
-            }
-        }
-
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-
-        function validatePhone(phone) {
-            const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
-            return re.test(phone);
-        }
-
-        function validateRequired(value) {
-            return value && value.trim() !== '';
-        }
-
-        function clearValidationErrors() {
-            document.querySelectorAll('.validation-message').forEach(el => {
-                el.classList.add('hidden');
-                el.textContent = '';
-            });
-            document.querySelectorAll('.input-error').forEach(el => {
-                el.classList.remove('input-error');
-            });
-        }
-
-        function showFieldError(fieldId, message) {
-            const field = document.getElementById(fieldId);
-            const errorEl = document.getElementById(fieldId + '-error');
-            if (field && errorEl) {
-                field.classList.add('input-error');
-                errorEl.textContent = message;
-                errorEl.classList.remove('hidden');
-            }
-        }
-
-        // ========== SESSION MANAGEMENT ==========
-        
-        function startSessionTimer() {
-            if (sessionTimeoutId) {
-                clearTimeout(sessionTimeoutId);
+        // ========== API HELPER FUNCTIONS ==========
+        async function apiRequest(endpoint, options = {}) {
+            const url = `${API_BASE_URL}${endpoint}`;
+            const headers = {
+                'Content-Type': 'application/json',
+                ...options.headers
+            };
+            
+            if (appState.authToken) {
+                headers['Authorization'] = `Bearer ${appState.authToken}`;
             }
             
-            sessionTimeoutId = setTimeout(() => {
-                if (appState.isAuthenticated) {
-                    logout('Session expired. Please login again.');
+            const config = {
+                ...options,
+                headers
+            };
+            
+            try {
+                const response = await fetch(url, config);
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.message || 'API request failed');
                 }
-            }, SESSION_TIMEOUT);
+                
+                return data;
+            } catch (error) {
+                console.error('API Error:', error);
+                throw error;
+            }
         }
 
-        function resetSessionTimer() {
-            if (appState.isAuthenticated) {
-                startSessionTimer();
+        // ========== PRODUCT API FUNCTIONS ==========
+        async function getProducts() {
+            try {
+                const data = await apiRequest('/products');
+                return data.products || [];
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
+                return [];
+            }
+        }
+
+        async function getSupplierProducts(supplierId) {
+            try {
+                const data = await apiRequest(`/products/supplier/${supplierId}`);
+                return data.products || [];
+            } catch (error) {
+                console.error('Failed to fetch supplier products:', error);
+                return [];
+            }
+        }
+
+        async function saveProduct(product) {
+            try {
+                const method = product.id ? 'PUT' : 'POST';
+                const endpoint = product.id ? `/products/${product.id}` : '/products';
+                
+                const data = await apiRequest(endpoint, {
+                    method: method,
+                    body: JSON.stringify(product)
+                });
+                
+                return data.product;
+            } catch (error) {
+                console.error('Failed to save product:', error);
+                throw error;
+            }
+        }
+
+        async function deleteProduct(productId) {
+            try {
+                await apiRequest(`/products/${productId}`, {
+                    method: 'DELETE'
+                });
+            } catch (error) {
+                console.error('Failed to delete product:', error);
+                throw error;
+            }
+        }
+
+        // ========== ORDER API FUNCTIONS ==========
+        async function getOrders() {
+            try {
+                const data = await apiRequest('/orders');
+                return data.orders || [];
+            } catch (error) {
+                console.error('Failed to fetch orders:', error);
+                return [];
+            }
+        }
+
+        async function saveOrder(order) {
+            try {
+                const data = await apiRequest('/orders', {
+                    method: 'POST',
+                    body: JSON.stringify(order)
+                });
+                return data.order;
+            } catch (error) {
+                console.error('Failed to save order:', error);
+                throw error;
+            }
+        }
+
+        async function getSupplierOrders(supplierId) {
+            try {
+                const data = await apiRequest(`/orders/supplier/${supplierId}`);
+                return data.orders || [];
+            } catch (error) {
+                console.error('Failed to fetch supplier orders:', error);
+                return [];
+            }
+        }
+
+        async function getCustomerOrders(customerEmail) {
+            try {
+                const data = await apiRequest(`/orders/customer/${customerEmail}`);
+                return data.orders || [];
+            } catch (error) {
+                console.error('Failed to fetch customer orders:', error);
+                return [];
+            }
+        }
+
+        async function updateOrderStatus(orderId, status) {
+            try {
+                const data = await apiRequest(`/orders/${orderId}/status`, {
+                    method: 'PUT',
+                    body: JSON.stringify({ status })
+                });
+                return data.order;
+            } catch (error) {
+                console.error('Failed to update order status:', error);
+                throw error;
             }
         }
 
         // ========== AUTHENTICATION FUNCTIONS ==========
         
         function initializeAuth() {
-            // Check localStorage only (single source of truth)
             const token = localStorage.getItem('authToken');
             const userData = localStorage.getItem('userData');
             
@@ -3890,20 +2937,21 @@
                     appState.isAuthenticated = true;
                     appState.currentUserType = appState.currentUser.type || 'partner';
                     appState.isSupplier = appState.currentUser.type === 'supplier';
+                    appState.authToken = token;
                     
                     document.body.classList.add('authenticated');
                     document.body.classList.remove('visitor-mode', 'require-auth');
                     document.getElementById('auth-overlay').style.display = 'none';
                     
                     updateUIAfterAuth();
-                    startSessionTimer();
+                    fetchAndUpdateProducts();
                 } catch (e) {
                     console.error('Failed to parse user data:', e);
                     clearAuth();
                 }
             } else {
-                // Default to visitor mode
-                clearAuth(true); // true for initial load to keep visitor mode
+                clearAuth(true);
+                fetchAndUpdateProducts();
             }
         }
 
@@ -3915,36 +2963,29 @@
             appState.currentUser = { type: 'visitor' };
             appState.currentUserType = 'visitor';
             appState.isSupplier = false;
+            appState.authToken = null;
             
-            // For initial load, keep visitor mode without auth overlay
             if (keepVisitorMode) {
                 document.body.classList.add('visitor-mode');
                 document.body.classList.remove('authenticated', 'require-auth');
                 document.getElementById('auth-overlay').style.display = 'none';
             } else {
-                // When logging out, show auth overlay
                 document.body.classList.add('require-auth');
                 document.body.classList.remove('authenticated', 'visitor-mode');
                 document.getElementById('auth-overlay').style.display = 'flex';
             }
             
-            if (sessionTimeoutId) {
-                clearTimeout(sessionTimeoutId);
-                sessionTimeoutId = null;
-            }
-            
             updateUIAfterAuth();
         }
 
-        function loginUser(event) {
+        async function loginUser(event) {
             event.preventDefault();
             clearValidationErrors();
             
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
-            const rememberMe = document.getElementById('remember-me').checked;
 
-            // Validation
+            // Simple validation
             let isValid = true;
             
             if (!validateEmail(email)) {
@@ -3961,40 +3002,47 @@
 
             showLoading('Logging in...');
 
-            // Simulate API call
-            setTimeout(() => {
-                // Demo login (will be replaced with actual API)
-                if (email && password) {
-                    const userData = {
-                        id: '1',
-                        email: email,
-                        type: appState.currentUserType || 'partner',
-                        name: email.split('@')[0]
-                    };
-                    
-                    localStorage.setItem('authToken', 'demo-token-' + Date.now());
-                    localStorage.setItem('userData', JSON.stringify(userData));
-                    
-                    appState.isAuthenticated = true;
-                    appState.currentUser = userData;
-                    
-                    document.body.classList.add('authenticated');
-                    document.body.classList.remove('visitor-mode', 'require-auth');
-                    document.getElementById('auth-overlay').style.display = 'none';
-                    
-                    updateUIAfterAuth();
-                    startSessionTimer();
-                    
-                    showSuccess('login-error-container', 'Login successful!');
-                } else {
-                    showError('login-error-container', 'Invalid credentials');
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email,
+                        password,
+                        userType: appState.currentUserType || 'partner'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || 'Login failed');
                 }
+
+                localStorage.setItem('authToken', data.token);
+                localStorage.setItem('userData', JSON.stringify(data.user));
                 
+                appState.isAuthenticated = true;
+                appState.currentUser = data.user;
+                appState.isSupplier = data.user.type === 'supplier';
+                appState.authToken = data.token;
+                
+                document.body.classList.add('authenticated');
+                document.body.classList.remove('visitor-mode', 'require-auth');
+                document.getElementById('auth-overlay').style.display = 'none';
+                
+                updateUIAfterAuth();
+                await fetchAndUpdateProducts();
+                
+                showSuccess('login-error-container', 'Login successful!');
+            } catch (error) {
+                showError('login-error-container', error.message);
+            } finally {
                 hideLoading();
-            }, 1000);
+            }
         }
 
-        function signupUser(event) {
+        async function signupUser(event) {
             event.preventDefault();
             clearValidationErrors();
             
@@ -4004,6 +3052,16 @@
             const password = document.getElementById('signup-password').value;
             const company = document.getElementById('signup-company').value;
             const industry = document.getElementById('signup-industry').value;
+            
+            // Get selected account type
+            const accountTypeRadios = document.querySelectorAll('input[name="signup-type"]');
+            let accountType = 'partner';
+            for (const radio of accountTypeRadios) {
+                if (radio.checked) {
+                    accountType = radio.value;
+                    break;
+                }
+            }
 
             // Validation
             let isValid = true;
@@ -4037,39 +3095,53 @@
 
             showLoading('Creating account...');
 
-            // Simulate API call
-            setTimeout(() => {
-                const userData = {
-                    id: Date.now().toString(),
-                    email: email,
-                    type: 'partner',
-                    name: firstName + ' ' + lastName,
-                    company: company,
-                    industry: industry
-                };
-                
-                localStorage.setItem('authToken', 'demo-token-' + Date.now());
-                localStorage.setItem('userData', JSON.stringify(userData));
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        firstName,
+                        lastName,
+                        email,
+                        password,
+                        company,
+                        industry,
+                        userType: accountType
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || 'Registration failed');
+                }
+
+                localStorage.setItem('authToken', data.token);
+                localStorage.setItem('userData', JSON.stringify(data.user));
                 
                 appState.isAuthenticated = true;
-                appState.currentUser = userData;
+                appState.currentUser = data.user;
+                appState.isSupplier = accountType === 'supplier';
+                appState.authToken = data.token;
                 
                 document.body.classList.add('authenticated');
                 document.body.classList.remove('visitor-mode', 'require-auth');
                 document.getElementById('auth-overlay').style.display = 'none';
                 
                 updateUIAfterAuth();
-                startSessionTimer();
+                await fetchAndUpdateProducts();
                 
                 showSuccess('signup-error-container', 'Account created successfully!');
+            } catch (error) {
+                showError('signup-error-container', error.message);
+            } finally {
                 hideLoading();
-            }, 1500);
+            }
         }
 
         function handleVisitor(e) {
             if(e) e.preventDefault();
             
-            // Clear any existing auth state
             localStorage.removeItem('authToken');
             localStorage.removeItem('userData');
             
@@ -4077,763 +3149,556 @@
             appState.currentUser = { type: 'visitor' };
             appState.currentUserType = 'visitor';
             appState.isSupplier = false;
+            appState.authToken = null;
             
-            // Set visitor mode
             document.body.classList.add('visitor-mode');
             document.body.classList.remove('authenticated', 'require-auth');
             document.getElementById('auth-overlay').style.display = 'none';
             
             updateUIAfterAuth();
+            fetchAndUpdateProducts();
             
             showSuccess('login-error-container', 'Continuing as visitor');
         }
 
         function logout(message = 'Logged out successfully') {
-            clearAuth(false); // false to show auth overlay
+            clearAuth(false);
             closeDashboard();
             closeOrderModal();
             closeTrackingModal();
             closeChat();
+            fetchAndUpdateProducts();
             showSuccess('login-error-container', message);
         }
 
-        // ========== UI UPDATE FUNCTIONS ==========
+        // ========== PRODUCT FETCHING AND UPDATING ==========
         
-        function updateUIAfterAuth() {
-            const statusBadge = document.getElementById('user-status');
-            const mobileStatus = document.getElementById('mobile-user-status');
+        async function fetchAndUpdateProducts() {
+            try {
+                const products = await getProducts();
+                updateProductChips(products);
+                updateProductGallery(products);
+                updateProductSelect(products);
+                if (products.length > 0) {
+                    updateCurrentProduct(appState.currentProductKey, products);
+                }
+                updateFooterProducts(products);
+                
+                if (appState.isAuthenticated && appState.isSupplier) {
+                    updateDashboardData();
+                }
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
+            }
+        }
+
+        function updateProductChips(products) {
+            const chipsContainer = document.getElementById('suggestion-bar');
+            if (!chipsContainer) return;
             
-            if (appState.isAuthenticated && appState.currentUser.type !== 'visitor') {
-                statusBadge.innerHTML = `<i class="fas fa-user-shield mr-1"></i>${appState.currentUser.type === 'supplier' ? 'Supplier' : 'Partner'}`;
-                mobileStatus.innerHTML = appState.currentUser.type === 'supplier' ? 'Supplier' : 'Partner';
-                
-                // Show relevant buttons
-                const logoutBtn = document.getElementById('logout-btn');
-                const mobileLogoutBtn = document.getElementById('mobile-logout-btn');
-                const loginBtn = document.getElementById('login-btn');
-                const mobileLoginBtn = document.getElementById('mobile-login-btn');
-                const profileBtn = document.getElementById('profile-btn');
-                const mobileProfileLink = document.getElementById('mobile-profile-link');
-                const dashboardBtn = document.getElementById('dashboard-btn');
-                const mobileDashboardLink = document.getElementById('mobile-dashboard-link');
-                const supplierDashboardBtn = document.getElementById('supplier-dashboard-btn');
-                const mobileSupplierDashboardLink = document.getElementById('mobile-supplier-dashboard-link');
-                
-                if (logoutBtn) logoutBtn.classList.remove('hidden');
-                if (mobileLogoutBtn) mobileLogoutBtn.classList.remove('hidden');
-                if (loginBtn) loginBtn.classList.add('hidden');
-                if (mobileLoginBtn) mobileLoginBtn.classList.add('hidden');
-                if (profileBtn) profileBtn.classList.remove('hidden');
-                if (mobileProfileLink) mobileProfileLink.classList.remove('hidden');
-                
-                if (appState.currentUser.type === 'supplier') {
-                    if (supplierDashboardBtn) supplierDashboardBtn.classList.remove('hidden');
-                    if (mobileSupplierDashboardLink) mobileSupplierDashboardLink.classList.remove('hidden');
-                    if (dashboardBtn) dashboardBtn.classList.add('hidden');
-                    if (mobileDashboardLink) mobileDashboardLink.classList.add('hidden');
-                } else {
-                    if (dashboardBtn) dashboardBtn.classList.remove('hidden');
-                    if (mobileDashboardLink) mobileDashboardLink.classList.remove('hidden');
-                    if (supplierDashboardBtn) supplierDashboardBtn.classList.add('hidden');
-                    if (mobileSupplierDashboardLink) mobileSupplierDashboardLink.classList.add('hidden');
-                }
-            } else {
-                // Visitor mode
-                statusBadge.innerHTML = '<i class="fas fa-user mr-1"></i>Visitor';
-                mobileStatus.innerHTML = 'Visitor';
-                
-                // Hide authenticated buttons
-                const logoutBtn = document.getElementById('logout-btn');
-                const mobileLogoutBtn = document.getElementById('mobile-logout-btn');
-                const loginBtn = document.getElementById('login-btn');
-                const mobileLoginBtn = document.getElementById('mobile-login-btn');
-                const profileBtn = document.getElementById('profile-btn');
-                const mobileProfileLink = document.getElementById('mobile-profile-link');
-                const dashboardBtn = document.getElementById('dashboard-btn');
-                const mobileDashboardLink = document.getElementById('mobile-dashboard-link');
-                const supplierDashboardBtn = document.getElementById('supplier-dashboard-btn');
-                const mobileSupplierDashboardLink = document.getElementById('mobile-supplier-dashboard-link');
-                
-                if (logoutBtn) logoutBtn.classList.add('hidden');
-                if (mobileLogoutBtn) mobileLogoutBtn.classList.add('hidden');
-                if (loginBtn) loginBtn.classList.remove('hidden');
-                if (mobileLoginBtn) mobileLoginBtn.classList.remove('hidden');
-                if (profileBtn) profileBtn.classList.add('hidden');
-                if (mobileProfileLink) mobileProfileLink.classList.add('hidden');
-                if (dashboardBtn) dashboardBtn.classList.add('hidden');
-                if (mobileDashboardLink) mobileDashboardLink.classList.add('hidden');
-                if (supplierDashboardBtn) supplierDashboardBtn.classList.add('hidden');
-                if (mobileSupplierDashboardLink) mobileSupplierDashboardLink.classList.add('hidden');
-            }
-        }
-
-        function toggleAuthView(view) {
-            const loginForm = document.getElementById('login-form');
-            const signupForm = document.getElementById('signup-form');
-            if (view === 'login') {
-                loginForm.classList.remove('hidden');
-                signupForm.classList.add('hidden');
-            } else {
-                loginForm.classList.add('hidden');
-                signupForm.classList.remove('hidden');
-            }
-        }
-        
-        function openAuthModal() {
-            document.body.classList.add('require-auth');
-            document.body.classList.remove('visitor-mode');
-            document.getElementById('auth-overlay').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeAuth() {
-            // If we're closing auth without authenticating, go back to visitor mode
-            if (!appState.isAuthenticated) {
-                document.body.classList.add('visitor-mode');
-                document.body.classList.remove('require-auth');
-            }
-            document.getElementById('auth-overlay').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function setUserType(type) {
-            appState.currentUserType = type;
-            const buttons = document.querySelectorAll('#login-form button[onclick^="setUserType"]');
-            buttons.forEach(btn => {
-                if (btn.textContent.includes(type === 'partner' ? 'Partner' : 'Supplier')) {
-                    btn.classList.add('border-blue-200', 'bg-blue-50', 'text-blue-700');
-                    btn.classList.remove('border-slate-200', 'hover:border-blue-200', 'hover:bg-blue-50');
-                } else {
-                    btn.classList.remove('border-blue-200', 'bg-blue-50', 'text-blue-700');
-                    btn.classList.add('border-slate-200', 'hover:border-blue-200', 'hover:bg-blue-50');
-                }
-            });
-        }
-
-        // ========== MOBILE MENU ==========
-        
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const overlay = document.getElementById('mobile-menu-overlay');
-            
-            if (menu && overlay) {
-                if (menu.classList.contains('active')) {
-                    menu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                } else {
-                    menu.classList.add('active');
-                    overlay.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            }
-        }
-
-        // ========== CHAT FUNCTIONS ==========
-        
-        function openChat(supplier) {
-            if (!appState.isAuthenticated || appState.currentUser.type === 'visitor') {
-                showError('login-error-container', 'Please login to chat with suppliers.');
-                openAuthModal();
+            if (products.length === 0) {
+                chipsContainer.innerHTML = '<div class="text-slate-500">No products available</div>';
                 return;
             }
             
-            appState.selectedSupplier = supplier;
-            
-            const chatModal = document.getElementById('chat-modal');
-            const chatName = document.getElementById('chat-supplier-name');
-            const chatStatus = document.getElementById('chat-supplier-status');
-            
-            if (chatModal) chatModal.classList.add('active');
-            if (chatName) chatName.textContent = supplier.name;
-            if (chatStatus) chatStatus.textContent = supplier.status;
-            
-            loadChatMessages();
-        }
-        
-        function closeChat() {
-            const chatModal = document.getElementById('chat-modal');
-            if (chatModal) chatModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function loadChatMessages() {
-            const supplierId = appState.selectedSupplier ? appState.selectedSupplier.id : 'default';
-            
-            if (!appState.chatMessages[supplierId]) {
-                const timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                appState.chatMessages[supplierId] = [
-                    {
-                        id: 1,
-                        sender: 'supplier',
-                        text: `Hello! I'm from ${appState.selectedSupplier ? appState.selectedSupplier.name : 'our company'}. How can I help you?`,
-                        time: timestamp
-                    }
-                ];
-            }
-            
-            updateChatDisplay(supplierId);
-        }
-        
-        function updateChatDisplay(supplierId) {
-            const chatContainer = document.getElementById('chat-messages');
-            if (!chatContainer) return;
-            
-            const messages = appState.chatMessages[supplierId] || [];
-            
-            chatContainer.innerHTML = messages.map(msg => `
-                <div class="chat-message ${msg.sender === 'user' ? 'sent' : ''}">
-                    <div class="bg-${msg.sender === 'user' ? 'blue' : 'slate'}-100 p-3 rounded-lg">
-                        <p class="text-slate-800">${msg.text}</p>
-                        <p class="text-xs text-slate-500 mt-1 text-right">${msg.time}</p>
-                    </div>
+            chipsContainer.innerHTML = products.map(p => `
+                <div onclick="updateProduct('${p.key}')" id="chip-${p.key}" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
+                    <i class="fas fa-fire"></i>${p.name}
                 </div>
             `).join('');
-            
-            chatContainer.scrollTop = chatContainer.scrollHeight;
         }
-        
-        function sendChatMessage() {
-            const input = document.getElementById('chat-input');
-            if (!input) return;
+
+        function updateProductGallery(products) {
+            const gallery = document.getElementById('gallery-products');
+            const thumbnails = document.getElementById('product-thumbnails');
             
-            const message = input.value.trim();
-            if (!message) return;
-            
-            const supplierId = appState.selectedSupplier ? appState.selectedSupplier.id : 'default';
-            
-            if (!appState.chatMessages[supplierId]) {
-                appState.chatMessages[supplierId] = [];
+            if (gallery) {
+                if (products.length === 0) {
+                    gallery.innerHTML = '<div class="col-span-full text-center py-8 text-slate-500">No products available</div>';
+                } else {
+                    gallery.innerHTML = products.map(p => `
+                        <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300">
+                            <div class="product-image-container" style="height: 200px;">
+                                <div class="img-fallback">
+                                    <i class="fas fa-industry"></i>
+                                    <span class="text-sm mt-2 block">${p.name}</span>
+                                </div>
+                            </div>
+                            <div class="p-4 md:p-6">
+                                <h4 class="font-bold text-lg md:text-xl text-slate-900 mb-2">${p.name}</h4>
+                                <p class="text-slate-600 mb-3 md:mb-4 text-sm md:text-base line-clamp-2">${p.description ? p.description.substring(0, 100) : 'No description'}...</p>
+                                <div class="flex gap-2 md:gap-3">
+                                    <button onclick="updateProduct('${p.key}')" class="flex-1 py-2 md:py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition text-xs md:text-sm">
+                                        <i class="fas fa-info-circle mr-2"></i>View Details
+                                    </button>
+                                    <button onclick="checkAuthBeforeOrder('${p.key}')" class="flex-1 py-2 md:py-2.5 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300 transition text-xs md:text-sm order-button">
+                                        <i class="fas fa-shopping-cart mr-2"></i>Order
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
             }
             
-            const timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            appState.chatMessages[supplierId].push({
-                id: Date.now(),
-                sender: 'user',
-                text: message,
-                time: timestamp
-            });
+            if (thumbnails) {
+                if (products.length === 0) {
+                    thumbnails.innerHTML = '<div class="col-span-full text-center py-8 text-slate-500">No products available</div>';
+                } else {
+                    thumbnails.innerHTML = products.map(p => `
+                        <div class="product-thumbnail" onclick="updateProduct('${p.key}')">
+                            <div class="product-placeholder">
+                                <i class="fas fa-industry text-2xl md:text-3xl"></i>
+                                <span class="font-semibold mt-2 text-sm md:text-base">${p.name}</span>
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    // Add "View All" thumbnail
+                    thumbnails.innerHTML += `
+                        <div class="product-thumbnail bg-gradient-to-br from-blue-600 to-blue-800" onclick="document.getElementById('product-gallery').scrollIntoView({behavior:'smooth'})">
+                            <div class="product-placeholder text-white">
+                                <i class="fas fa-boxes text-2xl md:text-3xl"></i>
+                                <span class="font-semibold mt-2 text-sm md:text-base">View All Products</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        function updateProductSelect(products) {
+            const select = document.getElementById('order-product');
+            if (!select) return;
             
-            input.value = '';
-            updateChatDisplay(supplierId);
-            
-            // Simulate supplier response
-            setTimeout(() => {
-                const responses = [
-                    "Thank you for your message. We'll get back to you shortly.",
-                    "Can you please share more details about your requirements?",
-                    "I'll check availability and get back to you.",
-                    "Would you like me to send you our catalog?"
-                ];
-                
-                const response = responses[Math.floor(Math.random() * responses.length)];
-                const responseTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                
-                appState.chatMessages[supplierId].push({
-                    id: Date.now() + 1,
-                    sender: 'supplier',
-                    text: response,
-                    time: responseTime
+            select.innerHTML = '<option value="">Select Product</option>';
+            if (products.length > 0) {
+                products.forEach(p => {
+                    select.innerHTML += `<option value="${p.key}">${p.name}</option>`;
                 });
-                
-                updateChatDisplay(supplierId);
-            }, 2000);
+            }
         }
 
-        // ========== SUPPLIER FUNCTIONS ==========
-        
-        function loadSuppliersForProduct(productKey) {
-            const productSelect = document.getElementById('order-product');
-            const productNameEl = document.getElementById('selected-product-name');
+        function updateFooterProducts(products) {
+            const footer = document.getElementById('footer-products');
+            if (!footer) return;
             
-            if (productSelect && productNameEl) {
-                const selectedOption = productSelect.options[productSelect.selectedIndex];
-                const productName = selectedOption ? selectedOption.text : 'Product';
-                productNameEl.textContent = productName;
+            if (products.length === 0) {
+                footer.innerHTML = '<li class="text-slate-400">No products</li>';
+            } else {
+                footer.innerHTML = products.slice(0, 5).map(p => `
+                    <li><a href="#" onclick="updateProduct('${p.key}'); return false;" class="hover:text-white transition">${p.name}</a></li>
+                `).join('');
+            }
+        }
+
+        function updateCurrentProduct(key, products) {
+            const product = products.find(p => p.key === key) || products[0];
+            if (!product) return;
+            
+            appState.currentProductKey = product.key;
+            
+            document.querySelectorAll('.flange-chip').forEach(c => c.classList.remove('active'));
+            const activeChip = document.getElementById(`chip-${product.key}`);
+            if (activeChip) activeChip.classList.add('active');
+            
+            document.getElementById('current-product-name').textContent = product.name;
+            document.getElementById('p-title').innerText = product.name;
+            document.getElementById('p-desc').innerText = product.description || 'No description available';
+            document.getElementById('product-reference').textContent = `${product.key.toUpperCase()}-${product.id || 'REF'}`;
+            document.getElementById('product-standard').textContent = product.standard || 'ASME B16.5';
+            document.getElementById('product-diameter').textContent = product.diameter || 'DN15 (1/2")';
+            document.getElementById('product-pressure').textContent = product.pressure || 'Class 900 (150#)';
+            document.getElementById('spec-title').innerText = `${product.name} - Technical Specifications`;
+            
+            // Update features
+            const featuresContainer = document.getElementById('p-features');
+            if (featuresContainer) {
+                const features = product.features || [
+                    "ASME B16.5 compliant",
+                    "Precision machined",
+                    "Full material traceability",
+                    "High-quality finish"
+                ];
+                featuresContainer.innerHTML = features.map((f, i) => `
+                    <div class="feature-card p-4 md:p-5 rounded-2xl">
+                        <div class="flex items-start gap-3 md:gap-4">
+                            <div class="mt-1 w-7 h-7 md:w-8 md:h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-white text-xs md:text-sm"></i>
+                            </div>
+                            <span class="text-slate-700 font-semibold text-sm md:text-base">${f}</span>
+                        </div>
+                    </div>
+                `).join('');
             }
             
-            const suppliers = supplierData[productKey] || [];
-            const suppliersList = document.getElementById('suppliers-list');
-            const noSuppliersMessage = document.getElementById('no-suppliers-message');
+            // Update specs
+            const specsList = document.getElementById('product-specs-list');
+            if (specsList) {
+                const specs = (product.specs || product.description || '').split(',').map(s => s.trim()).filter(s => s);
+                if (specs.length === 0) {
+                    specsList.innerHTML = '<li class="text-slate-500">No specifications available</li>';
+                } else {
+                    specsList.innerHTML = specs.map(s => `
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>${s}</li>
+                    `).join('');
+                }
+            }
             
-            if (!suppliersList || !noSuppliersMessage) return;
+            const materialsList = document.getElementById('product-materials-list');
+            if (materialsList) {
+                const materials = (product.material || 'Carbon Steel, Stainless Steel').split(',').map(m => m.trim());
+                materialsList.innerHTML = materials.map(m => `
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i>${m}</li>
+                `).join('');
+            }
             
-            if (suppliers.length === 0) {
-                suppliersList.innerHTML = '';
-                noSuppliersMessage.classList.remove('hidden');
+            // Update spec tables
+            const specContainer = document.getElementById('spec-tables-container');
+            if (specContainer) {
+                specContainer.innerHTML = `
+                    <div class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+                        <div class="bg-slate-800/70 px-4 md:px-6 py-3 md:py-4 border-b border-slate-700 flex items-center gap-3">
+                            <i class="fas fa-ruler-combined text-blue-400"></i>
+                            <h3 class="font-bold text-base md:text-lg">General Specifications</h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full spec-table">
+                                <tbody class="divide-y divide-slate-800 text-xs md:text-sm">
+                                    <tr><td class="px-4 md:px-6 py-2 md:py-4 font-semibold text-slate-300">Product Name</td><td class="px-4 md:px-6 py-2 md:py-4 text-slate-400">${product.name}</td></tr>
+                                    <tr><td class="px-4 md:px-6 py-2 md:py-4 font-semibold text-slate-300">Standard</td><td class="px-4 md:px-6 py-2 md:py-4 text-slate-400">${product.standard || 'ASME B16.5'}</td></tr>
+                                    <tr><td class="px-4 md:px-6 py-2 md:py-4 font-semibold text-slate-300">Diameter</td><td class="px-4 md:px-6 py-2 md:py-4 text-slate-400">${product.diameter || 'DN15 (1/2")'}</td></tr>
+                                    <tr><td class="px-4 md:px-6 py-2 md:py-4 font-semibold text-slate-300">Pressure Rating</td><td class="px-4 md:px-6 py-2 md:py-4 text-slate-400">${product.pressure || 'Class 900 (150#)'}</td></tr>
+                                    <tr><td class="px-4 md:px-6 py-2 md:py-4 font-semibold text-slate-300">Material</td><td class="px-4 md:px-6 py-2 md:py-4 text-slate-400">${product.material || 'Carbon Steel / Stainless Steel'}</td></tr>
+                                    <tr><td class="px-4 md:px-6 py-2 md:py-4 font-semibold text-slate-300">Price</td><td class="px-4 md:px-6 py-2 md:py-4 text-slate-400">₹${product.price || 'N/A'} per ${product.unit || 'piece'}</td></tr>
+                                    <tr><td class="px-4 md:px-6 py-2 md:py-4 font-semibold text-slate-300">Stock</td><td class="px-4 md:px-6 py-2 md:py-4 text-slate-400">${product.stock || 0} ${product.unit || 'pieces'}</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // ========== PRODUCT MANAGEMENT (Supplier Only) ==========
+        
+        function showAddProductForm() {
+            if (!appState.isAuthenticated || !appState.isSupplier) {
+                showError('login-error-container', 'Only suppliers can add products.');
                 return;
             }
             
-            noSuppliersMessage.classList.add('hidden');
-            
-            suppliersList.innerHTML = suppliers.map(supplier => {
-                const escapedSupplier = JSON.stringify(supplier).replace(/"/g, '&quot;');
-                return `
-                <div class="supplier-card bg-white p-4 rounded-xl border-2 border-slate-200" onclick="selectSupplier('${productKey}', '${supplier.id}')">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-start gap-3">
-                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-user-tie text-green-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900">${supplier.name}</h4>
-                                <p class="text-slate-600 text-sm">${supplier.company}</p>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                        <span class="text-sm font-medium ml-1">${supplier.rating}</span>
-                                        <span class="text-slate-500 text-xs ml-1">(${supplier.reviews})</span>
-                                    </div>
-                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">${supplier.status}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <button onclick="event.stopPropagation(); openChat(${escapedSupplier})" 
-                                class="text-blue-600 hover:text-blue-800">
-                            <i class="fas fa-comment-dots text-lg"></i>
-                        </button>
-                    </div>
-                    <div class="mt-3 grid grid-cols-2 gap-2">
-                        <div class="text-xs">
-                            <span class="text-slate-500">Response:</span>
-                            <span class="font-medium ml-1">${supplier.responseTime}</span>
-                        </div>
-                        <div class="text-xs">
-                            <span class="text-slate-500">Min Order:</span>
-                            <span class="font-medium ml-1">${supplier.minOrder}</span>
-                        </div>
-                        <div class="text-xs">
-                            <span class="text-slate-500">Location:</span>
-                            <span class="font-medium ml-1">${supplier.location}</span>
-                        </div>
-                        <div class="text-xs">
-                            <span class="text-slate-500">Lead Time:</span>
-                            <span class="font-medium ml-1">${supplier.leadTime}</span>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <div class="flex flex-wrap gap-1">
-                            ${supplier.specialization.map(spec => `
-                                <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">${spec}</span>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            `}).join('');
+            document.getElementById('product-form-title').textContent = 'Add New Product';
+            document.getElementById('product-form').reset();
+            document.getElementById('product-form-container').classList.remove('hidden');
         }
-        
-        function selectSupplier(productKey, supplierId) {
-            const suppliers = supplierData[productKey] || [];
-            appState.selectedSupplier = suppliers.find(s => s.id === supplierId);
-            
-            document.querySelectorAll('.supplier-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            const selectedCard = document.querySelector(`[onclick*="${supplierId}"]`);
-            if (selectedCard) {
-                selectedCard.classList.add('selected');
-            }
-            
-            const displayEl = document.getElementById('selected-supplier-display');
-            if (displayEl) {
-                displayEl.textContent = appState.selectedSupplier ? 
-                    `${appState.selectedSupplier.name} (${appState.selectedSupplier.company})` : 'Not selected';
-            }
+
+        function cancelProductForm() {
+            document.getElementById('product-form-container').classList.add('hidden');
         }
-        
-        function showAllSuppliers() {
-            showInfo('order-error-container', 'Showing all available suppliers for this product');
-        }
-        
-        function showInfo(containerId, message) {
-            const container = document.getElementById(containerId);
-            if (container) {
-                container.innerHTML = `
-                    <i class="fas fa-info-circle"></i>
-                    <span>${message}</span>
-                `;
-                container.classList.remove('hidden');
-                container.className = 'info-message';
-                
-                setTimeout(() => {
-                    container.classList.add('hidden');
-                }, 3000);
-            }
-        }
-        
-        function updateProductSuppliers(productKey) {
-            const suppliers = supplierData[productKey] || [];
-            const suppliersList = document.getElementById('dynamic-suppliers-list');
-            const productSuppliersList = document.getElementById('product-suppliers-list');
+
+        async function saveProduct(event) {
+            event.preventDefault();
             
-            if (!suppliersList || !productSuppliersList) return;
-            
-            if (suppliers.length === 0) {
-                suppliersList.innerHTML = `
-                    <div class="col-span-2 text-center py-8">
-                        <i class="fas fa-users text-4xl text-slate-300 mb-3"></i>
-                        <p class="text-slate-600">No suppliers available for this product</p>
-                    </div>
-                `;
-                productSuppliersList.innerHTML = '<p class="text-slate-400">No suppliers available</p>';
+            if (!appState.isAuthenticated || !appState.isSupplier) {
+                showError('dashboard-inventory .error-message', 'Only suppliers can add products.');
                 return;
             }
             
-            suppliersList.innerHTML = suppliers.slice(0, 2).map(supplier => {
-                const escapedSupplier = JSON.stringify(supplier).replace(/"/g, '&quot;');
-                return `
-                <div class="supplier-card bg-white p-4 rounded-xl border border-slate-200 hover:border-blue-300 transition">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-start gap-3">
-                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-user-tie text-green-600"></i>
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-slate-900">${supplier.name}</h5>
-                                <p class="text-slate-600 text-sm">${supplier.company}</p>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-star text-yellow-500 text-xs"></i>
-                                        <span class="text-xs font-medium ml-1">${supplier.rating}</span>
-                                    </div>
-                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">${supplier.status}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <button onclick="openChat(${escapedSupplier})" 
-                                class="text-blue-600 hover:text-blue-800">
-                            <i class="fas fa-comment-dots"></i>
-                        </button>
-                    </div>
-                    <div class="mt-3">
-                        <div class="flex flex-wrap gap-1">
-                            ${supplier.specialization.slice(0, 2).map(spec => `
-                                <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">${spec}</span>
-                            `).join('')}
-                        </div>
-                    </div>
-                    <button onclick="checkAuthBeforeOrder('${productKey}')" 
-                            class="w-full mt-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm font-medium">
-                        <i class="fas fa-shopping-cart mr-2"></i>Order Now
-                    </button>
-                </div>
-            `}).join('');
+            showLoading('Saving product...');
             
-            productSuppliersList.innerHTML = suppliers.slice(0, 3).map(supplier => {
-                const escapedSupplier = JSON.stringify(supplier).replace(/"/g, '&quot;');
-                return `
-                <div class="flex items-center justify-between py-2 border-b border-slate-700/50 last:border-0">
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-user-tie text-blue-400"></i>
-                        <span>${supplier.name}</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-xs bg-green-900 text-green-300 px-2 py-0.5 rounded">${supplier.rating} ★</span>
-                        <button onclick="openChat(${escapedSupplier})" 
-                                class="text-blue-400 hover:text-blue-300">
-                            <i class="fas fa-comment"></i>
-                        </button>
-                    </div>
-                </div>
-            `}).join('');
+            try {
+                const product = {
+                    key: document.getElementById('product-key').value.toLowerCase().replace(/\s+/g, '-'),
+                    name: document.getElementById('product-name').value,
+                    description: document.getElementById('product-description').value || 'No description provided',
+                    price: parseFloat(document.getElementById('product-price').value),
+                    stock: parseInt(document.getElementById('product-stock').value),
+                    unit: document.getElementById('product-unit').value,
+                    category: document.getElementById('product-category').value,
+                    material: document.getElementById('product-material').value || 'Various',
+                    specs: document.getElementById('product-specs').value || 'Standard specifications',
+                    features: [
+                        `${document.getElementById('product-name').value} - High quality`,
+                        "Precision manufactured",
+                        "Industry standard compliance",
+                        "Full traceability"
+                    ],
+                    standard: "ASME / EN / Custom",
+                    diameter: "Various sizes available",
+                    pressure: "As per specification",
+                    supplierId: appState.currentUser.id
+                };
+                
+                await saveProduct(product);
+                cancelProductForm();
+                await fetchAndUpdateProducts();
+                await updateDashboardData();
+                
+                showSuccess('dashboard-inventory .success-message', 'Product added successfully!');
+            } catch (error) {
+                showError('dashboard-inventory .error-message', error.message);
+            } finally {
+                hideLoading();
+            }
         }
 
-        // ========== DASHBOARD FUNCTIONS ==========
+        async function editProduct(productId) {
+            if (!appState.isAuthenticated || !appState.isSupplier) return;
+            
+            try {
+                const products = await getSupplierProducts(appState.currentUser.id);
+                const product = products.find(p => p.id === productId);
+                if (!product) return;
+                
+                document.getElementById('product-form-title').textContent = 'Edit Product';
+                document.getElementById('product-key').value = product.key;
+                document.getElementById('product-name').value = product.name;
+                document.getElementById('product-description').value = product.description || '';
+                document.getElementById('product-price').value = product.price || '';
+                document.getElementById('product-stock').value = product.stock || '';
+                document.getElementById('product-unit').value = product.unit || 'pieces';
+                document.getElementById('product-category').value = product.category || 'flanges';
+                document.getElementById('product-material').value = product.material || '';
+                document.getElementById('product-specs').value = product.specs || '';
+                
+                document.getElementById('product-form-container').classList.remove('hidden');
+            } catch (error) {
+                console.error('Failed to load product for editing:', error);
+            }
+        }
+
+        async function deleteProduct(productId) {
+            if (!appState.isAuthenticated || !appState.isSupplier) return;
+            
+            if (confirm('Are you sure you want to delete this product?')) {
+                showLoading('Deleting product...');
+                try {
+                    await deleteProduct(productId);
+                    await fetchAndUpdateProducts();
+                    await updateDashboardData();
+                    showSuccess('dashboard-inventory .success-message', 'Product deleted successfully!');
+                } catch (error) {
+                    showError('dashboard-inventory .error-message', error.message);
+                } finally {
+                    hideLoading();
+                }
+            }
+        }
+
+        // ========== DASHBOARD FUNCTIONS (Supplier Only) ==========
         
         function openDashboard() {
-            if (!appState.isAuthenticated || appState.currentUser.type === 'visitor') {
-                showError('login-error-container', 'Please login to access the dashboard.');
+            if (!appState.isAuthenticated || !appState.isSupplier) {
+                showError('login-error-container', 'Only suppliers can access the dashboard.');
                 openAuthModal();
                 return;
             }
             
-            if (appState.currentUser.type !== 'supplier') {
-                showError('login-error-container', 'Dashboard access is only available for supplier accounts.');
-                return;
-            }
-            
-            const dashboard = document.getElementById('dashboard-modal');
-            if (dashboard) {
-                dashboard.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-                initDashboardCharts();
-            }
+            document.getElementById('dashboard-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            updateDashboardData();
         }
-        
+
         function closeDashboard() {
-            const dashboard = document.getElementById('dashboard-modal');
-            if (dashboard) {
-                dashboard.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-                destroyDashboardCharts();
-            }
+            document.getElementById('dashboard-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
         }
-        
-        function destroyDashboardCharts() {
-            // Destroy chart instances to prevent memory leaks
-            if (appState.charts.salesChart) {
-                appState.charts.salesChart.destroy();
-                delete appState.charts.salesChart;
-            }
-            if (appState.charts.categoryChart) {
-                appState.charts.categoryChart.destroy();
-                delete appState.charts.categoryChart;
-            }
-            if (appState.charts.performanceChart) {
-                appState.charts.performanceChart.destroy();
-                delete appState.charts.performanceChart;
-            }
-            if (appState.charts.conversionChart) {
-                appState.charts.conversionChart.destroy();
-                delete appState.charts.conversionChart;
-            }
-        }
-        
+
         function switchDashboardTab(tabName) {
-            // Update tab buttons
-            document.querySelectorAll('#dashboard-modal .tab-button').forEach(btn => {
-                const onclickAttr = btn.getAttribute('onclick');
-                if (onclickAttr && onclickAttr.includes(tabName)) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-            
-            // Update tab content
+            document.querySelectorAll('#dashboard-modal .tab-button').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('#dashboard-modal .tab-content').forEach(content => {
-                if (content.id === `dashboard-${tabName}`) {
-                    content.classList.add('active');
-                    content.classList.remove('hidden');
-                } else {
-                    content.classList.remove('active');
-                    content.classList.add('hidden');
-                }
+                content.classList.remove('active');
+                content.classList.add('hidden');
             });
             
-            if (tabName === 'analytics') {
-                setTimeout(() => {
-                    initAnalyticsCharts();
-                }, 100);
-            }
-        }
-        
-        function showProfile() {
-            if (!appState.isAuthenticated) {
-                showError('login-error-container', 'Please login to view your profile.');
-                openAuthModal();
-                return;
-            }
-            showInfo('login-error-container', 'Profile page is under development.');
+            const activeBtn = Array.from(document.querySelectorAll('#dashboard-modal .tab-button')).find(
+                btn => btn.textContent.toLowerCase().includes(tabName)
+            );
+            if (activeBtn) activeBtn.classList.add('active');
+            
+            document.getElementById(`dashboard-${tabName}`).classList.add('active');
+            document.getElementById(`dashboard-${tabName}`).classList.remove('hidden');
         }
 
-        // ========== ORDER TRACKING FUNCTIONS ==========
-        
-        function openTrackingModal() {
-            const modal = document.getElementById('tracking-modal');
-            if (modal) {
-                modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-        
-        function closeTrackingModal() {
-            const modal = document.getElementById('tracking-modal');
-            if (modal) {
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }
-        }
-        
-        function trackOrderWithCode() {
-            const orderRef = document.getElementById('order-reference');
-            if (orderRef) {
-                const orderId = orderRef.textContent;
-                closeOrderModal();
-                setTimeout(() => {
-                    openTrackingModal();
-                    const input = document.getElementById('tracking-input');
-                    if (input) input.value = orderId;
-                    searchOrder();
-                }, 500);
-            }
-        }
-        
-        function searchOrder() {
-            const input = document.getElementById('tracking-input');
-            if (!input) return;
+        async function updateDashboardData() {
+            if (!appState.isAuthenticated || !appState.isSupplier) return;
             
-            const orderId = input.value.trim();
-            if (!orderId) {
-                showError('tracking-modal .error-message', 'Please enter an order ID');
-                return;
-            }
-            
-            const emptyEl = document.getElementById('tracking-empty');
-            const resultsEl = document.getElementById('tracking-results');
-            const ordersEl = document.getElementById('my-orders-section');
-            const loadingEl = document.getElementById('tracking-loading');
-            
-            if (emptyEl) emptyEl.classList.add('hidden');
-            if (resultsEl) resultsEl.classList.add('hidden');
-            if (ordersEl) ordersEl.classList.add('hidden');
-            if (loadingEl) loadingEl.classList.remove('hidden');
-            
-            // Simulate API call
-            setTimeout(() => {
-                if (loadingEl) loadingEl.classList.add('hidden');
-                if (resultsEl) resultsEl.classList.remove('hidden');
+            try {
+                const supplierId = appState.currentUser.id;
+                const products = await getSupplierProducts(supplierId);
+                const orders = await getSupplierOrders(supplierId);
+                const customers = [...new Set(orders.map(o => o.customerEmail))];
                 
-                // Populate tracking timeline
-                const timelineEl = document.getElementById('tracking-timeline');
-                if (timelineEl) {
-                    timelineEl.innerHTML = `
-                        <div class="tracking-step completed">
-                            <div class="tracking-step-icon completed">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="tracking-step-content">
-                                <p class="text-sm text-slate-500">Mar 15, 2024 - 09:30 AM</p>
-                                <h5 class="font-bold text-slate-900 mb-1">Order Received</h5>
-                                <p class="text-slate-600">Your order has been received by the supplier.</p>
-                            </div>
-                        </div>
-                        <div class="tracking-step current">
-                            <div class="tracking-step-icon current">
-                                <i class="fas fa-sync-alt"></i>
-                            </div>
-                            <div class="tracking-step-content">
-                                <p class="text-sm text-slate-500">Mar 16, 2024 - 11:00 AM</p>
-                                <h5 class="font-bold text-slate-900 mb-1">Processing</h5>
-                                <p class="text-slate-600">Your order is being processed and verified.</p>
-                            </div>
-                        </div>
-                        <div class="tracking-step pending">
-                            <div class="tracking-step-icon pending">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <div class="tracking-step-content">
-                                <p class="text-sm text-slate-500">Estimated: Mar 18-20</p>
-                                <h5 class="font-bold text-slate-900 mb-1">Manufacturing</h5>
-                                <p class="text-slate-600">Components are being manufactured.</p>
-                            </div>
-                        </div>
-                        <div class="tracking-step pending">
-                            <div class="tracking-step-icon pending">
-                                <i class="fas fa-truck"></i>
-                            </div>
-                            <div class="tracking-step-content">
-                                <p class="text-sm text-slate-500">Estimated: Mar 23-25</p>
-                                <h5 class="font-bold text-slate-900 mb-1">Shipping</h5>
-                                <p class="text-slate-600">Order will be shipped soon.</p>
-                            </div>
-                        </div>
-                    `;
-                }
-            }, 1000);
-        }
-        
-        function showMyOrders() {
-            if (!appState.isAuthenticated || appState.currentUser.type === 'visitor') {
-                showError('tracking-modal .error-message', 'Please login to view your orders.');
-                openAuthModal();
-                return;
-            }
-            
-            const resultsEl = document.getElementById('tracking-results');
-            const emptyEl = document.getElementById('tracking-empty');
-            const loadingEl = document.getElementById('tracking-loading');
-            const ordersEl = document.getElementById('my-orders-section');
-            
-            if (resultsEl) resultsEl.classList.add('hidden');
-            if (emptyEl) emptyEl.classList.add('hidden');
-            if (loadingEl) loadingEl.classList.remove('hidden');
-            if (ordersEl) ordersEl.classList.remove('hidden');
-            
-            setTimeout(() => {
-                if (loadingEl) loadingEl.classList.add('hidden');
+                const totalRevenue = orders.filter(o => o.status === 'completed').reduce((sum, o) => sum + (o.amount || 0), 0);
+                const pendingOrders = orders.filter(o => o.status === 'pending').length;
+                const lowStock = products.filter(p => (p.stock || 0) < 10).length;
+                const outOfStock = products.filter(p => (p.stock || 0) === 0).length;
                 
-                const ordersList = document.getElementById('my-orders-list');
-                if (ordersList) {
-                    ordersList.innerHTML = `
-                        <div class="bg-white p-4 rounded-xl border border-slate-200">
-                            <div class="flex justify-between items-start">
+                document.getElementById('dashboard-total-revenue').textContent = `₹${totalRevenue.toLocaleString()}`;
+                document.getElementById('dashboard-incoming-orders').textContent = orders.length;
+                document.getElementById('dashboard-pending-orders').textContent = pendingOrders;
+                document.getElementById('dashboard-total-products').textContent = products.length;
+                document.getElementById('dashboard-low-stock').textContent = lowStock;
+                document.getElementById('dashboard-out-of-stock').textContent = outOfStock;
+                document.getElementById('dashboard-total-customers').textContent = customers.length;
+                document.getElementById('dashboard-product-count').textContent = products.length;
+                document.getElementById('dashboard-customer-count').textContent = customers.length;
+                document.getElementById('dashboard-active-customers').textContent = customers.length;
+                document.getElementById('dashboard-total-orders').textContent = orders.length;
+                
+                // Update recent orders
+                const recentOrdersEl = document.getElementById('dashboard-recent-orders');
+                if (recentOrdersEl) {
+                    if (orders.length === 0) {
+                        recentOrdersEl.innerHTML = '<div class="text-center py-4 text-slate-500">No orders yet</div>';
+                    } else {
+                        recentOrdersEl.innerHTML = orders.slice(0, 4).map(o => `
+                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
                                 <div>
-                                    <div class="flex items-center gap-3">
-                                        <h4 class="font-bold text-slate-900">#ORD-7842</h4>
-                                        <span class="badge badge-warning">Processing</span>
-                                    </div>
-                                    <p class="text-sm text-slate-600 mt-1">Long Weld Neck Flange - 50 pieces</p>
-                                    <p class="text-xs text-slate-500 mt-1">Ordered: Mar 15, 2024</p>
+                                    <div class="font-medium">#${o.id}</div>
+                                    <div class="text-sm text-slate-500">${o.productName}</div>
                                 </div>
                                 <div class="text-right">
-                                    <p class="font-bold">₹245,000</p>
-                                    <button onclick="trackOrder('ORD-7842')" class="text-sm text-blue-600 hover:text-blue-800">Track</button>
+                                    <div class="font-medium">₹${(o.amount || 0).toLocaleString()}</div>
+                                    <span class="badge badge-${o.status === 'pending' ? 'warning' : o.status === 'processing' ? 'info' : o.status === 'completed' ? 'success' : 'danger'}">${o.status}</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-xl border border-slate-200">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <div class="flex items-center gap-3">
-                                        <h4 class="font-bold text-slate-900">#ORD-7841</h4>
-                                        <span class="badge badge-success">Shipped</span>
-                                    </div>
-                                    <p class="text-sm text-slate-600 mt-1">Weld Neck Flange - 25 pieces</p>
-                                    <p class="text-xs text-slate-500 mt-1">Ordered: Mar 14, 2024</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-bold">₹187,500</p>
-                                    <button onclick="trackOrder('ORD-7841')" class="text-sm text-blue-600 hover:text-blue-800">Track</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-xl border border-slate-200">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <div class="flex items-center gap-3">
-                                        <h4 class="font-bold text-slate-900">#ORD-7840</h4>
-                                        <span class="badge badge-danger">Pending</span>
-                                    </div>
-                                    <p class="text-sm text-slate-600 mt-1">Blind Flange - 100 pieces</p>
-                                    <p class="text-xs text-slate-500 mt-1">Ordered: Mar 13, 2024</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-bold">₹92,300</p>
-                                    <button onclick="trackOrder('ORD-7840')" class="text-sm text-blue-600 hover:text-blue-800">Track</button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
+                        `).join('');
+                    }
                 }
-            }, 800);
-        }
-        
-        function trackOrder(orderId) {
-            const input = document.getElementById('tracking-input');
-            if (input) {
-                input.value = orderId;
-                searchOrder();
+                
+                // Update orders table
+                const ordersTable = document.getElementById('orders-table-body');
+                if (ordersTable) {
+                    if (orders.length === 0) {
+                        ordersTable.innerHTML = '<tr><td colspan="8" class="text-center py-8 text-slate-500">No orders found</td></tr>';
+                    } else {
+                        ordersTable.innerHTML = orders.map(o => `
+                            <tr>
+                                <td class="font-medium">#${o.id}</td>
+                                <td>${o.customerName}</td>
+                                <td>${o.productName}</td>
+                                <td>${o.quantity}</td>
+                                <td class="font-bold">₹${(o.amount || 0).toLocaleString()}</td>
+                                <td><span class="badge badge-${o.status === 'pending' ? 'warning' : o.status === 'processing' ? 'info' : o.status === 'completed' ? 'success' : 'danger'}">${o.status}</span></td>
+                                <td>${o.date ? new Date(o.date).toLocaleDateString() : 'N/A'}</td>
+                                <td>
+                                    <button onclick="updateOrderStatus('${o.id}', 'processing')" class="action-button edit mr-2">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button onclick="updateOrderStatus('${o.id}', 'completed')" class="action-button approve mr-2">
+                                        <i class="fas fa-check-double"></i>
+                                    </button>
+                                    <button onclick="updateOrderStatus('${o.id}', 'cancelled')" class="action-button reject">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('');
+                    }
+                }
+                
+                // Update products table
+                const productsTable = document.getElementById('products-table-body');
+                if (productsTable) {
+                    if (products.length === 0) {
+                        productsTable.innerHTML = '<tr><td colspan="8" class="text-center py-8 text-slate-500">No products added yet. Click "Add New Product" to get started.</td></tr>';
+                    } else {
+                        productsTable.innerHTML = products.map(p => `
+                            <tr>
+                                <td class="font-medium">${p.name}</td>
+                                <td>${p.key}</td>
+                                <td>${p.category || 'N/A'}</td>
+                                <td>₹${p.price || 'N/A'}</td>
+                                <td>${p.stock || 0}</td>
+                                <td>${p.unit || 'pieces'}</td>
+                                <td><span class="badge badge-${p.stock === 0 ? 'danger' : p.stock < 10 ? 'warning' : 'success'}">${p.stock === 0 ? 'Out of Stock' : p.stock < 10 ? 'Low Stock' : 'In Stock'}</span></td>
+                                <td>
+                                    <button onclick="editProduct('${p.id}')" class="action-button edit mr-2">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button onclick="deleteProduct('${p.id}')" class="action-button delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('');
+                    }
+                }
+                
+                // Update customers table
+                const customersTable = document.getElementById('customers-table-body');
+                if (customersTable) {
+                    const customerData = customers.map(email => {
+                        const customerOrders = orders.filter(o => o.customerEmail === email);
+                        const totalSpent = customerOrders.reduce((sum, o) => sum + (o.amount || 0), 0);
+                        const lastOrder = customerOrders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0))[0];
+                        
+                        return {
+                            email,
+                            name: customerOrders[0]?.customerName || email.split('@')[0],
+                            company: customerOrders[0]?.customerCompany || 'Unknown',
+                            orderCount: customerOrders.length,
+                            totalSpent,
+                            lastOrderDate: lastOrder && lastOrder.date ? new Date(lastOrder.date).toLocaleDateString() : 'Never'
+                        };
+                    });
+                    
+                    if (customerData.length === 0) {
+                        customersTable.innerHTML = '<tr><td colspan="7" class="text-center py-8 text-slate-500">No customers yet</td></tr>';
+                    } else {
+                        customersTable.innerHTML = customerData.map(c => `
+                            <tr>
+                                <td class="font-medium">${c.name}</td>
+                                <td>${c.company}</td>
+                                <td>${c.email}</td>
+                                <td>${c.orderCount}</td>
+                                <td class="font-bold">₹${c.totalSpent.toLocaleString()}</td>
+                                <td>${c.lastOrderDate}</td>
+                                <td>
+                                    <button onclick="contactCustomer('${c.email}')" class="action-button edit">
+                                        <i class="fas fa-envelope"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('');
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to update dashboard:', error);
             }
-        }
-        
-        function downloadInvoice() {
-            showInfo('tracking-modal .error-message', 'Invoice download feature is under development.');
-        }
-        
-        function contactSupplier() {
-            showInfo('tracking-modal .error-message', 'Contacting supplier... This would open your email client.');
         }
 
-        // ========== ORDER FUNCTIONS ==========
+        async function filterOrders() {
+            await updateDashboardData();
+        }
+
+        function contactCustomer(email) {
+            window.location.href = `mailto:${email}`;
+        }
+
+        async function updateOrderStatus(orderId, status) {
+            try {
+                await updateOrderStatus(orderId, status);
+                await updateDashboardData();
+                showSuccess('dashboard-orders .success-message', `Order status updated to ${status}`);
+            } catch (error) {
+                showError('dashboard-orders .error-message', error.message);
+            }
+        }
+
+        // ========== ORDER FUNCTIONS (Partners Only) ==========
         
         function checkAuthBeforeOrder(productKey = null) {
-            resetSessionTimer(); // Reset timer on user action
-            
             if (!appState.isAuthenticated || appState.currentUser.type === 'visitor') {
-                showError('login-error-container', 'Please login or create an account to connect with suppliers.');
+                showError('login-error-container', 'Please login or create an account to place orders.');
                 openAuthModal();
+                return;
+            }
+            
+            if (appState.isSupplier) {
+                showError('login-error-container', 'Supplier accounts cannot place orders. Please use a partner account.');
                 return;
             }
             
@@ -4845,39 +3710,26 @@
         }
 
         function openOrderModal() {
-            if (!appState.isAuthenticated || appState.currentUser.type === 'visitor') {
+            if (!appState.isAuthenticated || appState.isSupplier) {
                 checkAuthBeforeOrder();
                 return;
             }
             
-            const modal = document.getElementById('order-modal');
-            if (modal) {
-                modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-                resetOrderSteps();
-            }
+            document.getElementById('order-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            resetOrderSteps();
+            fetchAndUpdateProducts();
         }
-        
+
         function openOrderModalWithProduct(productKey) {
-            if (!appState.isAuthenticated || appState.currentUser.type === 'visitor') {
-                checkAuthBeforeOrder(productKey);
-                return;
-            }
-            
             openOrderModal();
-            const productSelect = document.getElementById('order-product');
-            if (productSelect) {
-                productSelect.value = productKey;
-                loadSuppliersForProduct(productKey);
-            }
+            document.getElementById('order-product').value = productKey;
+            loadSuppliersForProduct(productKey);
         }
-        
+
         function closeOrderModal() {
-            const modal = document.getElementById('order-modal');
-            if (modal) {
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }
+            document.getElementById('order-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
             appState.selectedSupplier = null;
         }
 
@@ -4886,69 +3738,59 @@
             updateStepIndicators();
             
             for (let i = 1; i <= 5; i++) {
-                const stepEl = document.getElementById(`order-step-${i}`);
-                if (stepEl) stepEl.classList.add('hidden');
+                document.getElementById(`order-step-${i}`)?.classList.add('hidden');
             }
-            
-            const step1 = document.getElementById('order-step-1');
-            if (step1) step1.classList.remove('hidden');
+            document.getElementById('order-step-1').classList.remove('hidden');
             
             appState.selectedSupplier = null;
-            const displayEl = document.getElementById('selected-supplier-display');
-            if (displayEl) displayEl.textContent = 'Not selected';
-            
+            document.getElementById('selected-supplier-display').textContent = 'Not selected';
             clearValidationErrors();
         }
 
         function updateStepIndicators() {
             const progress = document.getElementById('step-progress');
-            if (progress) {
-                const stepWidth = 100 / 4;
-                progress.style.width = `${(appState.currentOrderStep - 1) * stepWidth}%`;
-            }
+            progress.style.width = `${(appState.currentOrderStep - 1) * 25}%`;
             
             for (let i = 1; i <= 4; i++) {
                 const indicator = document.getElementById(`step-indicator-${i}`);
-                if (indicator) {
-                    if (i < appState.currentOrderStep) {
-                        indicator.classList.remove('pending', 'active');
-                        indicator.classList.add('completed');
-                    } else if (i === appState.currentOrderStep) {
-                        indicator.classList.remove('pending', 'completed');
-                        indicator.classList.add('active');
-                    } else {
-                        indicator.classList.remove('active', 'completed');
-                        indicator.classList.add('pending');
-                    }
+                if (i < appState.currentOrderStep) {
+                    indicator.classList.remove('pending', 'active');
+                    indicator.classList.add('completed');
+                } else if (i === appState.currentOrderStep) {
+                    indicator.classList.remove('pending', 'completed');
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active', 'completed');
+                    indicator.classList.add('pending');
                 }
             }
         }
 
         function validateStep1() {
-            let isValid = true;
             clearValidationErrors();
+            let isValid = true;
             
             const product = document.getElementById('order-product').value;
             const quantity = document.getElementById('order-quantity').value;
             const size = document.getElementById('order-size').value;
             const material = document.getElementById('order-material').value;
             
-            if (!validateRequired(product)) {
+            if (!product) {
                 showFieldError('order-product', 'Please select a product');
                 isValid = false;
             }
             
-            if (!validateRequired(quantity) || quantity < 1) {
-                showFieldError('order-quantity', 'Please enter a valid quantity (minimum 1)');
+            if (!quantity || quantity < 1) {
+                showFieldError('order-quantity', 'Please enter a valid quantity');
                 isValid = false;
             }
             
-            if (!validateRequired(size)) {
+            if (!size) {
                 showFieldError('order-size', 'Please enter size/dimensions');
                 isValid = false;
             }
             
-            if (!validateRequired(material)) {
+            if (!material) {
                 showFieldError('order-material', 'Please select a material');
                 isValid = false;
             }
@@ -4958,15 +3800,15 @@
 
         function validateStep2() {
             if (!appState.selectedSupplier) {
-                showError('order-error-container', 'Please select a supplier before proceeding.');
+                showError('order-error-container', 'Please select a supplier');
                 return false;
             }
             return true;
         }
 
         function validateStep3() {
-            let isValid = true;
             clearValidationErrors();
+            let isValid = true;
             
             const firstName = document.getElementById('order-firstname').value;
             const lastName = document.getElementById('order-lastname').value;
@@ -4974,28 +3816,28 @@
             const phone = document.getElementById('order-phone').value;
             const company = document.getElementById('order-company').value;
             
-            if (!validateRequired(firstName)) {
+            if (!firstName) {
                 showFieldError('order-firstname', 'First name is required');
                 isValid = false;
             }
             
-            if (!validateRequired(lastName)) {
+            if (!lastName) {
                 showFieldError('order-lastname', 'Last name is required');
                 isValid = false;
             }
             
             if (!validateEmail(email)) {
-                showFieldError('order-email', 'Please enter a valid email address');
+                showFieldError('order-email', 'Please enter a valid email');
                 isValid = false;
             }
             
-            if (!validatePhone(phone)) {
-                showFieldError('order-phone', 'Please enter a valid phone number');
+            if (!phone) {
+                showFieldError('order-phone', 'Phone is required');
                 isValid = false;
             }
             
-            if (!validateRequired(company)) {
-                showFieldError('order-company', 'Company name is required');
+            if (!company) {
+                showFieldError('order-company', 'Company is required');
                 isValid = false;
             }
             
@@ -5004,19 +3846,11 @@
 
         function validateAndNextStep(currentStep, nextStep) {
             let isValid = false;
-            
             switch(currentStep) {
-                case 1:
-                    isValid = validateStep1();
-                    break;
-                case 2:
-                    isValid = validateStep2();
-                    break;
-                case 3:
-                    isValid = validateStep3();
-                    break;
-                default:
-                    isValid = true;
+                case 1: isValid = validateStep1(); break;
+                case 2: isValid = validateStep2(); break;
+                case 3: isValid = validateStep3(); break;
+                default: isValid = true;
             }
             
             if (isValid) {
@@ -5031,13 +3865,9 @@
                 updateReviewSection();
             }
             
-            const currentStep = document.getElementById(`order-step-${appState.currentOrderStep}`);
-            if (currentStep) currentStep.classList.add('hidden');
-            
+            document.getElementById(`order-step-${appState.currentOrderStep}`).classList.add('hidden');
             appState.currentOrderStep = step;
-            const nextStep = document.getElementById(`order-step-${step}`);
-            if (nextStep) nextStep.classList.remove('hidden');
-            
+            document.getElementById(`order-step-${step}`).classList.remove('hidden');
             updateStepIndicators();
         }
 
@@ -5047,456 +3877,656 @@
 
         function updateReviewSection() {
             const productSelect = document.getElementById('order-product');
-            const productText = productSelect ? (productSelect.options[productSelect.selectedIndex]?.text || '-') : '-';
-            const quantity = document.getElementById('order-quantity')?.value || '0';
+            const product = productSelect.options[productSelect.selectedIndex]?.text || '-';
+            const quantity = document.getElementById('order-quantity').value;
             const materialSelect = document.getElementById('order-material');
-            const materialText = materialSelect ? (materialSelect.options[materialSelect.selectedIndex]?.text || '-') : '-';
+            const material = materialSelect.options[materialSelect.selectedIndex]?.text || '-';
             const contactMethod = document.querySelector('input[name="contactMethod"]:checked')?.value || 'email';
             
-            const reviewProduct = document.getElementById('review-product');
-            const reviewSupplier = document.getElementById('review-supplier');
-            const reviewQuantity = document.getElementById('review-quantity');
-            const reviewMaterial = document.getElementById('review-material');
-            const reviewContact = document.getElementById('review-contact');
-            const confirmationSupplier = document.getElementById('confirmation-supplier');
-            
-            if (reviewProduct) reviewProduct.textContent = productText;
-            if (reviewSupplier) reviewSupplier.textContent = appState.selectedSupplier ? 
-                `${appState.selectedSupplier.name} (${appState.selectedSupplier.company})` : 'Not selected';
-            if (reviewQuantity) reviewQuantity.textContent = `${quantity} pieces`;
-            if (reviewMaterial) reviewMaterial.textContent = materialText;
-            if (reviewContact) reviewContact.textContent = contactMethod.charAt(0).toUpperCase() + contactMethod.slice(1);
-            if (confirmationSupplier) confirmationSupplier.textContent = appState.selectedSupplier ? appState.selectedSupplier.name : 'Supplier';
+            document.getElementById('review-product').textContent = product;
+            document.getElementById('review-supplier').textContent = appState.selectedSupplier?.name || 'Not selected';
+            document.getElementById('review-quantity').textContent = `${quantity} pieces`;
+            document.getElementById('review-material').textContent = material;
+            document.getElementById('review-contact').textContent = contactMethod.charAt(0).toUpperCase() + contactMethod.slice(1);
+            document.getElementById('confirmation-supplier').textContent = appState.selectedSupplier?.name || 'Supplier';
         }
 
-        function submitOrder() {
+        async function submitOrder() {
             if (!appState.selectedSupplier) {
-                showError('order-error-container', 'Please select a supplier before submitting the order.');
+                showError('order-error-container', 'Please select a supplier');
                 return;
             }
             
-            const orderRef = document.getElementById('order-reference');
-            if (orderRef) {
-                const orderId = 'UF-ORD-' + Math.floor(100000 + Math.random() * 900000);
-                orderRef.textContent = orderId;
+            showLoading('Submitting order...');
+            
+            try {
+                const products = await getProducts();
+                const productKey = document.getElementById('order-product').value;
+                const product = products.find(p => p.key === productKey);
                 
-                // Save to user orders
-                if (!appState.userOrders) appState.userOrders = [];
-                appState.userOrders.push({
+                const orderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+                document.getElementById('order-reference').textContent = orderId;
+                
+                const order = {
                     id: orderId,
                     date: new Date().toISOString(),
-                    supplier: appState.selectedSupplier,
-                    product: document.getElementById('order-product').options[document.getElementById('order-product').selectedIndex]?.text,
-                    quantity: document.getElementById('order-quantity').value,
-                    status: 'Submitted'
+                    supplierId: appState.selectedSupplier.id,
+                    supplierName: appState.selectedSupplier.name,
+                    customerEmail: document.getElementById('order-email').value,
+                    customerName: document.getElementById('order-firstname').value + ' ' + document.getElementById('order-lastname').value,
+                    customerCompany: document.getElementById('order-company').value,
+                    customerPhone: document.getElementById('order-phone').value,
+                    productKey: productKey,
+                    productName: product?.name || 'Product',
+                    quantity: parseInt(document.getElementById('order-quantity').value),
+                    size: document.getElementById('order-size').value,
+                    material: document.getElementById('order-material').value,
+                    specs: document.getElementById('order-specs').value,
+                    address: document.getElementById('order-address').value,
+                    contactMethod: document.querySelector('input[name="contactMethod"]:checked')?.value || 'email',
+                    amount: (product?.price || 0) * parseInt(document.getElementById('order-quantity').value),
+                    status: 'pending'
+                };
+                
+                await saveOrder(order);
+                nextOrderStep(5);
+                
+                if (appState.isAuthenticated && appState.isSupplier) {
+                    updateDashboardData();
+                }
+                
+                showSuccess('order-error-container', `Order submitted to ${appState.selectedSupplier.name}!`);
+            } catch (error) {
+                showError('order-error-container', error.message);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        async function loadSuppliersForProduct(productKey) {
+            const products = await getProducts();
+            const product = products.find(p => p.key === productKey);
+            const suppliers = [];
+            
+            if (product && product.supplierId) {
+                suppliers.push({
+                    id: product.supplierId,
+                    name: 'Current Supplier',
+                    company: appState.currentUser?.company || 'Supplier Company',
+                    rating: 4.8,
+                    reviews: 142,
+                    location: 'India',
+                    status: 'Online'
                 });
             }
             
-            nextOrderStep(5);
-            showSuccess('order-error-container', `Order submitted to ${appState.selectedSupplier.name}! They will contact you shortly.`);
-        }
-
-        // ========== PRODUCT FUNCTIONS ==========
-        
-        function updateProduct(key) {
-            appState.currentProductKey = key;
-            const data = productData[key] || productData.lwn;
+            const suppliersList = document.getElementById('suppliers-list');
+            const noSuppliersMessage = document.getElementById('no-suppliers-message');
             
-            document.querySelectorAll('.flange-chip').forEach(c => c.classList.remove('active'));
-            const activeChip = document.getElementById(`chip-${key}`);
-            if (activeChip) activeChip.classList.add('active');
+            if (suppliers.length === 0) {
+                suppliersList.innerHTML = '';
+                noSuppliersMessage.classList.remove('hidden');
+                return;
+            }
             
-            const currentProductEl = document.getElementById('current-product-name');
-            const pTitle = document.getElementById('p-title');
-            const pDesc = document.getElementById('p-desc');
-            
-            if (currentProductEl) currentProductEl.textContent = data.title;
-            if (pTitle) pTitle.innerText = data.title;
-            if (pDesc) pDesc.innerText = data.desc;
-            
-            const featuresContainer = document.getElementById('p-features');
-            if (featuresContainer) {
-                featuresContainer.innerHTML = data.features.map((f, i) => `
-                    <div class="feature-card p-4 md:p-5 rounded-2xl opacity-100 reveal stagger-delay-${i % 4}">
-                        <div class="flex items-start gap-3 md:gap-4">
-                            <div class="mt-1 w-7 h-7 md:w-8 md:h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-check text-white text-xs md:text-sm"></i>
+            noSuppliersMessage.classList.add('hidden');
+            suppliersList.innerHTML = suppliers.map(s => `
+                <div class="supplier-card bg-white p-4 rounded-xl border-2 border-slate-200" onclick="selectSupplier('${s.id}')">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user-tie text-green-600"></i>
                             </div>
-                            <span class="text-slate-700 font-semibold text-sm md:text-base">${f}</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">${s.name}</h4>
+                                <p class="text-slate-600 text-sm">${s.company}</p>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
+                                        <span class="text-sm font-medium ml-1">${s.rating}</span>
+                                        <span class="text-slate-500 text-xs ml-1">(${s.reviews})</span>
+                                    </div>
+                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">${s.status}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                `).join('');
-            }
-
-            const specTitle = document.getElementById('spec-title');
-            if (specTitle) specTitle.innerText = `${data.title} - Technical Specifications`;
-            
-            renderSpecTables(data.specs);
-            updateProductSuppliers(key);
-            
-            const productCard = document.getElementById('product-card');
-            if (productCard) {
-                productCard.style.opacity = '0';
-                productCard.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    productCard.style.opacity = '1';
-                    productCard.style.transform = 'translateY(0)';
-                    const productsSection = document.getElementById('products');
-                    if (productsSection) productsSection.scrollIntoView({ behavior: 'smooth' });
-                }, 50);
-            }
+                    <div class="mt-3">
+                        <div class="text-xs">
+                            <span class="text-slate-500">Location:</span>
+                            <span class="font-medium ml-1">${s.location}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        function renderSpecTables(specs) {
-            const container = document.getElementById('spec-tables-container');
-            if (!container) return;
-            container.innerHTML = ''; 
+        function selectSupplier(supplierId) {
+            appState.selectedSupplier = { id: supplierId, name: 'Current Supplier' };
+            document.querySelectorAll('.supplier-card').forEach(c => c.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            document.getElementById('selected-supplier-display').textContent = 'Current Supplier';
+        }
 
-            const categories = [
-                { id: 'general', label: 'Attribute', valueLabel: 'Detail / Capability', icon: 'fas fa-ruler-combined' },
-                { id: 'materials', label: 'Material Grade', valueLabel: 'ASTM / ASME / EN Specifications', icon: 'fas fa-weight' }
-            ];
+        // ========== ORDER TRACKING FUNCTIONS ==========
+        
+        function openTrackingModal() {
+            document.getElementById('tracking-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
 
-            categories.forEach(cat => {
-                const tableData = specs[cat.id];
-                if (!tableData) return;
+        function closeTrackingModal() {
+            document.getElementById('tracking-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
 
-                const tableHTML = `
-                    <div class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
-                        <div class="bg-slate-800/70 px-4 md:px-6 py-3 md:py-4 border-b border-slate-700 flex items-center gap-3">
-                            <i class="${cat.icon} text-blue-400"></i>
-                            <h3 class="font-bold text-base md:text-lg">${cat.id === 'general' ? 'General Specifications' : 'Material Grades'}</h3>
+        function trackOrderWithCode() {
+            const orderRef = document.getElementById('order-reference').textContent;
+            closeOrderModal();
+            setTimeout(() => {
+                openTrackingModal();
+                document.getElementById('tracking-input').value = orderRef;
+                searchOrder();
+            }, 500);
+        }
+
+        async function searchOrder() {
+            const orderId = document.getElementById('tracking-input').value.trim();
+            if (!orderId) {
+                showError('tracking-modal .error-message', 'Please enter an order ID');
+                return;
+            }
+            
+            showLoading('Searching for order...');
+            
+            try {
+                const orders = await getOrders();
+                const order = orders.find(o => o.id === orderId);
+                
+                if (!order) {
+                    showError('tracking-modal .error-message', 'Order not found');
+                    return;
+                }
+                
+                document.getElementById('tracking-empty').classList.add('hidden');
+                document.getElementById('tracking-results').classList.remove('hidden');
+                document.getElementById('my-orders-section').classList.add('hidden');
+                document.getElementById('tracking-loading').classList.add('hidden');
+                
+                document.getElementById('tracking-order-id').textContent = `#${order.id}`;
+                document.getElementById('tracking-product-name').textContent = order.productName;
+                document.getElementById('tracking-status').textContent = order.status ? order.status.charAt(0).toUpperCase() + order.status.slice(1) : 'Unknown';
+                document.getElementById('tracking-quantity').textContent = `${order.quantity || 0} pieces`;
+                document.getElementById('tracking-date').textContent = order.date ? new Date(order.date).toLocaleDateString() : 'N/A';
+                document.getElementById('tracking-delivery').textContent = new Date(Date.now() + 7*24*60*60*1000).toLocaleDateString();
+                document.getElementById('tracking-amount').textContent = `₹${(order.amount || 0).toLocaleString()}`;
+                document.getElementById('tracking-customer-name').textContent = order.customerName || 'N/A';
+                document.getElementById('tracking-company').textContent = order.customerCompany || 'N/A';
+                document.getElementById('tracking-contact').textContent = order.customerEmail || 'N/A';
+                document.getElementById('tracking-supplier').textContent = order.supplierName || 'N/A';
+                document.getElementById('tracking-supplier-contact').textContent = 'supplier@example.com';
+                document.getElementById('tracking-supplier-phone').textContent = order.customerPhone || '+91 9876543210';
+                
+                // Update timeline
+                const steps = {
+                    'pending': ['pending', 'pending', 'pending', 'pending'],
+                    'processing': ['completed', 'current', 'pending', 'pending'],
+                    'shipped': ['completed', 'completed', 'current', 'pending'],
+                    'completed': ['completed', 'completed', 'completed', 'completed']
+                }[order.status || 'pending'] || ['pending', 'pending', 'pending', 'pending'];
+                
+                document.getElementById('tracking-timeline').innerHTML = `
+                    <div class="tracking-step ${steps[0] === 'completed' ? 'completed' : steps[0] === 'current' ? 'current' : ''}">
+                        <div class="tracking-step-icon ${steps[0]}">
+                            <i class="fas fa-check"></i>
                         </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full spec-table">
-                                <thead class="bg-slate-800/40 text-blue-300 text-xs uppercase tracking-widest font-bold">
-                                    <tr>
-                                        <th class="px-4 md:px-6 py-2 md:py-4 text-left">${cat.label}</th>
-                                        <th class="px-4 md:px-6 py-2 md:py-4 text-left">${cat.valueLabel}</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-800 text-xs md:text-sm">
-                                    ${Object.entries(tableData).map(([attr, detail], index) => `
-                                        <tr class="${index % 2 === 0 ? 'bg-slate-900/20' : ''}">
-                                            <td class="px-4 md:px-6 py-2 md:py-4 font-semibold text-slate-300">${attr}</td>
-                                            <td class="px-4 md:px-6 py-2 md:py-4 text-slate-400">${detail}</td>
-                                        </tr>
-                                    `).join('')}
-                                </tbody>
-                            </table>
+                        <div class="tracking-step-content">
+                            <p class="text-sm text-slate-500">${order.date ? new Date(order.date).toLocaleString() : 'N/A'}</p>
+                            <h5 class="font-bold text-slate-900 mb-1">Order Received</h5>
+                            <p class="text-slate-600">Your order has been received by the supplier.</p>
+                        </div>
+                    </div>
+                    <div class="tracking-step ${steps[1] === 'completed' ? 'completed' : steps[1] === 'current' ? 'current' : ''}">
+                        <div class="tracking-step-icon ${steps[1]}">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="tracking-step-content">
+                            <p class="text-sm text-slate-500">${steps[1] !== 'pending' ? new Date(Date.now() - 2*24*60*60*1000).toLocaleString() : 'Processing soon'}</p>
+                            <h5 class="font-bold text-slate-900 mb-1">Processing</h5>
+                            <p class="text-slate-600">Your order is being processed and verified.</p>
+                        </div>
+                    </div>
+                    <div class="tracking-step ${steps[2] === 'completed' ? 'completed' : steps[2] === 'current' ? 'current' : ''}">
+                        <div class="tracking-step-icon ${steps[2]}">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="tracking-step-content">
+                            <p class="text-sm text-slate-500">${steps[2] !== 'pending' ? 'In progress' : 'Not started'}</p>
+                            <h5 class="font-bold text-slate-900 mb-1">Manufacturing</h5>
+                            <p class="text-slate-600">Components are being manufactured.</p>
+                        </div>
+                    </div>
+                    <div class="tracking-step ${steps[3] === 'completed' ? 'completed' : steps[3] === 'current' ? 'current' : ''}">
+                        <div class="tracking-step-icon ${steps[3]}">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="tracking-step-content">
+                            <p class="text-sm text-slate-500">${steps[3] !== 'pending' ? 'Shipped' : 'Not shipped'}</p>
+                            <h5 class="font-bold text-slate-900 mb-1">Shipping</h5>
+                            <p class="text-slate-600">Order will be shipped soon.</p>
                         </div>
                     </div>
                 `;
-                container.innerHTML += tableHTML;
+            } catch (error) {
+                showError('tracking-modal .error-message', error.message);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        async function showMyOrders() {
+            if (!appState.isAuthenticated || appState.currentUser.type === 'visitor') {
+                showError('tracking-modal .error-message', 'Please login to view your orders.');
+                openAuthModal();
+                return;
+            }
+            
+            showLoading('Loading your orders...');
+            
+            try {
+                const orders = await getCustomerOrders(appState.currentUser.email);
+                
+                document.getElementById('tracking-results').classList.add('hidden');
+                document.getElementById('tracking-empty').classList.add('hidden');
+                document.getElementById('tracking-loading').classList.add('hidden');
+                document.getElementById('my-orders-section').classList.remove('hidden');
+                
+                const ordersList = document.getElementById('my-orders-list');
+                if (orders.length === 0) {
+                    ordersList.innerHTML = '<div class="text-center py-8 text-slate-500">No orders found</div>';
+                } else {
+                    ordersList.innerHTML = orders.map(o => `
+                        <div class="bg-white p-4 rounded-xl border border-slate-200">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="flex items-center gap-3">
+                                        <h4 class="font-bold text-slate-900">#${o.id}</h4>
+                                        <span class="badge badge-${o.status === 'pending' ? 'warning' : o.status === 'processing' ? 'info' : o.status === 'completed' ? 'success' : 'danger'}">${o.status}</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 mt-1">${o.productName} - ${o.quantity || 0} pieces</p>
+                                    <p class="text-xs text-slate-500 mt-1">Ordered: ${o.date ? new Date(o.date).toLocaleDateString() : 'N/A'}</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="font-bold">₹${(o.amount || 0).toLocaleString()}</p>
+                                    <button onclick="trackOrder('${o.id}')" class="text-sm text-blue-600 hover:text-blue-800">Track</button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                showError('tracking-modal .error-message', error.message);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        function trackOrder(orderId) {
+            document.getElementById('tracking-input').value = orderId;
+            searchOrder();
+        }
+
+        function downloadInvoice() {
+            showInfo('tracking-modal .error-message', 'Invoice download feature is under development.');
+        }
+
+        function contactSupplier() {
+            const supplierEmail = document.getElementById('tracking-supplier-contact').textContent;
+            window.location.href = `mailto:${supplierEmail}`;
+        }
+
+        // ========== CHAT FUNCTIONS ==========
+        
+        function openChat(supplier) {
+            if (!appState.isAuthenticated || appState.currentUser.type === 'visitor') {
+                showError('login-error-container', 'Please login to chat.');
+                openAuthModal();
+                return;
+            }
+            
+            appState.selectedSupplier = supplier;
+            document.getElementById('chat-modal').classList.add('active');
+            document.getElementById('chat-supplier-name').textContent = supplier.name;
+            document.getElementById('chat-supplier-status').textContent = supplier.status || 'Online';
+            loadChatMessages();
+        }
+
+        function closeChat() {
+            document.getElementById('chat-modal').classList.remove('active');
+        }
+
+        function loadChatMessages() {
+            const supplierId = appState.selectedSupplier?.id || 'default';
+            
+            if (!appState.chatMessages[supplierId]) {
+                appState.chatMessages[supplierId] = [{
+                    id: 1,
+                    sender: 'supplier',
+                    text: `Hello! How can I help you with your order?`,
+                    time: new Date().toLocaleTimeString()
+                }];
+            }
+            
+            updateChatDisplay(supplierId);
+        }
+
+        function updateChatDisplay(supplierId) {
+            const chatContainer = document.getElementById('chat-messages');
+            const messages = appState.chatMessages[supplierId] || [];
+            
+            chatContainer.innerHTML = messages.map(msg => `
+                <div class="chat-message ${msg.sender === 'user' ? 'sent' : ''}">
+                    <div class="bg-${msg.sender === 'user' ? 'blue' : 'slate'}-100 p-3 rounded-lg">
+                        <p class="text-slate-800">${msg.text}</p>
+                        <p class="text-xs text-slate-500 mt-1 text-right">${msg.time}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            const supplierId = appState.selectedSupplier?.id || 'default';
+            
+            if (!appState.chatMessages[supplierId]) {
+                appState.chatMessages[supplierId] = [];
+            }
+            
+            appState.chatMessages[supplierId].push({
+                id: Date.now(),
+                sender: 'user',
+                text: message,
+                time: new Date().toLocaleTimeString()
+            });
+            
+            input.value = '';
+            updateChatDisplay(supplierId);
+            
+            // Simulate response
+            setTimeout(() => {
+                const responses = [
+                    "Thank you for your message. We'll get back to you shortly.",
+                    "Can you please share more details?",
+                    "I'll check availability for you.",
+                    "Would you like a quotation for this?"
+                ];
+                
+                appState.chatMessages[supplierId].push({
+                    id: Date.now() + 1,
+                    sender: 'supplier',
+                    text: responses[Math.floor(Math.random() * responses.length)],
+                    time: new Date().toLocaleTimeString()
+                });
+                
+                updateChatDisplay(supplierId);
+            }, 2000);
+        }
+
+        // ========== UTILITY FUNCTIONS ==========
+        
+        function showLoading(message = 'Loading...') {
+            document.getElementById('loading-message').textContent = message;
+            document.getElementById('loading-overlay').classList.remove('hidden');
+        }
+
+        function hideLoading() {
+            document.getElementById('loading-overlay').classList.add('hidden');
+        }
+
+        function showError(containerId, message) {
+            const container = document.querySelector(containerId);
+            if (container) {
+                container.innerHTML = `<i class="fas fa-exclamation-circle"></i><span>${message}</span>`;
+                container.classList.remove('hidden');
+                container.className = 'error-message';
+                setTimeout(() => container.classList.add('hidden'), 5000);
+            } else {
+                alert(message);
+            }
+        }
+
+        function showSuccess(containerId, message) {
+            const container = document.querySelector(containerId);
+            if (container) {
+                container.innerHTML = `<i class="fas fa-check-circle"></i><span>${message}</span>`;
+                container.classList.remove('hidden');
+                container.className = 'success-message';
+                setTimeout(() => container.classList.add('hidden'), 5000);
+            }
+        }
+
+        function showInfo(containerId, message) {
+            const container = document.querySelector(containerId);
+            if (container) {
+                container.innerHTML = `<i class="fas fa-info-circle"></i><span>${message}</span>`;
+                container.classList.remove('hidden');
+                container.className = 'info-message';
+                setTimeout(() => container.classList.add('hidden'), 3000);
+            }
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function validateRequired(value) {
+            return value && value.trim() !== '';
+        }
+
+        function clearValidationErrors() {
+            document.querySelectorAll('.validation-message').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+        }
+
+        function showFieldError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const errorEl = document.getElementById(fieldId + '-error');
+            if (field && errorEl) {
+                field.classList.add('input-error');
+                errorEl.textContent = message;
+                errorEl.classList.remove('hidden');
+            }
+        }
+
+        function toggleAuthView(view) {
+            document.getElementById('login-form').classList.toggle('hidden', view !== 'login');
+            document.getElementById('signup-form').classList.toggle('hidden', view !== 'signup');
+        }
+
+        function openAuthModal() {
+            document.body.classList.add('require-auth');
+            document.body.classList.remove('visitor-mode');
+            document.getElementById('auth-overlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAuth() {
+            if (!appState.isAuthenticated) {
+                document.body.classList.add('visitor-mode');
+                document.body.classList.remove('require-auth');
+            }
+            document.getElementById('auth-overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function setUserType(type) {
+            appState.currentUserType = type;
+            const buttons = document.querySelectorAll('#login-form button[onclick^="setUserType"]');
+            buttons.forEach(btn => {
+                if (btn.textContent.includes(type === 'partner' ? 'Partner' : 'Supplier')) {
+                    btn.classList.add('border-blue-200', 'bg-blue-50', 'text-blue-700');
+                    btn.classList.remove('border-slate-200');
+                } else {
+                    btn.classList.remove('border-blue-200', 'bg-blue-50', 'text-blue-700');
+                    btn.classList.add('border-slate-200');
+                }
             });
         }
 
-        function downloadProductFiles() {
-            const currentProduct = getCurrentProduct();
-            showInfo('login-error-container', `Preparing ${currentProduct.title} technical files for download...`);
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            
+            if (menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            } else {
+                menu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
-        function showAllProducts() {
-            const gallery = document.getElementById('product-gallery');
-            if (gallery) gallery.scrollIntoView({ behavior: 'smooth' });
+        function showProfile() {
+            if (!appState.isAuthenticated) {
+                openAuthModal();
+                return;
+            }
+            showInfo('login-error-container', 'Profile page is under development.');
         }
 
-        function handleSearch(query) {
+        async function handleSearch(query) {
             const term = query.toLowerCase().trim();
             if (term.length < 2) return;
             
-            for (const [key, data] of Object.entries(productData)) {
-                if (data.title.toLowerCase().includes(term) || 
-                    key.includes(term) || 
-                    data.desc.toLowerCase().includes(term)) {
-                    updateProduct(key);
-                    break;
-                }
-            }
-        }
-
-        function getCurrentProduct() {
-            return productData[appState.currentProductKey] || productData.lwn;
-        }
-
-        // ========== IMAGE HANDLING ==========
-        
-        function handleImageError(img, fallbackText) {
-            img.style.display = 'none';
-            const parent = img.parentNode;
+            const products = await getProducts();
+            const matched = products.find(p => 
+                p.name.toLowerCase().includes(term) || 
+                p.key.includes(term) || 
+                (p.description && p.description.toLowerCase().includes(term))
+            );
             
-            if (parent && !parent.querySelector('.img-fallback')) {
-                parent.classList.add('img-fallback');
-                
-                const icon = document.createElement('i');
-                icon.className = 'fas fa-industry';
-                parent.appendChild(icon);
-                
-                if (fallbackText && !parent.classList.contains('product-image-container')) {
-                    const text = document.createElement('span');
-                    text.className = 'text-sm mt-2 block';
-                    text.textContent = fallbackText;
-                    parent.appendChild(text);
-                }
+            if (matched) {
+                updateProduct(matched.key);
             }
         }
 
-        function initImageErrorHandlers() {
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                img.addEventListener('error', function() {
-                    handleImageError(this);
+        function updateProduct(key) {
+            fetchAndUpdateProducts().then(() => {
+                getProducts().then(products => {
+                    updateCurrentProduct(key, products);
                 });
-                
-                // Also check if src is empty or invalid
-                if (!img.src || img.src === '' || img.src.includes('undefined')) {
-                    handleImageError(img);
-                }
             });
         }
 
-        // ========== REVEAL ANIMATIONS ==========
+        // ========== UI UPDATE FUNCTIONS ==========
         
+        function updateUIAfterAuth() {
+            const statusBadge = document.getElementById('user-status');
+            const mobileStatus = document.getElementById('mobile-user-status');
+            const orderNowBtn = document.getElementById('order-now-btn');
+            const productOrderBtn = document.getElementById('product-order-btn');
+            
+            if (appState.isAuthenticated && appState.currentUser.type !== 'visitor') {
+                const userType = appState.currentUser.type === 'supplier' ? 'Supplier' : 'Partner';
+                statusBadge.innerHTML = `<i class="fas fa-${appState.currentUser.type === 'supplier' ? 'building' : 'user-shield'} mr-1"></i>${userType}`;
+                mobileStatus.innerHTML = userType;
+                
+                // Hide/show buttons based on user type
+                document.getElementById('logout-btn')?.classList.remove('hidden');
+                document.getElementById('mobile-logout-btn')?.classList.remove('hidden');
+                document.getElementById('login-btn')?.classList.add('hidden');
+                document.getElementById('mobile-login-btn')?.classList.add('hidden');
+                document.getElementById('profile-btn')?.classList.remove('hidden');
+                document.getElementById('mobile-profile-link')?.classList.remove('hidden');
+                
+                // Suppliers: Hide order buttons, show dashboard
+                if (appState.currentUser.type === 'supplier') {
+                    document.getElementById('dashboard-btn')?.classList.remove('hidden');
+                    document.getElementById('mobile-dashboard-link')?.classList.remove('hidden');
+                    if (orderNowBtn) orderNowBtn.style.display = 'none';
+                    if (productOrderBtn) productOrderBtn.style.display = 'none';
+                    document.querySelectorAll('.order-button').forEach(btn => {
+                        btn.style.display = 'none';
+                    });
+                } else {
+                    // Partners: Show order buttons, hide dashboard
+                    document.getElementById('dashboard-btn')?.classList.add('hidden');
+                    document.getElementById('mobile-dashboard-link')?.classList.add('hidden');
+                    if (orderNowBtn) orderNowBtn.style.display = 'flex';
+                    if (productOrderBtn) productOrderBtn.style.display = 'block';
+                    document.querySelectorAll('.order-button').forEach(btn => {
+                        btn.style.display = 'flex';
+                    });
+                }
+            } else {
+                // Visitor mode
+                statusBadge.innerHTML = '<i class="fas fa-user mr-1"></i>Visitor';
+                mobileStatus.innerHTML = 'Visitor';
+                
+                document.getElementById('logout-btn')?.classList.add('hidden');
+                document.getElementById('mobile-logout-btn')?.classList.add('hidden');
+                document.getElementById('login-btn')?.classList.remove('hidden');
+                document.getElementById('mobile-login-btn')?.classList.remove('hidden');
+                document.getElementById('profile-btn')?.classList.add('hidden');
+                document.getElementById('mobile-profile-link')?.classList.add('hidden');
+                document.getElementById('dashboard-btn')?.classList.add('hidden');
+                document.getElementById('mobile-dashboard-link')?.classList.add('hidden');
+                
+                // Visitors: Show order buttons
+                if (orderNowBtn) orderNowBtn.style.display = 'flex';
+                if (productOrderBtn) productOrderBtn.style.display = 'block';
+                document.querySelectorAll('.order-button').forEach(btn => {
+                    btn.style.display = 'flex';
+                });
+            }
+        }
+
         function initReveal() {
-            const reveals = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
+                entries.forEach(e => e.target.classList.toggle('active', e.isIntersecting));
             }, { threshold: 0.1 });
-            
-            reveals.forEach(r => observer.observe(r));
+            document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
         }
 
-        // ========== CHART FUNCTIONS ==========
-        
-        function initDashboardCharts() {
-            destroyDashboardCharts(); // Clean up existing charts
-            
-            const salesCtx = document.getElementById('salesChart')?.getContext('2d');
-            if (salesCtx) {
-                appState.charts.salesChart = new Chart(salesCtx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                        datasets: [{
-                            label: 'Revenue (₹)',
-                            data: [1200000, 1850000, 1500000, 2200000, 2450000, 2847500],
-                            borderColor: '#3b82f6',
-                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                            borderWidth: 2,
-                            fill: true,
-                            tension: 0.4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    callback: function(value) {
-                                        return '₹' + (value / 1000000).toFixed(1) + 'M';
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-        
-        function initAnalyticsCharts() {
-            destroyDashboardCharts(); // Clean up existing charts
-            
-            const categoryCtx = document.getElementById('categoryChart')?.getContext('2d');
-            if (categoryCtx) {
-                appState.charts.categoryChart = new Chart(categoryCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Weld Neck', 'Long Weld Neck', 'Blind Flange', 'Plasma CNC', 'Others'],
-                        datasets: [{
-                            data: [42, 30, 12, 8, 8],
-                            backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#64748b']
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'bottom' } }
-                    }
-                });
-            }
-            
-            const performanceCtx = document.getElementById('performanceChart')?.getContext('2d');
-            if (performanceCtx) {
-                appState.charts.performanceChart = new Chart(performanceCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                        datasets: [
-                            {
-                                label: 'Orders',
-                                data: [32, 45, 38, 52, 47, 56],
-                                backgroundColor: '#3b82f6'
-                            },
-                            {
-                                label: 'Revenue (₹L)',
-                                data: [120, 185, 150, 220, 245, 284],
-                                backgroundColor: '#10b981'
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
-            
-            const conversionCtx = document.getElementById('conversionChart')?.getContext('2d');
-            if (conversionCtx) {
-                appState.charts.conversionChart = new Chart(conversionCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Converted', 'Not Converted'],
-                        datasets: [{
-                            data: [68, 32],
-                            backgroundColor: ['#3b82f6', '#e2e8f0']
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        cutout: '70%',
-                        plugins: { legend: { display: false } }
-                    }
-                });
-            }
-        }
-
-        // ========== EVENT LISTENERS ==========
-        
         function setupEventListeners() {
-            // Escape key handler
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
-                    const orderModal = document.getElementById('order-modal');
-                    const dashboardModal = document.getElementById('dashboard-modal');
-                    const authOverlay = document.getElementById('auth-overlay');
-                    const trackingModal = document.getElementById('tracking-modal');
-                    const chatModal = document.getElementById('chat-modal');
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    
-                    if (orderModal && !orderModal.classList.contains('hidden')) closeOrderModal();
-                    if (dashboardModal && !dashboardModal.classList.contains('hidden')) closeDashboard();
-                    if (authOverlay && authOverlay.style.display === 'flex') closeAuth();
-                    if (trackingModal && !trackingModal.classList.contains('hidden')) closeTrackingModal();
-                    if (chatModal && chatModal.classList.contains('active')) closeChat();
-                    if (mobileMenu && mobileMenu.classList.contains('active')) toggleMobileMenu();
-                }
-            });
-
-            // Click outside to close modals
-            document.addEventListener('click', (e) => {
-                const authOverlay = document.getElementById('auth-overlay');
-                const dashboardModal = document.getElementById('dashboard-modal');
-                const trackingModal = document.getElementById('tracking-modal');
-                const orderModal = document.getElementById('order-modal');
-                
-                if (authOverlay && e.target === authOverlay) {
-                    closeAuth();
-                }
-                
-                if (dashboardModal && e.target === dashboardModal) {
-                    closeDashboard();
-                }
-                
-                if (trackingModal && e.target === trackingModal) {
-                    closeTrackingModal();
-                }
-                
-                if (orderModal && e.target === orderModal) {
                     closeOrderModal();
+                    closeDashboard();
+                    closeAuth();
+                    closeTrackingModal();
+                    closeChat();
+                    toggleMobileMenu();
                 }
             });
-
-            // Product select change
-            const productSelect = document.getElementById('order-product');
-            if (productSelect) {
-                productSelect.addEventListener('change', function() {
-                    const selectedValue = this.value;
-                    if (selectedValue && selectedValue !== 'custom') {
-                        loadSuppliersForProduct(selectedValue);
-                    }
-                });
-            }
-
-            // Chat input enter key
-            const chatInput = document.getElementById('chat-input');
-            if (chatInput) {
-                chatInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        sendChatMessage();
-                    }
-                });
-            }
-
-            // Activity listeners for session timeout
-            ['click', 'mousemove', 'keypress', 'scroll'].forEach(event => {
-                document.addEventListener(event, resetSessionTimer);
+            
+            document.addEventListener('click', (e) => {
+                if (e.target === document.getElementById('auth-overlay')) closeAuth();
+                if (e.target === document.getElementById('dashboard-modal')) closeDashboard();
+                if (e.target === document.getElementById('tracking-modal')) closeTrackingModal();
+                if (e.target === document.getElementById('order-modal')) closeOrderModal();
+            });
+            
+            document.getElementById('chat-input')?.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendChatMessage();
             });
         }
 
         // ========== INITIALIZATION ==========
         
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize auth state
             initializeAuth();
-            
-            // Set default user type
             setUserType('partner');
-            
-            // Update product to default
-            updateProduct('lwn');
-            
-            // Initialize reveal animations
             initReveal();
-            
-            // Setup image error handlers
-            initImageErrorHandlers();
-            
-            // Setup event listeners
             setupEventListeners();
-            
-            // Prefill order form if user is logged in
-            if (appState.isAuthenticated && appState.currentUser) {
-                const orderEmail = document.getElementById('order-email');
-                const orderCompany = document.getElementById('order-company');
-                
-                if (orderEmail && appState.currentUser.email) {
-                    orderEmail.value = appState.currentUser.email;
-                }
-                
-                if (orderCompany && appState.currentUser.company) {
-                    orderCompany.value = appState.currentUser.company;
-                }
-            }
         });
-
-        // Cleanup on page unload
-        window.addEventListener('beforeunload', function() {
-            destroyDashboardCharts();
-            if (sessionTimeoutId) {
-                clearTimeout(sessionTimeoutId);
-            }
-        });
-
     </script>
 </body>
 </html>
