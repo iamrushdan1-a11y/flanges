@@ -1597,7 +1597,7 @@
                     </div>
                     
                     <div class="text-sm md:text-base text-slate-500 mb-4 md:mb-6 bg-white p-3 rounded-lg inline-block">
-                        Order Reference: <strong id="order-reference" class="text-blue-600">UF-ORD-123456</strong>
+                        Order Reference: <strong id="order-reference" class="text-blue-600">Loading...</strong>
                     </div>
                     
                     <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-3 md:p-4 mb-4 md:mb-6 transform transition-all duration-300 hover:scale-[1.02]">
@@ -1637,7 +1637,7 @@
                 <div class="mb-6 md:mb-8">
                     <div class="flex flex-col md:flex-row gap-3 md:gap-4">
                         <div class="flex-1 relative">
-                            <input type="text" id="tracking-input" placeholder="Enter Order ID or Reference Number" 
+                            <input type="text" id="tracking-input" placeholder="Enter Order ID" 
                                    class="w-full px-4 md:px-5 py-3 md:py-3.5 rounded-xl border-2 border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none transition text-sm md:text-base">
                             <button onclick="searchOrder()" class="absolute right-2 top-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
                                 <i class="fas fa-search"></i>
@@ -1648,7 +1648,7 @@
                         </button>
                     </div>
                     <p class="text-slate-500 text-xs md:text-sm mt-2">
-                        Enter your order reference number (e.g., UF-ORD-123456) or order ID
+                        Enter your order ID to view real-time tracking information
                     </p>
                 </div>
                 
@@ -1657,29 +1657,29 @@
                     <div class="bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-4 md:p-6 text-white mb-4 md:mb-6">
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                             <div>
-                                <h3 class="text-lg md:text-xl font-bold mb-1" id="tracking-order-id">#UF-ORD-123456</h3>
-                                <p class="text-blue-300 text-sm" id="tracking-product-name">Long Weld Neck Flange</p>
+                                <h3 class="text-lg md:text-xl font-bold mb-1" id="tracking-order-id">#</h3>
+                                <p class="text-blue-300 text-sm" id="tracking-product-name"></p>
                             </div>
                             <div class="bg-white/20 rounded-lg px-3 md:px-4 py-1 md:py-2">
-                                <span class="font-bold text-sm md:text-base" id="tracking-status">Processing</span>
+                                <span class="font-bold text-sm md:text-base" id="tracking-status"></span>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-4">
                             <div>
                                 <p class="text-blue-300 text-xs">Quantity</p>
-                                <p class="font-bold" id="tracking-quantity">50 pieces</p>
+                                <p class="font-bold" id="tracking-quantity"></p>
                             </div>
                             <div>
                                 <p class="text-blue-300 text-xs">Order Date</p>
-                                <p class="font-bold" id="tracking-date">Mar 15, 2024</p>
+                                <p class="font-bold" id="tracking-date"></p>
                             </div>
                             <div>
                                 <p class="text-blue-300 text-xs">Estimated Delivery</p>
-                                <p class="font-bold" id="tracking-delivery">Mar 25, 2024</p>
+                                <p class="font-bold" id="tracking-delivery"></p>
                             </div>
                             <div>
                                 <p class="text-blue-300 text-xs">Total Amount</p>
-                                <p class="font-bold" id="tracking-amount">₹245,000</p>
+                                <p class="font-bold" id="tracking-amount"></p>
                             </div>
                         </div>
                     </div>
@@ -1697,17 +1697,17 @@
                         <div class="bg-slate-50 rounded-xl p-4 md:p-5">
                             <h5 class="font-bold text-slate-800 mb-3">Customer Details</h5>
                             <div class="space-y-2 text-sm md:text-base">
-                                <p><span class="text-slate-600">Name:</span> <span id="tracking-customer-name" class="font-medium">John Doe</span></p>
-                                <p><span class="text-slate-600">Company:</span> <span id="tracking-company" class="font-medium">Oil & Gas Corp</span></p>
-                                <p><span class="text-slate-600">Contact:</span> <span id="tracking-contact" class="font-medium">john@example.com</span></p>
+                                <p><span class="text-slate-600">Name:</span> <span id="tracking-customer-name" class="font-medium"></span></p>
+                                <p><span class="text-slate-600">Company:</span> <span id="tracking-company" class="font-medium"></span></p>
+                                <p><span class="text-slate-600">Contact:</span> <span id="tracking-contact" class="font-medium"></span></p>
                             </div>
                         </div>
                         <div class="bg-slate-50 rounded-xl p-4 md:p-5">
                             <h5 class="font-bold text-slate-800 mb-3">Supplier Information</h5>
                             <div class="space-y-2 text-sm md:text-base">
-                                <p><span class="text-slate-600">Supplier:</span> <span id="tracking-supplier" class="font-medium">Precision Flange Co.</span></p>
-                                <p><span class="text-slate-600">Contact:</span> <span id="tracking-supplier-contact" class="font-medium">sales@precisionflange.com</span></p>
-                                <p><span class="text-slate-600">Phone:</span> <span id="tracking-supplier-phone" class="font-medium">+91 9876543210</span></p>
+                                <p><span class="text-slate-600">Supplier:</span> <span id="tracking-supplier" class="font-medium"></span></p>
+                                <p><span class="text-slate-600">Contact:</span> <span id="tracking-supplier-contact" class="font-medium"></span></p>
+                                <p><span class="text-slate-600">Phone:</span> <span id="tracking-supplier-phone" class="font-medium"></span></p>
                             </div>
                         </div>
                     </div>
@@ -1738,7 +1738,7 @@
                     </div>
                     <h4 class="text-lg md:text-xl font-bold text-slate-700 mb-2">Track Your Order</h4>
                     <p class="text-slate-500 max-w-md mx-auto text-sm md:text-base">
-                        Enter your order reference number above to view real-time tracking information, delivery status, and order details.
+                        Enter your order ID above to view real-time tracking information, delivery status, and order details.
                     </p>
                 </div>
                 
@@ -2442,23 +2442,23 @@
                                         <div class="space-y-3 md:space-y-4 mb-4 md:mb-6">
                                             <div>
                                                 <div class="text-xs md:text-sm text-blue-300 mb-1">Current Product</div>
-                                                <div class="font-bold text-base md:text-lg" id="current-product-name">Long Weld Neck Flange</div>
+                                                <div class="font-bold text-base md:text-lg" id="current-product-name"></div>
                                             </div>
                                             <div>
                                                 <div class="text-xs md:text-sm text-blue-300 mb-1">Reference Code</div>
-                                                <div class="font-medium" id="product-reference">ASMEB16.5-900-DN15</div>
+                                                <div class="font-medium" id="product-reference"></div>
                                             </div>
                                             <div>
                                                 <div class="text-xs md:text-sm text-blue-300 mb-1">Standard</div>
-                                                <div class="font-medium" id="product-standard">ASME B16.5</div>
+                                                <div class="font-medium" id="product-standard"></div>
                                             </div>
                                             <div>
                                                 <div class="text-xs md:text-sm text-blue-300 mb-1">Nominal Diameter</div>
-                                                <div class="font-medium" id="product-diameter">DN15 (1/2")</div>
+                                                <div class="font-medium" id="product-diameter"></div>
                                             </div>
                                             <div>
                                                 <div class="text-xs md:text-sm text-blue-300 mb-1">Pressure Rating</div>
-                                                <div class="font-medium" id="product-pressure">Class 900 (150#)</div>
+                                                <div class="font-medium" id="product-pressure"></div>
                                             </div>
                                         </div>
                                         
@@ -2474,12 +2474,9 @@
                         
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6 mb-6 md:mb-10">
                             <div>
-                                <h3 class="text-3xl md:text-4xl font-bold text-slate-900" id="p-title">Long Weld Neck Flange (LWN)</h3>
-                                <div class="flex flex-wrap items-center gap-2 md:gap-4 mt-2">
-                                    <span class="px-2 md:px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-bold">ASME B16.5</span>
-                                    <span class="px-2 md:px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-bold">Class 900</span>
-                                    <span class="px-2 md:px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-xs font-bold">CAD Available</span>
-                                    <span class="px-2 md:px-3 py-1 bg-orange-50 text-orange-700 rounded-full text-xs font-bold">DN15</span>
+                                <h3 class="text-3xl md:text-4xl font-bold text-slate-900" id="p-title"></h3>
+                                <div class="flex flex-wrap items-center gap-2 md:gap-4 mt-2" id="product-tags">
+                                    <!-- Tags will be populated -->
                                 </div>
                             </div>
                             <div class="flex gap-2 md:gap-3 mt-4 md:mt-0">
@@ -2488,9 +2485,7 @@
                                 </button>
                             </div>
                         </div>
-                        <p class="text-slate-600 text-base md:text-xl leading-relaxed mb-6 md:mb-10 max-w-4xl" id="p-desc">
-                            Long Weld Neck flanges are specifically designed for pressure vessel applications and high-pressure piping systems. Featuring an extended neck that provides reinforcement and stress distribution, these flanges are ideal for critical applications where reliability is paramount. Our ASME B16.5 Class 900 DN15 model represents precision engineering for demanding industrial environments.
-                        </p>
+                        <p class="text-slate-600 text-base md:text-xl leading-relaxed mb-6 md:mb-10 max-w-4xl" id="p-desc"></p>
                         
                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12" id="p-features">
                             <!-- Features will be populated by JavaScript -->
@@ -2771,16 +2766,16 @@
 
     <script>
         // ========== API CONFIGURATION ==========
-        // FIXED: Correct backend URL without extra backslash
-const API_BASE_URL = 'https://finalbackend-production-5b1a.up.railway.app/api';
+        const API_BASE_URL = 'https://backend-production-89b7.up.railway.app/api';
+
         // ========== GLOBAL STATE MANAGEMENT ==========
         let appState = {
             isAuthenticated: false,
-            currentUser: { type: 'visitor' },
+            currentUser: null,
             currentUserType: 'visitor',     
             isSupplier: false,
             currentOrderStep: 1,
-            currentProductKey: 'lwn',
+            currentProductKey: null,
             selectedSupplier: null,
             userOrders: [],
             chatMessages: {},
@@ -2789,189 +2784,251 @@ const API_BASE_URL = 'https://finalbackend-production-5b1a.up.railway.app/api';
 
         // ========== API HELPER FUNCTIONS ==========
         async function apiRequest(endpoint, options = {}) {
-        const url = endpoint.startsWith('/') ? `${API_BASE_URL}${endpoint}` : `${API_BASE_URL}/${endpoint}`;
-        const headers = {
-            'Content-Type': 'application/json',
-            ...options.headers
-        };
-        
-        if (appState.authToken) {
-            headers['Authorization'] = `Bearer ${appState.authToken}`;
-        }
-        
-        try {
-            const response = await fetch(url, { ...options, headers });
-            const contentType = response.headers.get('content-type');
+            const url = endpoint.startsWith('/') ? `${API_BASE_URL}${endpoint}` : `${API_BASE_URL}/${endpoint}`;
+            const headers = {
+                'Content-Type': 'application/json',
+                ...options.headers
+            };
             
-            if (contentType && contentType.includes('application/json')) {
-                const data = await response.json();
-                if (!response.ok) throw new Error(data.message || 'API request failed');
-                return data;
-            } else {
-                const text = await response.text();
-                if (!response.ok) throw new Error(text || 'API request failed');
-                return { message: text };
+            if (appState.authToken) {
+                headers['Authorization'] = `Bearer ${appState.authToken}`;
             }
-        } catch (error) {
-            console.error('API Error:', error);
-            throw error;
+            
+            try {
+                const response = await fetch(url, { ...options, headers, credentials: 'include' });
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.message || 'API request failed');
+                }
+                
+                return data;
+            } catch (error) {
+                console.error('API Error:', error);
+                throw error;
+            }
         }
-    }
 
+        // ========== AUTHENTICATION FUNCTIONS ==========
+        async function initializeAuth() {
+            try {
+                const token = localStorage.getItem('authToken');
+                if (token) {
+                    const response = await fetch(`${API_BASE_URL}/auth/verify`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        },
+                        credentials: 'include'
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        appState.isAuthenticated = true;
+                        appState.currentUser = data.user;
+                        appState.currentUserType = data.user.userType;
+                        appState.isSupplier = data.user.userType === 'supplier';
+                        appState.authToken = token;
+                        
+                        document.body.classList.add('authenticated');
+                        document.body.classList.remove('visitor-mode', 'require-auth');
+                        document.getElementById('auth-overlay').style.display = 'none';
+                        
+                        updateUIAfterAuth();
+                        await fetchAndUpdateProducts();
+                    } else {
+                        localStorage.removeItem('authToken');
+                        clearAuth(true);
+                    }
+                } else {
+                    clearAuth(true);
+                    await fetchAndUpdateProducts();
+                }
+            } catch (error) {
+                console.error('Auth initialization error:', error);
+                clearAuth(true);
+                await fetchAndUpdateProducts();
+            }
+        }
+
+        function clearAuth(keepVisitorMode = false) {
+            localStorage.removeItem('authToken');
+            
+            appState.isAuthenticated = false;
+            appState.currentUser = null;
+            appState.currentUserType = 'visitor';
+            appState.isSupplier = false;
+            appState.authToken = null;
+            
+            if (keepVisitorMode) {
+                document.body.classList.add('visitor-mode');
+                document.body.classList.remove('authenticated', 'require-auth');
+                document.getElementById('auth-overlay').style.display = 'none';
+            } else {
+                document.body.classList.add('require-auth');
+                document.body.classList.remove('authenticated', 'visitor-mode');
+                document.getElementById('auth-overlay').style.display = 'flex';
+            }
+            
+            updateUIAfterAuth();
+        }
+
+        async function loginUser(event) {
+            event.preventDefault();
+            clearValidationErrors();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const userType = appState.currentUserType || 'partner';
+
+            if (!validateEmail(email)) {
+                showFieldError('login-email', 'Please enter a valid email address');
+                return;
+            }
+            
+            if (!validateRequired(password)) {
+                showFieldError('login-password', 'Password is required');
+                return;
+            }
+
+            showLoading('Logging in...');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password, userType }),
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    const token = data.data?.token || data.token;
+                    
+                    localStorage.setItem('authToken', token);
+                    
+                    appState.isAuthenticated = true;
+                    appState.currentUser = data.data?.user || data.user;
+                    appState.currentUserType = appState.currentUser.userType;
+                    appState.isSupplier = appState.currentUser.userType === 'supplier';
+                    appState.authToken = token;
+                    
+                    document.body.classList.add('authenticated');
+                    document.body.classList.remove('visitor-mode', 'require-auth');
+                    document.getElementById('auth-overlay').style.display = 'none';
+                    
+                    updateUIAfterAuth();
+                    await fetchAndUpdateProducts();
+                    showSuccess('login-error-container', 'Login successful!');
+                } else {
+                    throw new Error(data.message || 'Login failed');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showError('login-error-container', error.message);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        async function signupUser(event) {
+            event.preventDefault();
+            clearValidationErrors();
+            
+            const firstName = document.getElementById('signup-firstname')?.value || '';
+            const lastName = document.getElementById('signup-lastname')?.value || '';
+            const email = document.getElementById('signup-email')?.value || '';
+            const password = document.getElementById('signup-password')?.value || '';
+            const company = document.getElementById('signup-company')?.value || '';
+            const industry = document.getElementById('signup-industry')?.value || '';
+            
+            const accountTypeRadios = document.querySelectorAll('input[name="signup-type"]');
+            let accountType = 'partner';
+            for (const radio of accountTypeRadios) if (radio.checked) accountType = radio.value;
+
+            if (!validateRequired(firstName)) { showFieldError('signup-firstname', 'First name required'); return; }
+            if (!validateRequired(lastName)) { showFieldError('signup-lastname', 'Last name required'); return; }
+            if (!validateEmail(email)) { showFieldError('signup-email', 'Valid email required'); return; }
+            if (!validateRequired(password) || password.length < 6) { showFieldError('signup-password', 'Password min 6 chars'); return; }
+            if (!validateRequired(company)) { showFieldError('signup-company', 'Company required'); return; }
+
+            showLoading('Creating account...');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ firstName, lastName, email, password, company, industry, userType: accountType }),
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    showSuccess('signup-error-container', '✅ Account created! Please login.');
+                    
+                    document.getElementById('signup-firstname').value = '';
+                    document.getElementById('signup-lastname').value = '';
+                    document.getElementById('signup-email').value = '';
+                    document.getElementById('signup-password').value = '';
+                    document.getElementById('signup-company').value = '';
+                    
+                    setTimeout(() => toggleAuthView('login'), 2000);
+                } else {
+                    throw new Error(data.message || 'Registration failed');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                showError('signup-error-container', error.message);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        function handleVisitor(e) {
+            if(e) e.preventDefault();
+            localStorage.removeItem('authToken');
+            appState.isAuthenticated = false;
+            appState.currentUser = null;
+            appState.currentUserType = 'visitor';
+            appState.isSupplier = false;
+            appState.authToken = null;
+            
+            document.body.classList.add('visitor-mode');
+            document.body.classList.remove('authenticated', 'require-auth');
+            document.getElementById('auth-overlay').style.display = 'none';
+            
+            updateUIAfterAuth();
+            fetchAndUpdateProducts();
+        }
+
+        function logout() {
+            clearAuth(false);
+            closeDashboard();
+            closeOrderModal();
+            closeTrackingModal();
+            closeChat();
+            fetchAndUpdateProducts();
+        }
 
         // ========== PRODUCT API FUNCTIONS ==========
-async function getProducts() {
-    // Return detailed products from reference images
-    return [
-        { 
-            id: '1', 
-            key: 'ms-plate', 
-            name: 'MS Plate Flange', 
-            description: 'Mild Steel Plate Flanges suitable for low to medium pressure applications. Manufactured from high-quality carbon steel plates with precision machining.', 
-            price: 12500,
-            stock: 100,
-            unit: 'pieces',
-            material: 'Carbon Steel (IS 2062, A36)',
-            supplierId: 'sup1',
-            standard: 'ASME B16.5 / IS 6392',
-            diameter: 'DN15 to DN600 (1/2" to 24")',
-            pressure: 'Class 150 to Class 900',
-            features: [
-                'Precision machined from high-quality MS plates',
-                'Accurate bolt hole drilling as per standards',
-                'Suitable for various industrial applications',
-                'Cost-effective solution for piping systems'
-            ],
-            specs: 'Available in raised face, flat face, and ring-type joint configurations. Face finish 125-250 AARH.'
-        },
-        { 
-            id: '2', 
-            key: 'forged', 
-            name: 'Forged Flange', 
-            description: 'High-strength forged flanges manufactured through hot forging process for superior grain structure and mechanical properties.', 
-            price: 18500,
-            stock: 75,
-            unit: 'pieces',
-            material: 'Carbon Steel (A105), Alloy Steel (F11, F22), Stainless Steel (F304, F316)',
-            supplierId: 'sup1',
-            standard: 'ASME B16.5, ASME B16.47, API 6A',
-            diameter: 'DN15 to DN600 (1/2" to 24")',
-            pressure: 'Class 150 to Class 2500',
-            features: [
-                'Superior grain structure from hot forging',
-                'Enhanced mechanical properties',
-                'Ultrasonic tested for internal soundness',
-                'Full material traceability available'
-            ],
-            specs: 'Manufactured through hot forging process with controlled grain flow. Heat treatment and NDT available on request.'
-        },
-        { 
-            id: '3', 
-            key: 'special-ring', 
-            name: 'Special / Ring as per Drawing', 
-            description: 'Custom flanges and rings manufactured as per customer drawings and specifications. Ideal for special applications and non-standard requirements.', 
-            price: 22500,
-            stock: 50,
-            unit: 'pieces',
-            material: 'Carbon Steel, Stainless Steel, Alloy Steel, Duplex, Super Duplex, Monel, Inconel, Hastelloy',
-            supplierId: 'sup2',
-            standard: 'As per customer specifications / drawings',
-            diameter: 'As per drawing',
-            pressure: 'As per design requirements',
-            features: [
-                'Manufactured exactly to customer drawings',
-                'Wide material selection available',
-                'Short lead times for custom orders',
-                'In-house engineering support for design optimization'
-            ],
-            specs: 'Custom manufactured flanges and rings as per customer drawings. Available in all material grades with full documentation.'
-        },
-        { 
-            id: '4', 
-            key: 'weld-neck', 
-            name: 'Weld Neck Flanges', 
-            description: 'Standard weld neck flanges with tapered hub for high-stress applications. Ideal for high-pressure and high-temperature services.', 
-            price: 14500,
-            stock: 120,
-            unit: 'pieces',
-            material: 'Carbon Steel (A105), Stainless Steel (F304, F316), Alloy Steel',
-            supplierId: 'sup1',
-            standard: 'ASME B16.5, EN 1092-1, DIN',
-            diameter: 'DN15 to DN600 (1/2" to 24")',
-            pressure: 'Class 150 to Class 2500',
-            features: [
-                'Tapered hub for stress distribution',
-                'Bore matching to pipe inside diameter',
-                'Excellent for cyclic loading conditions',
-                'Radiographic inspection available'
-            ],
-            specs: 'Long weld neck and standard weld neck configurations available. Full penetration weld preparation. Available in all pressure classes.'
-        },
-        { 
-            id: '5', 
-            key: 'pipes-fitting-bw-sw', 
-            name: 'Pipes Fitting (B/W & S/W)', 
-            description: 'Comprehensive range of pipe fittings including Butt Weld and Socket Weld fittings. Hydrolick products, Elbow, Bend, Tee, Reducer, Cap, Coupling, Union.', 
-            price: 9500,
-            stock: 200,
-            unit: 'pieces',
-            material: 'Carbon Steel, Stainless Steel, Alloy Steel',
-            supplierId: 'sup2',
-            standard: 'ASME B16.9, ASME B16.11, MSS SP-75',
-            diameter: '1/2" to 48"',
-            pressure: 'SCH 10 to SCH 160',
-            features: [
-                'Complete range of butt weld fittings',
-                'Socket weld fittings for small bore piping',
-                'Hydrolick products for hydraulic systems',
-                'Elbow, Bend, Tee, Reducer, Cap, Coupling, Union'
-            ],
-            specs: 'Comprehensive range of pipe fittings for all industrial applications. Available in seamless and welded construction. Full material certification.'
-        },
-        { 
-            id: '6', 
-            key: 'pipes', 
-            name: 'Pipes - Round & Square', 
-            description: 'High-quality round and square pipes for structural and piping applications. Available in various sizes, schedules, and material grades.', 
-            price: 8500,
-            stock: 300,
-            unit: 'meters',
-            material: 'Carbon Steel, Stainless Steel, MS, GI',
-            supplierId: 'sup2',
-            standard: 'ASTM A53, ASTM A106, API 5L, IS 1239, IS 1161',
-            diameter: '1/2" to 24" (Round), Various sizes (Square)',
-            pressure: 'SCH 10 to SCH 160',
-            features: [
-                'Round pipes for pressure and structural applications',
-                'Square pipes for structural and architectural use',
-                'Seamless and ERW options available',
-                'Cut to length service available'
-            ],
-            specs: 'Round pipes available in seamless and welded construction. Square pipes in various sizes and thicknesses. Test certificates available.'
+        async function getProducts() {
+            try {
+                const data = await apiRequest('/products');
+                return data.data || data || [];
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
+                return [];
+            }
         }
-    ];
-}
-
-
-        // FIXED: Sample products for demo when backend is unavailable
-      function getSampleProducts() {
-        return [
-            { id: '1', key: 'ms-plate', name: 'MS Plate Flange', description: 'Mild Steel Plate Flanges', price: 12500, stock: 100, unit: 'pieces', material: 'Carbon Steel', supplierId: 'sup1' },
-            { id: '2', key: 'forged', name: 'Forged Flange', description: 'High-strength forged flanges', price: 18500, stock: 75, unit: 'pieces', material: 'Carbon Steel', supplierId: 'sup1' },
-            { id: '3', key: 'special-ring', name: 'Special / Ring as per Drawing', description: 'Custom flanges as per customer drawing', price: 22500, stock: 50, unit: 'pieces', material: 'Carbon Steel', supplierId: 'sup2' },
-            { id: '4', key: 'weld-neck', name: 'Weld Neck Flanges', description: 'Standard weld neck flanges', price: 14500, stock: 120, unit: 'pieces', material: 'Carbon Steel', supplierId: 'sup1' },
-            { id: '5', key: 'pipes-fitting-bw-sw', name: 'Pipes Fitting (B/W & S/W)', description: 'Elbow, Bend, Tee, Reducer, Cap, Coupling, Union', price: 9500, stock: 200, unit: 'pieces', material: 'Carbon Steel', supplierId: 'sup2' },
-            { id: '6', key: 'pipes', name: 'Pipes - Round & Square', description: 'Round & Square Pipes for structural applications', price: 8500, stock: 300, unit: 'meters', material: 'Carbon Steel', supplierId: 'sup2' }
-        ];
-    }
 
         async function getSupplierProducts(supplierId) {
             try {
                 const data = await apiRequest(`/products/supplier/${supplierId}`);
-                return data || [];
+                return data.data || data || [];
             } catch (error) {
                 console.error('Failed to fetch supplier products:', error);
-                return getSampleProducts().filter(p => p.supplierId === supplierId);
+                return [];
             }
         }
 
@@ -3007,7 +3064,7 @@ async function getProducts() {
         async function getOrders() {
             try {
                 const data = await apiRequest('/orders');
-                return data || [];
+                return data.data || data || [];
             } catch (error) {
                 console.error('Failed to fetch orders:', error);
                 return [];
@@ -3030,17 +3087,21 @@ async function getProducts() {
         async function getSupplierOrders(supplierId) {
             try {
                 const data = await apiRequest(`/orders/supplier/${supplierId}`);
-                return data || [];
+                return data.data || data || [];
             } catch (error) {
                 console.error('Failed to fetch supplier orders:', error);
                 return [];
             }
         }
 
-        async function getCustomerOrders(customerEmail) {
+        async function getCustomerOrders() {
             try {
-                const data = await apiRequest(`/orders/customer/${encodeURIComponent(customerEmail)}`);
-                return data || [];
+                if (!appState.isAuthenticated || !appState.currentUser) {
+                    return [];
+                }
+                
+                const data = await apiRequest(`/orders/customer/${appState.currentUser.email}`);
+                return data.data || data || [];
             } catch (error) {
                 console.error('Failed to fetch customer orders:', error);
                 return [];
@@ -3060,372 +3121,239 @@ async function getProducts() {
             }
         }
 
-        // ========== AUTHENTICATION FUNCTIONS ==========
-        
-        function initializeAuth() {
-        const token = localStorage.getItem('authToken');
-        const userData = localStorage.getItem('userData');
-        
-        if (token && userData) {
+        async function getOrderById(orderId) {
             try {
-                appState.currentUser = JSON.parse(userData);
-                appState.isAuthenticated = true;
-                appState.currentUserType = appState.currentUser.userType || appState.currentUser.type || 'partner';
-                appState.isSupplier = (appState.currentUser.userType === 'supplier' || appState.currentUser.type === 'supplier');
-                appState.authToken = token;
-                
-                document.body.classList.add('authenticated');
-                document.body.classList.remove('visitor-mode', 'require-auth');
-                document.getElementById('auth-overlay').style.display = 'none';
-                
-                updateUIAfterAuth();
-                fetchAndUpdateProducts();
-            } catch (e) {
-                console.error('Failed to parse user data:', e);
-                clearAuth();
+                const data = await apiRequest(`/orders/${orderId}`);
+                return data.data || data || null;
+            } catch (error) {
+                console.error('Failed to fetch order:', error);
+                return null;
             }
-        } else {
-            clearAuth(true);
-            fetchAndUpdateProducts();
-        }
-    }
-  function clearAuth(keepVisitorMode = false) {
-        localStorage.removeItem('authToken');
-        localStorage.removeItem('userData');
-        
-        appState.isAuthenticated = false;
-        appState.currentUser = { type: 'visitor' };
-        appState.currentUserType = 'visitor';
-        appState.isSupplier = false;
-        appState.authToken = null;
-        
-        if (keepVisitorMode) {
-            document.body.classList.add('visitor-mode');
-            document.body.classList.remove('authenticated', 'require-auth');
-            document.getElementById('auth-overlay').style.display = 'none';
-        } else {
-            document.body.classList.add('require-auth');
-            document.body.classList.remove('authenticated', 'visitor-mode');
-            document.getElementById('auth-overlay').style.display = 'flex';
-        }
-        
-        updateUIAfterAuth();
-    }
-         async function loginUser(event) {
-        event.preventDefault();
-        clearValidationErrors();
-        
-        const email = document.getElementById('login-email').value;
-        const password = document.getElementById('login-password').value;
-
-        if (!validateEmail(email)) {
-            showFieldError('login-email', 'Please enter a valid email address');
-            return;
-        }
-        
-        if (!validateRequired(password)) {
-            showFieldError('login-password', 'Password is required');
-            return;
         }
 
-        showLoading('Logging in...');
-
-        try {
-            const response = await fetch(`${API_BASE_URL}/auth/login`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password, userType: appState.currentUserType || 'partner' })
-            });
-
-            const data = await response.json();
-            console.log('Login response:', data);
-
-            if (response.ok && data.success) {
-                const token = data.data?.token || data.token;
-                const user = data.data?.user || data.user || data.data;
-                
-                if (!token || !user) throw new Error('Invalid response');
-
-                localStorage.setItem('authToken', token);
-                localStorage.setItem('userData', JSON.stringify(user));
-                
-                appState.isAuthenticated = true;
-                appState.currentUser = user;
-                appState.authToken = token;
-                appState.isSupplier = (user.userType === 'supplier' || user.type === 'supplier');
-                
-                document.body.classList.add('authenticated');
-                document.body.classList.remove('visitor-mode', 'require-auth');
-                document.getElementById('auth-overlay').style.display = 'none';
-                
-                updateUIAfterAuth();
-                await fetchAndUpdateProducts();
-                showSuccess('login-error-container', 'Login successful!');
-            } else {
-                throw new Error(data.message || 'Login failed');
+        // ========== SUPPLIER API FUNCTIONS ==========
+        async function getSuppliers() {
+            try {
+                const data = await apiRequest('/suppliers');
+                return data.data || data || [];
+            } catch (error) {
+                console.error('Failed to fetch suppliers:', error);
+                return [];
             }
-        } catch (error) {
-            console.error('Login error:', error);
-            
-            // Demo login
-            if (email === 'partner@test.com' && password === 'password') {
-                const demoUser = { id: 'demo1', email, firstName: 'Demo', lastName: 'Partner', company: 'Demo Company', userType: 'partner' };
-                localStorage.setItem('authToken', 'demo-token');
-                localStorage.setItem('userData', JSON.stringify(demoUser));
-                appState.isAuthenticated = true;
-                appState.currentUser = demoUser;
-                appState.isSupplier = false;
-                appState.authToken = 'demo-token';
-                document.body.classList.add('authenticated');
-                document.body.classList.remove('visitor-mode', 'require-auth');
-                document.getElementById('auth-overlay').style.display = 'none';
-                updateUIAfterAuth();
-                await fetchAndUpdateProducts();
-                showSuccess('login-error-container', 'Demo login successful!');
-            } else if (email === 'supplier@test.com' && password === 'password') {
-                const demoUser = { id: 'sup1', email, firstName: 'Demo', lastName: 'Supplier', company: 'Demo Supplier', userType: 'supplier' };
-                localStorage.setItem('authToken', 'demo-token');
-                localStorage.setItem('userData', JSON.stringify(demoUser));
-                appState.isAuthenticated = true;
-                appState.currentUser = demoUser;
-                appState.isSupplier = true;
-                appState.authToken = 'demo-token';
-                document.body.classList.add('authenticated');
-                document.body.classList.remove('visitor-mode', 'require-auth');
-                document.getElementById('auth-overlay').style.display = 'none';
-                updateUIAfterAuth();
-                await fetchAndUpdateProducts();
-                showSuccess('login-error-container', 'Demo login successful!');
-            } else {
-                showError('login-error-container', error.message || 'Login failed');
-            }
-        } finally {
-            hideLoading();
         }
-    }
 
-  async function signupUser(event) {
-        event.preventDefault();
-        clearValidationErrors();
-        
-        const firstName = document.getElementById('signup-firstname')?.value || '';
-        const lastName = document.getElementById('signup-lastname')?.value || '';
-        const email = document.getElementById('signup-email')?.value || '';
-        const password = document.getElementById('signup-password')?.value || '';
-        const company = document.getElementById('signup-company')?.value || '';
-        const industry = document.getElementById('signup-industry')?.value || '';
-        
-        const accountTypeRadios = document.querySelectorAll('input[name="signup-type"]');
-        let accountType = 'partner';
-        for (const radio of accountTypeRadios) if (radio.checked) accountType = radio.value;
-
-        if (!validateRequired(firstName)) { showFieldError('signup-firstname', 'First name required'); return; }
-        if (!validateRequired(lastName)) { showFieldError('signup-lastname', 'Last name required'); return; }
-        if (!validateEmail(email)) { showFieldError('signup-email', 'Valid email required'); return; }
-        if (!validateRequired(password) || password.length < 6) { showFieldError('signup-password', 'Password min 6 chars'); return; }
-        if (!validateRequired(company)) { showFieldError('signup-company', 'Company required'); return; }
-
-        showLoading('Creating account...');
-
-        try {
-            const response = await fetch(`${API_BASE_URL}/auth/register`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ firstName, lastName, email, password, company, industry, userType: accountType })
-            });
-
-            const data = await response.json();
-            console.log('Signup response:', data);
-
-            if (response.ok) {
-                showSuccess('signup-error-container', '✅ Account created! Please login.');
-                document.getElementById('signup-firstname').value = '';
-                document.getElementById('signup-lastname').value = '';
-                document.getElementById('signup-email').value = '';
-                document.getElementById('signup-password').value = '';
-                document.getElementById('signup-company').value = '';
-                setTimeout(() => toggleAuthView('login'), 2000);
-            } else {
-                showError('signup-error-container', data.message || 'Registration failed');
+        async function getSupplierById(supplierId) {
+            try {
+                const data = await apiRequest(`/suppliers/${supplierId}`);
+                return data.data || data || null;
+            } catch (error) {
+                console.error('Failed to fetch supplier:', error);
+                return null;
             }
-        } catch (error) {
-            console.error('Registration error:', error);
-            showError('signup-error-container', error.message);
-        } finally {
-            hideLoading();
         }
-    }
 
-
-    function handleVisitor(e) {
-        if(e) e.preventDefault();
-        localStorage.removeItem('authToken');
-        localStorage.removeItem('userData');
-        appState.isAuthenticated = false;
-        appState.currentUser = { type: 'visitor' };
-        appState.currentUserType = 'visitor';
-        appState.isSupplier = false;
-        appState.authToken = null;
-        document.body.classList.add('visitor-mode');
-        document.body.classList.remove('authenticated', 'require-auth');
-        document.getElementById('auth-overlay').style.display = 'none';
-        updateUIAfterAuth();
-        fetchAndUpdateProducts();
-        showSuccess('login-error-container', 'Continuing as visitor');
-    }
-      function logout(message = 'Logged out successfully') {
-        clearAuth(false);
-        closeDashboard();
-        closeOrderModal();
-        closeTrackingModal();
-        closeChat();
-        fetchAndUpdateProducts();
-        showSuccess('login-error-container', message);
-    }
+        async function getSuppliersForProduct(productKey) {
+            try {
+                const data = await apiRequest(`/suppliers/product/${productKey}`);
+                return data.data || data || [];
+            } catch (error) {
+                console.error('Failed to fetch suppliers for product:', error);
+                return [];
+            }
+        }
 
         // ========== PRODUCT FETCHING AND UPDATING ==========
-        
-       async function fetchAndUpdateProducts() {
-        try {
-            const products = await getProducts();
-            updateProductChips(products);
-            updateProductGallery(products);
-            updateProductSelect(products);
-            if (products.length > 0) updateCurrentProduct(appState.currentProductKey, products);
-            updateFooterProducts(products);
-            if (appState.isAuthenticated && appState.isSupplier) updateDashboardData();
-        } catch (error) {
-            console.error('Failed to fetch products:', error);
-        }
-    }
-
-      
-    function updateProductChips(products) {
-        const chipsContainer = document.getElementById('suggestion-bar');
-        if (!chipsContainer) return;
-        if (products.length === 0) {
-            chipsContainer.innerHTML = '<div class="text-slate-500">No products</div>';
-            return;
-        }
-        chipsContainer.innerHTML = products.map(p => `
-            <div onclick="updateProduct('${p.key}')" id="chip-${p.key}" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
-                <i class="fas fa-fire"></i>${p.name}
-            </div>
-        `).join('');
-    }
-  function updateProductGallery(products) {
-        const gallery = document.getElementById('gallery-products');
-        if (gallery) {
-            if (products.length === 0) {
-                gallery.innerHTML = '<div class="col-span-full text-center py-8">No products</div>';
-            } else {
-                gallery.innerHTML = products.map(p => `
-                    <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200">
-                        <div class="p-4 md:p-6">
-                            <h4 class="font-bold text-lg text-slate-900">${p.name}</h4>
-                            <p class="text-slate-600 mb-3 text-sm">${p.description?.substring(0, 80)}...</p>
-                            <div class="flex gap-2">
-                                <button onclick="updateProduct('${p.key}')" class="flex-1 py-2 bg-blue-600 text-white rounded-lg text-xs">View</button>
-                                <button onclick="checkAuthBeforeOrder('${p.key}')" class="flex-1 py-2 bg-slate-200 rounded-lg text-xs order-button">Order</button>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
+        async function fetchAndUpdateProducts() {
+            try {
+                const products = await getProducts();
+                updateProductChips(products);
+                updateProductGallery(products);
+                updateProductSelect(products);
+                updateProductThumbnails(products);
+                
+                if (products.length > 0) {
+                    const defaultProduct = appState.currentProductKey ? 
+                        products.find(p => p.key === appState.currentProductKey) : 
+                        products[0];
+                    
+                    if (defaultProduct) {
+                        updateCurrentProduct(defaultProduct.key, products);
+                    }
+                }
+                
+                updateFooterProducts(products);
+                
+                if (appState.isAuthenticated && appState.isSupplier) {
+                    updateDashboardData();
+                }
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
             }
         }
-    }
 
-function updateProductSelect(products) {
-    const select = document.getElementById('order-product');
-    if (!select) {
-        console.error('Product select not found');
-        return;
-    }
-    
-    console.log('Updating product select');
-    select.innerHTML = '<option value="">Select Product</option>';
-    
-    if (products && products.length > 0) {
-        products.forEach(p => {
-            const option = document.createElement('option');
-            option.value = p.key;
-            option.textContent = p.name;
-            select.appendChild(option);
-        });
-        console.log('Products loaded:', products.length);
-    } else {
-        select.innerHTML = '<option value="">No products available</option>';
-    }
-}
+        function updateProductThumbnails(products) {
+            const thumbnails = document.getElementById('product-thumbnails');
+            if (!thumbnails) return;
+            
+            if (products.length === 0) {
+                thumbnails.innerHTML = '<div class="col-span-full text-center py-8 text-slate-500">No products available</div>';
+                return;
+            }
+            
+            thumbnails.innerHTML = products.slice(0, 8).map(p => `
+                <div class="product-thumbnail" onclick="updateProduct('${p.key}')">
+                    <div class="product-placeholder">
+                        <i class="fas fa-cog"></i>
+                        <span class="text-xs font-medium mt-2 text-center">${p.name}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
 
+        function updateProductChips(products) {
+            const chipsContainer = document.getElementById('suggestion-bar');
+            if (!chipsContainer) return;
+            
+            if (products.length === 0) {
+                chipsContainer.innerHTML = '<div class="text-slate-500">No products</div>';
+                return;
+            }
+            
+            chipsContainer.innerHTML = products.map(p => `
+                <div onclick="updateProduct('${p.key}')" id="chip-${p.key}" class="flange-chip px-3 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-slate-200 bg-white text-xs md:text-sm font-semibold flex items-center gap-2">
+                    <i class="fas fa-fire"></i>${p.name}
+                </div>
+            `).join('');
+        }
+
+        function updateProductGallery(products) {
+            const gallery = document.getElementById('gallery-products');
+            if (!gallery) return;
+            
+            if (products.length === 0) {
+                gallery.innerHTML = '<div class="col-span-full text-center py-8 text-slate-500">No products available</div>';
+                return;
+            }
+            
+            gallery.innerHTML = products.map(p => `
+                <div class="gallery-product-card bg-slate-50 rounded-3xl overflow-hidden border border-slate-200">
+                    <div class="p-4 md:p-6">
+                        <h4 class="font-bold text-lg text-slate-900">${p.name}</h4>
+                        <p class="text-slate-600 mb-3 text-sm">${p.description?.substring(0, 80)}...</p>
+                        <div class="flex gap-2">
+                            <button onclick="updateProduct('${p.key}')" class="flex-1 py-2 bg-blue-600 text-white rounded-lg text-xs">View</button>
+                            <button onclick="checkAuthBeforeOrder('${p.key}')" class="flex-1 py-2 bg-slate-200 rounded-lg text-xs order-button">Order</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateProductSelect(products) {
+            const select = document.getElementById('order-product');
+            if (!select) return;
+            
+            select.innerHTML = '<option value="">Select Product</option>';
+            
+            if (products && products.length > 0) {
+                products.forEach(p => {
+                    const option = document.createElement('option');
+                    option.value = p.key;
+                    option.textContent = p.name;
+                    select.appendChild(option);
+                });
+            } else {
+                select.innerHTML = '<option value="">No products available</option>';
+            }
+        }
 
         function updateFooterProducts(products) {
-        const footer = document.getElementById('footer-products');
-        if (!footer) return;
-        if (products.length === 0) {
-            footer.innerHTML = '<li>No products</li>';
-        } else {
+            const footer = document.getElementById('footer-products');
+            if (!footer) return;
+            
+            if (products.length === 0) {
+                footer.innerHTML = '<li>No products</li>';
+                return;
+            }
+            
             footer.innerHTML = products.slice(0, 5).map(p => `
                 <li><a href="#" onclick="updateProduct('${p.key}'); return false;" class="hover:text-white">${p.name}</a></li>
             `).join('');
         }
-    }
 
-  
+        function updateCurrentProduct(key, products) {
+            const product = products.find(p => p.key === key) || products[0];
+            if (!product) return;
+            
+            appState.currentProductKey = product.key;
+            
+            document.querySelectorAll('.flange-chip').forEach(c => c.classList.remove('active'));
+            const activeChip = document.getElementById(`chip-${product.key}`);
+            if (activeChip) activeChip.classList.add('active');
+            
+            document.getElementById('current-product-name').textContent = product.name || 'Product';
+            document.getElementById('p-title').innerText = product.name || 'Product';
+            document.getElementById('p-desc').innerText = product.description || 'No description available';
+            document.getElementById('product-reference').textContent = `${product.key || 'REF'}-${product.id || '000'}`;
+            document.getElementById('product-standard').textContent = product.standard || 'ASME / EN / Custom';
+            document.getElementById('product-diameter').textContent = product.diameter || 'Various sizes';
+            document.getElementById('product-pressure').textContent = product.pressure || 'Class 150 to 2500';
+            
+            // Update tags
+            const tagsContainer = document.getElementById('product-tags');
+            if (tagsContainer) {
+                const tags = [];
+                if (product.standard) tags.push(product.standard);
+                if (product.pressure) tags.push(product.pressure);
+                if (product.material) tags.push(product.material.split(',')[0]);
+                
+                tagsContainer.innerHTML = tags.map(t => `
+                    <span class="px-2 md:px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-bold">${t}</span>
+                `).join('');
+            }
+            
+            // Update features
+            const featuresContainer = document.getElementById('p-features');
+            if (featuresContainer) {
+                const features = product.features || [
+                    'Precision engineered for reliability',
+                    'Manufactured to international standards',
+                    'Full material traceability',
+                    'Customizable to your specifications'
+                ];
+                
+                featuresContainer.innerHTML = features.map(f => `
+                    <div class="feature-card p-4 rounded-xl">
+                        <i class="fas fa-check-circle text-blue-600 mb-2"></i>
+                        <p class="text-sm">${f}</p>
+                    </div>
+                `).join('');
+            }
+            
+            // Update specs list
+            const specsList = document.getElementById('product-specs-list');
+            if (specsList) {
+                specsList.innerHTML = `
+                    <li><strong>Standard:</strong> ${product.standard || 'Various'}</li>
+                    <li><strong>Diameter:</strong> ${product.diameter || 'DN15 to DN600'}</li>
+                    <li><strong>Pressure:</strong> ${product.pressure || 'Class 150 to 2500'}</li>
+                    <li><strong>Specifications:</strong> ${product.specs || 'As per industry standards'}</li>
+                `;
+            }
+            
+            // Update materials list
+            const materialsList = document.getElementById('product-materials-list');
+            if (materialsList) {
+                materialsList.innerHTML = `
+                    <li>${product.material || 'Carbon Steel, Stainless Steel'}</li>
+                    <li>Full material traceability available</li>
+                    <li>Test certificates on request</li>
+                    <li>Custom materials available</li>
+                `;
+            }
+        }
 
-    function updateCurrentProduct(key, products) {
-        const product = products.find(p => p.key === key) || products[0];
-        if (!product) return;
-        
-        appState.currentProductKey = product.key;
-        
-        document.querySelectorAll('.flange-chip').forEach(c => c.classList.remove('active'));
-        const activeChip = document.getElementById(`chip-${product.key}`);
-        if (activeChip) activeChip.classList.add('active');
-        
-        document.getElementById('current-product-name').textContent = product.name;
-        document.getElementById('p-title').innerText = product.name;
-        document.getElementById('p-desc').innerText = product.description || 'No description';
-        document.getElementById('product-reference').textContent = `${product.key}-${product.id}`;
-        document.getElementById('product-standard').textContent = product.standard || 'ASME / EN / Custom';
-        document.getElementById('product-diameter').textContent = product.diameter || 'Various sizes';
-        document.getElementById('product-pressure').textContent = product.pressure || 'Class 150 to 2500';
-        
-        // Update features
-        const featuresContainer = document.getElementById('p-features');
-        if (featuresContainer && product.features) {
-            featuresContainer.innerHTML = product.features.map(f => `
-                <div class="feature-card p-4 rounded-xl">
-                    <i class="fas fa-check-circle text-blue-600 mb-2"></i>
-                    <p class="text-sm">${f}</p>
-                </div>
-            `).join('');
-        }
-        
-        // Update specs list
-        const specsList = document.getElementById('product-specs-list');
-        if (specsList) {
-            specsList.innerHTML = `
-                <li><strong>Standard:</strong> ${product.standard}</li>
-                <li><strong>Diameter:</strong> ${product.diameter}</li>
-                <li><strong>Pressure:</strong> ${product.pressure}</li>
-                <li><strong>Specifications:</strong> ${product.specs || 'As per standards'}</li>
-            `;
-        }
-        
-        // Update materials list
-        const materialsList = document.getElementById('product-materials-list');
-        if (materialsList) {
-            materialsList.innerHTML = `
-                <li>${product.material}</li>
-                <li>Full material traceability</li>
-                <li>Test certificates available</li>
-                <li>Custom materials on request</li>
-            `;
-        }
-    }
         // ========== PRODUCT MANAGEMENT (Supplier Only) ==========
-        
         function showAddProductForm() {
             if (!appState.isAuthenticated || !appState.isSupplier) {
                 showError('login-error-container', 'Only suppliers can add products.');
@@ -3496,8 +3424,8 @@ function updateProductSelect(products) {
                 if (!product) return;
                 
                 document.getElementById('product-form-title').textContent = 'Edit Product';
-                document.getElementById('product-key').value = product.key;
-                document.getElementById('product-name').value = product.name;
+                document.getElementById('product-key').value = product.key || '';
+                document.getElementById('product-name').value = product.name || '';
                 document.getElementById('product-description').value = product.description || '';
                 document.getElementById('product-price').value = product.price || '';
                 document.getElementById('product-stock').value = product.stock || '';
@@ -3531,7 +3459,6 @@ function updateProductSelect(products) {
         }
 
         // ========== DASHBOARD FUNCTIONS (Supplier Only) ==========
-        
         function openDashboard() {
             if (!appState.isAuthenticated || !appState.isSupplier) {
                 showError('login-error-container', 'Only suppliers can access the dashboard.');
@@ -3572,7 +3499,18 @@ function updateProductSelect(products) {
                 const supplierId = appState.currentUser.id;
                 const products = await getSupplierProducts(supplierId);
                 const orders = await getSupplierOrders(supplierId);
-                const customers = [...new Set(orders.map(o => o.customerEmail))];
+                
+                // Get unique customers
+                const customers = [];
+                orders.forEach(o => {
+                    if (o.customerEmail && !customers.find(c => c.email === o.customerEmail)) {
+                        customers.push({
+                            email: o.customerEmail,
+                            name: o.customerName || o.customerEmail.split('@')[0],
+                            company: o.customerCompany || 'Unknown'
+                        });
+                    }
+                });
                 
                 const totalRevenue = orders.filter(o => o.status === 'completed').reduce((sum, o) => sum + (o.amount || 0), 0);
                 const pendingOrders = orders.filter(o => o.status === 'pending').length;
@@ -3621,12 +3559,12 @@ function updateProductSelect(products) {
                         ordersTable.innerHTML = orders.map(o => `
                             <tr>
                                 <td class="font-medium">#${o.id}</td>
-                                <td>${o.customerName}</td>
-                                <td>${o.productName}</td>
-                                <td>${o.quantity}</td>
+                                <td>${o.customerName || 'N/A'}</td>
+                                <td>${o.productName || 'N/A'}</td>
+                                <td>${o.quantity || 0}</td>
                                 <td class="font-bold">₹${(o.amount || 0).toLocaleString()}</td>
-                                <td><span class="badge badge-${o.status === 'pending' ? 'warning' : o.status === 'processing' ? 'info' : o.status === 'completed' ? 'success' : 'danger'}">${o.status}</span></td>
-                                <td>${o.date ? new Date(o.date).toLocaleDateString() : 'N/A'}</td>
+                                <td><span class="badge badge-${o.status === 'pending' ? 'warning' : o.status === 'processing' ? 'info' : o.status === 'completed' ? 'success' : 'danger'}">${o.status || 'pending'}</span></td>
+                                <td>${o.createdAt ? new Date(o.createdAt).toLocaleDateString() : 'N/A'}</td>
                                 <td>
                                     <button onclick="updateOrderStatus('${o.id}', 'processing')" class="action-button edit mr-2">
                                         <i class="fas fa-check"></i>
@@ -3651,8 +3589,8 @@ function updateProductSelect(products) {
                     } else {
                         productsTable.innerHTML = products.map(p => `
                             <tr>
-                                <td class="font-medium">${p.name}</td>
-                                <td>${p.key}</td>
+                                <td class="font-medium">${p.name || 'N/A'}</td>
+                                <td>${p.key || 'N/A'}</td>
                                 <td>${p.category || 'N/A'}</td>
                                 <td>₹${p.price || 'N/A'}</td>
                                 <td>${p.stock || 0}</td>
@@ -3674,24 +3612,22 @@ function updateProductSelect(products) {
                 // Update customers table
                 const customersTable = document.getElementById('customers-table-body');
                 if (customersTable) {
-                    const customerData = customers.map(email => {
-                        const customerOrders = orders.filter(o => o.customerEmail === email);
-                        const totalSpent = customerOrders.reduce((sum, o) => sum + (o.amount || 0), 0);
-                        const lastOrder = customerOrders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0))[0];
-                        
-                        return {
-                            email,
-                            name: customerOrders[0]?.customerName || email.split('@')[0],
-                            company: customerOrders[0]?.customerCompany || 'Unknown',
-                            orderCount: customerOrders.length,
-                            totalSpent,
-                            lastOrderDate: lastOrder && lastOrder.date ? new Date(lastOrder.date).toLocaleDateString() : 'Never'
-                        };
-                    });
-                    
-                    if (customerData.length === 0) {
+                    if (customers.length === 0) {
                         customersTable.innerHTML = '<tr><td colspan="7" class="text-center py-8 text-slate-500">No customers yet</td></tr>';
                     } else {
+                        const customerData = await Promise.all(customers.map(async (c) => {
+                            const customerOrders = orders.filter(o => o.customerEmail === c.email);
+                            const totalSpent = customerOrders.reduce((sum, o) => sum + (o.amount || 0), 0);
+                            const lastOrder = customerOrders.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0))[0];
+                            
+                            return {
+                                ...c,
+                                orderCount: customerOrders.length,
+                                totalSpent,
+                                lastOrderDate: lastOrder && lastOrder.createdAt ? new Date(lastOrder.createdAt).toLocaleDateString() : 'Never'
+                            };
+                        }));
+                        
                         customersTable.innerHTML = customerData.map(c => `
                             <tr>
                                 <td class="font-medium">${c.name}</td>
@@ -3724,7 +3660,10 @@ function updateProductSelect(products) {
 
         async function updateOrderStatus(orderId, status) {
             try {
-                await updateOrderStatus(orderId, status);
+                await apiRequest(`/orders/${orderId}/status`, {
+                    method: 'PUT',
+                    body: JSON.stringify({ status })
+                });
                 await updateDashboardData();
                 showSuccess('dashboard-orders .success-message', `Order status updated to ${status}`);
             } catch (error) {
@@ -3733,288 +3672,267 @@ function updateProductSelect(products) {
         }
 
         // ========== ORDER FUNCTIONS (Partners Only) ==========
-        
         function checkAuthBeforeOrder(productKey = null) {
-        const userType = appState.currentUser?.userType || appState.currentUser?.type || 'visitor';
-        
-        if (!appState.isAuthenticated || userType === 'visitor') {
-            showError('login-error-container', 'Please login to place orders.');
-            openAuthModal();
-            return;
+            if (!appState.isAuthenticated) {
+                showError('login-error-container', 'Please login to place orders.');
+                openAuthModal();
+                return;
+            }
+            
+            if (appState.currentUserType === 'supplier') {
+                showError('login-error-container', 'Suppliers cannot place orders.');
+                return;
+            }
+            
+            if (productKey) openOrderModalWithProduct(productKey);
+            else openOrderModal();
         }
-        
-        if (userType === 'supplier') {
-            showError('login-error-container', 'Suppliers cannot place orders.');
-            return;
-        }
-        
-        if (productKey) openOrderModalWithProduct(productKey);
-        else openOrderModal();
-    }
-function openOrderModal() {
-    if (!appState.isAuthenticated || appState.isSupplier) {
-        checkAuthBeforeOrder();
-        return;
-    }
-    
-    console.log('Opening order modal');
-    document.getElementById('order-modal').classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-    resetOrderSteps();
-    
-    // Directly load products
-    getProducts().then(products => {
-        updateProductSelect(products);
-    });
-}
 
-     
-    function openOrderModalWithProduct(productKey) {
-        openOrderModal();
-        document.getElementById('order-product').value = productKey;
-        loadSuppliersForProduct(productKey);
-    }
+        function openOrderModal() {
+            if (!appState.isAuthenticated || appState.currentUserType === 'supplier') {
+                checkAuthBeforeOrder();
+                return;
+            }
+            
+            document.getElementById('order-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            resetOrderSteps();
+            
+            getProducts().then(products => {
+                updateProductSelect(products);
+            });
+        }
+
+        function openOrderModalWithProduct(productKey) {
+            openOrderModal();
+            document.getElementById('order-product').value = productKey;
+            loadSuppliersForProduct(productKey);
+        }
 
         function closeOrderModal() {
-        document.getElementById('order-modal').classList.add('hidden');
-        document.body.style.overflow = 'auto';
-        appState.selectedSupplier = null;
-    }
-  function resetOrderSteps() {
-        appState.currentOrderStep = 1;
-        updateStepIndicators();
-        for (let i = 1; i <= 5; i++) {
-            document.getElementById(`order-step-${i}`)?.classList.add('hidden');
+            document.getElementById('order-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            appState.selectedSupplier = null;
         }
-        document.getElementById('order-step-1').classList.remove('hidden');
-        appState.selectedSupplier = null;
-        document.getElementById('selected-supplier-display').textContent = 'Not selected';
-        clearValidationErrors();
-    }
 
-    function updateStepIndicators() {
-        const progress = document.getElementById('step-progress');
-        progress.style.width = `${(appState.currentOrderStep - 1) * 25}%`;
-        
-        for (let i = 1; i <= 4; i++) {
-            const indicator = document.getElementById(`step-indicator-${i}`);
-            if (i < appState.currentOrderStep) {
-                indicator.classList.remove('pending', 'active');
-                indicator.classList.add('completed');
-            } else if (i === appState.currentOrderStep) {
-                indicator.classList.remove('pending', 'completed');
-                indicator.classList.add('active');
-            } else {
-                indicator.classList.remove('active', 'completed');
-                indicator.classList.add('pending');
+        function resetOrderSteps() {
+            appState.currentOrderStep = 1;
+            updateStepIndicators();
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(`order-step-${i}`)?.classList.add('hidden');
+            }
+            document.getElementById('order-step-1').classList.remove('hidden');
+            appState.selectedSupplier = null;
+            document.getElementById('selected-supplier-display').textContent = 'Not selected';
+            clearValidationErrors();
+        }
+
+        function updateStepIndicators() {
+            const progress = document.getElementById('step-progress');
+            progress.style.width = `${(appState.currentOrderStep - 1) * 25}%`;
+            
+            for (let i = 1; i <= 4; i++) {
+                const indicator = document.getElementById(`step-indicator-${i}`);
+                if (i < appState.currentOrderStep) {
+                    indicator.classList.remove('pending', 'active');
+                    indicator.classList.add('completed');
+                } else if (i === appState.currentOrderStep) {
+                    indicator.classList.remove('pending', 'completed');
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active', 'completed');
+                    indicator.classList.add('pending');
+                }
             }
         }
-    }
 
         function validateStep1() {
-        clearValidationErrors();
-        const product = document.getElementById('order-product').value;
-        const quantity = document.getElementById('order-quantity').value;
-        const size = document.getElementById('order-size').value;
-        const material = document.getElementById('order-material').value;
-        
-        if (!product) { showFieldError('order-product', 'Select product'); return false; }
-        if (!quantity || quantity < 1) { showFieldError('order-quantity', 'Valid quantity'); return false; }
-        if (!size) { showFieldError('order-size', 'Enter size'); return false; }
-        if (!material) { showFieldError('order-material', 'Select material'); return false; }
-        return true;
-    }
-
-    function validateStep2() {
-        if (!appState.selectedSupplier) {
-            showError('order-error-container', 'Select a supplier');
-            return false;
-        }
-        return true;
-    }
-
-    function validateStep3() {
-        clearValidationErrors();
-        const firstName = document.getElementById('order-firstname').value;
-        const lastName = document.getElementById('order-lastname').value;
-        const email = document.getElementById('order-email').value;
-        const phone = document.getElementById('order-phone').value;
-        const company = document.getElementById('order-company').value;
-        
-        if (!firstName) { showFieldError('order-firstname', 'First name required'); return false; }
-        if (!lastName) { showFieldError('order-lastname', 'Last name required'); return false; }
-        if (!validateEmail(email)) { showFieldError('order-email', 'Valid email'); return false; }
-        if (!phone) { showFieldError('order-phone', 'Phone required'); return false; }
-        if (!company) { showFieldError('order-company', 'Company required'); return false; }
-        return true;
-    }
-
-     
-    function validateAndNextStep(currentStep, nextStep) {
-        let isValid = false;
-        switch(currentStep) {
-            case 1: isValid = validateStep1(); break;
-            case 2: isValid = validateStep2(); break;
-            case 3: isValid = validateStep3(); break;
-            default: isValid = true;
-        }
-        if (isValid) nextOrderStep(nextStep);
-    }
-
-        
-    function nextOrderStep(step) {
-        if (step < 1 || step > 5) return;
-        if (step === 4) updateReviewSection();
-        document.getElementById(`order-step-${appState.currentOrderStep}`).classList.add('hidden');
-        appState.currentOrderStep = step;
-        document.getElementById(`order-step-${step}`).classList.remove('hidden');
-        updateStepIndicators();
-    }
-
-         function prevOrderStep(step) {
-        nextOrderStep(step);
-    }
-
-
-
-    function updateReviewSection() {
-        const productSelect = document.getElementById('order-product');
-        const product = productSelect.options[productSelect.selectedIndex]?.text || '-';
-        const quantity = document.getElementById('order-quantity').value;
-        const materialSelect = document.getElementById('order-material');
-        const material = materialSelect.options[materialSelect.selectedIndex]?.text || '-';
-        const contactMethod = document.querySelector('input[name="contactMethod"]:checked')?.value || 'email';
-        
-        document.getElementById('review-product').textContent = product;
-        document.getElementById('review-supplier').textContent = appState.selectedSupplier?.name || 'Not selected';
-        document.getElementById('review-quantity').textContent = `${quantity} pieces`;
-        document.getElementById('review-material').textContent = material;
-        document.getElementById('review-contact').textContent = contactMethod.charAt(0).toUpperCase() + contactMethod.slice(1);
-        document.getElementById('confirmation-supplier').textContent = appState.selectedSupplier?.name || 'Supplier';
-    }
-
-    
-    async function submitOrder() {
-    if (!appState.selectedSupplier) {
-        showError('order-error-container', 'Please select a supplier');
-        return;
-    }
-    
-    showLoading('Submitting order...');
-
-    try {
-        const products = await getProducts();
-        const productKey = document.getElementById('order-product').value;
-        const product = products.find(p => p.key === productKey);
-        
-        const orderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
-        document.getElementById('order-reference').textContent = orderId;
-        
-        const orderData = {
-            orderId: orderId,
-            supplierId: appState.selectedSupplier.id,
-            supplierName: appState.selectedSupplier.name,
-            customerEmail: document.getElementById('order-email').value,
-            customerName: document.getElementById('order-firstname').value + ' ' + document.getElementById('order-lastname').value,
-            customerCompany: document.getElementById('order-company').value,
-            customerPhone: document.getElementById('order-phone').value,
-            productKey: productKey,
-            productName: product?.name || 'Product',
-            quantity: parseInt(document.getElementById('order-quantity').value),
-            size: document.getElementById('order-size').value,
-            material: document.getElementById('order-material').value,
-            specs: document.getElementById('order-specs').value,
-            address: document.getElementById('order-address').value,
-            contactMethod: document.querySelector('input[name="contactMethod"]:checked')?.value || 'email',
-            amount: (product?.price || 0) * parseInt(document.getElementById('order-quantity').value)
-        };
-        
-        console.log('Sending order:', orderData);
-        
-        const response = await fetch(`${API_BASE_URL}/orders`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${appState.authToken}`
-            },
-            body: JSON.stringify(orderData)
-        });
-        
-        // ✅ FIX: Check if response has content before parsing JSON
-        const responseText = await response.text();
-        console.log('Raw response:', responseText);
-        
-        let data;
-        try {
-            data = responseText ? JSON.parse(responseText) : {};
-        } catch (e) {
-            console.warn('Response is not JSON, using empty object');
-            data = {};
-        }
-        
-        if (response.ok) {
-            // Show success message
-            showSuccess('order-error-container', `✅ Order submitted to ${appState.selectedSupplier.name}!`);
+            clearValidationErrors();
+            const product = document.getElementById('order-product').value;
+            const quantity = document.getElementById('order-quantity').value;
+            const size = document.getElementById('order-size').value;
+            const material = document.getElementById('order-material').value;
             
-            // Go to confirmation step
-            nextOrderStep(5);
-            
-            // Update dashboard if supplier
-            if (appState.isAuthenticated && appState.isSupplier) {
-                updateDashboardData();
+            if (!product) { showFieldError('order-product', 'Select product'); return false; }
+            if (!quantity || quantity < 1) { showFieldError('order-quantity', 'Valid quantity'); return false; }
+            if (!size) { showFieldError('order-size', 'Enter size'); return false; }
+            if (!material) { showFieldError('order-material', 'Select material'); return false; }
+            return true;
+        }
+
+        function validateStep2() {
+            if (!appState.selectedSupplier) {
+                showError('order-error-container', 'Select a supplier');
+                return false;
             }
-        } else {
-            throw new Error(data.message || 'Order failed with status: ' + response.status);
+            return true;
         }
-        
-    } catch (error) {
-        console.error('Order error:', error);
-        showError('order-error-container', error.message || 'Failed to submit order');
-    } finally {
-        hideLoading();
-    }
-}
 
-       
-    async function loadSuppliersForProduct(productKey) {
-        const suppliers = [
-            { id: 'sup1', name: 'Precision Flange Co.', company: 'Precision Flange Ltd', rating: 4.8, location: 'Mumbai', status: 'Online' },
-            { id: 'sup2', name: 'Industrial Flange Works', company: 'Industrial Works', rating: 4.6, location: 'Delhi', status: 'Online' }
-        ];
-        
-        const suppliersList = document.getElementById('suppliers-list');
-        suppliersList.innerHTML = suppliers.map(s => `
-            <div class="supplier-card bg-white p-4 rounded-xl border-2 border-slate-200 cursor-pointer" onclick="selectSupplier(this, '${s.id}', '${s.name}')">
-                <div class="flex items-start gap-3">
-                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-user-tie text-green-600"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold">${s.name}</h4>
-                        <p class="text-sm">${s.company}</p>
-                        <div class="flex items-center gap-2 mt-1">
-                            <i class="fas fa-star text-yellow-500 text-sm"></i>
-                            <span>${s.rating}</span>
-                            <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">${s.status}</span>
+        function validateStep3() {
+            clearValidationErrors();
+            const firstName = document.getElementById('order-firstname').value;
+            const lastName = document.getElementById('order-lastname').value;
+            const email = document.getElementById('order-email').value;
+            const phone = document.getElementById('order-phone').value;
+            const company = document.getElementById('order-company').value;
+            
+            if (!firstName) { showFieldError('order-firstname', 'First name required'); return false; }
+            if (!lastName) { showFieldError('order-lastname', 'Last name required'); return false; }
+            if (!validateEmail(email)) { showFieldError('order-email', 'Valid email'); return false; }
+            if (!phone) { showFieldError('order-phone', 'Phone required'); return false; }
+            if (!company) { showFieldError('order-company', 'Company required'); return false; }
+            return true;
+        }
+
+        function validateAndNextStep(currentStep, nextStep) {
+            let isValid = false;
+            switch(currentStep) {
+                case 1: isValid = validateStep1(); break;
+                case 2: isValid = validateStep2(); break;
+                case 3: isValid = validateStep3(); break;
+                default: isValid = true;
+            }
+            if (isValid) nextOrderStep(nextStep);
+        }
+
+        function nextOrderStep(step) {
+            if (step < 1 || step > 5) return;
+            if (step === 4) updateReviewSection();
+            document.getElementById(`order-step-${appState.currentOrderStep}`).classList.add('hidden');
+            appState.currentOrderStep = step;
+            document.getElementById(`order-step-${step}`).classList.remove('hidden');
+            updateStepIndicators();
+        }
+
+        function prevOrderStep(step) {
+            nextOrderStep(step);
+        }
+
+        function updateReviewSection() {
+            const productSelect = document.getElementById('order-product');
+            const product = productSelect.options[productSelect.selectedIndex]?.text || '-';
+            const quantity = document.getElementById('order-quantity').value;
+            const materialSelect = document.getElementById('order-material');
+            const material = materialSelect.options[materialSelect.selectedIndex]?.text || '-';
+            const contactMethod = document.querySelector('input[name="contactMethod"]:checked')?.value || 'email';
+            
+            document.getElementById('review-product').textContent = product;
+            document.getElementById('review-supplier').textContent = appState.selectedSupplier?.name || 'Not selected';
+            document.getElementById('review-quantity').textContent = `${quantity} pieces`;
+            document.getElementById('review-material').textContent = material;
+            document.getElementById('review-contact').textContent = contactMethod.charAt(0).toUpperCase() + contactMethod.slice(1);
+            document.getElementById('confirmation-supplier').textContent = appState.selectedSupplier?.name || 'Supplier';
+        }
+
+        async function submitOrder() {
+            if (!appState.selectedSupplier) {
+                showError('order-error-container', 'Please select a supplier');
+                return;
+            }
+            
+            showLoading('Submitting order...');
+
+            try {
+                const products = await getProducts();
+                const productKey = document.getElementById('order-product').value;
+                const product = products.find(p => p.key === productKey);
+                
+                const orderData = {
+                    supplierId: appState.selectedSupplier.id,
+                    supplierName: appState.selectedSupplier.name,
+                    customerEmail: document.getElementById('order-email').value,
+                    customerName: document.getElementById('order-firstname').value + ' ' + document.getElementById('order-lastname').value,
+                    customerCompany: document.getElementById('order-company').value,
+                    customerPhone: document.getElementById('order-phone').value,
+                    productKey: productKey,
+                    productName: product?.name || 'Product',
+                    quantity: parseInt(document.getElementById('order-quantity').value),
+                    size: document.getElementById('order-size').value,
+                    material: document.getElementById('order-material').value,
+                    specs: document.getElementById('order-specs').value,
+                    address: document.getElementById('order-address').value,
+                    contactMethod: document.querySelector('input[name="contactMethod"]:checked')?.value || 'email',
+                    amount: (product?.price || 0) * parseInt(document.getElementById('order-quantity').value)
+                };
+                
+                const result = await saveOrder(orderData);
+                
+                if (result.success && result.data) {
+                    const orderId = result.data.id || result.data.orderId || 'ORD-' + Date.now();
+                    document.getElementById('order-reference').textContent = orderId;
+                    
+                    showSuccess('order-error-container', `✅ Order submitted to ${appState.selectedSupplier.name}!`);
+                    
+                    nextOrderStep(5);
+                    
+                    if (appState.isAuthenticated && appState.isSupplier) {
+                        updateDashboardData();
+                    }
+                } else {
+                    throw new Error('Failed to submit order');
+                }
+                
+            } catch (error) {
+                console.error('Order error:', error);
+                showError('order-error-container', error.message || 'Failed to submit order');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        async function loadSuppliersForProduct(productKey) {
+            if (!productKey) return;
+            
+            showLoading('Loading suppliers...');
+            
+            try {
+                const suppliers = await getSuppliersForProduct(productKey);
+                
+                const suppliersList = document.getElementById('suppliers-list');
+                const noSuppliersMsg = document.getElementById('no-suppliers-message');
+                
+                if (suppliers.length === 0) {
+                    suppliersList.innerHTML = '';
+                    noSuppliersMsg.classList.remove('hidden');
+                } else {
+                    noSuppliersMsg.classList.add('hidden');
+                    
+                    suppliersList.innerHTML = suppliers.map(s => `
+                        <div class="supplier-card bg-white p-4 rounded-xl border-2 border-slate-200 cursor-pointer" onclick="selectSupplier(this, '${s.id}', '${s.name}')">
+                            <div class="flex items-start gap-3">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user-tie text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">${s.name}</h4>
+                                    <p class="text-sm">${s.company || ''}</p>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
+                                        <span>${s.rating || '4.5'}</span>
+                                        <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">${s.status || 'Online'}</span>
+                                    </div>
+                                    <div class="text-xs mt-2">📍 ${s.location || 'India'}</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-xs mt-2">📍 ${s.location}</div>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-    }
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Failed to load suppliers:', error);
+                showError('order-error-container', 'Failed to load suppliers');
+            } finally {
+                hideLoading();
+            }
+        }
 
-
-
-    function selectSupplier(element, supplierId, supplierName) {
-        appState.selectedSupplier = { id: supplierId, name: supplierName };
-        document.querySelectorAll('.supplier-card').forEach(c => c.classList.remove('selected'));
-        element.classList.add('selected');
-        document.getElementById('selected-supplier-display').textContent = supplierName;
-    }
+        function selectSupplier(element, supplierId, supplierName) {
+            appState.selectedSupplier = { id: supplierId, name: supplierName };
+            document.querySelectorAll('.supplier-card').forEach(c => c.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('selected-supplier-display').textContent = supplierName;
+        }
 
         // ========== ORDER TRACKING FUNCTIONS ==========
-        
         function openTrackingModal() {
             document.getElementById('tracking-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -4027,12 +3945,14 @@ function openOrderModal() {
 
         function trackOrderWithCode() {
             const orderRef = document.getElementById('order-reference').textContent;
-            closeOrderModal();
-            setTimeout(() => {
-                openTrackingModal();
-                document.getElementById('tracking-input').value = orderRef;
-                searchOrder();
-            }, 500);
+            if (orderRef && orderRef !== 'Loading...') {
+                closeOrderModal();
+                setTimeout(() => {
+                    openTrackingModal();
+                    document.getElementById('tracking-input').value = orderRef;
+                    searchOrder();
+                }, 500);
+            }
         }
 
         async function searchOrder() {
@@ -4045,76 +3965,15 @@ function openOrderModal() {
             showLoading('Searching for order...');
             
             try {
-                const orders = await getOrders();
-                const order = orders.find(o => o.id === orderId);
+                const order = await getOrderById(orderId);
                 
-                // FIXED: Demo order if not found
                 if (!order) {
-                    // Show demo order
-                    document.getElementById('tracking-empty').classList.add('hidden');
-                    document.getElementById('tracking-results').classList.remove('hidden');
+                    hideLoading();
+                    document.getElementById('tracking-empty').classList.remove('hidden');
+                    document.getElementById('tracking-results').classList.add('hidden');
                     document.getElementById('my-orders-section').classList.add('hidden');
                     document.getElementById('tracking-loading').classList.add('hidden');
-                    
-                    document.getElementById('tracking-order-id').textContent = `#${orderId}`;
-                    document.getElementById('tracking-product-name').textContent = 'MS Plate Flange';
-                    document.getElementById('tracking-status').textContent = 'Processing';
-                    document.getElementById('tracking-quantity').textContent = '50 pieces';
-                    document.getElementById('tracking-date').textContent = new Date().toLocaleDateString();
-                    document.getElementById('tracking-delivery').textContent = new Date(Date.now() + 7*24*60*60*1000).toLocaleDateString();
-                    document.getElementById('tracking-amount').textContent = '₹125,000';
-                    document.getElementById('tracking-customer-name').textContent = 'John Doe';
-                    document.getElementById('tracking-company').textContent = 'Oil & Gas Corp';
-                    document.getElementById('tracking-contact').textContent = 'john@example.com';
-                    document.getElementById('tracking-supplier').textContent = 'Precision Flange Co.';
-                    document.getElementById('tracking-supplier-contact').textContent = 'sales@precisionflange.com';
-                    document.getElementById('tracking-supplier-phone').textContent = '+91 9876543210';
-                    
-                    // Update timeline
-                    document.getElementById('tracking-timeline').innerHTML = `
-                        <div class="tracking-step completed">
-                            <div class="tracking-step-icon completed">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="tracking-step-content">
-                                <p class="text-sm text-slate-500">${new Date().toLocaleString()}</p>
-                                <h5 class="font-bold text-slate-900 mb-1">Order Received</h5>
-                                <p class="text-slate-600">Your order has been received by the supplier.</p>
-                            </div>
-                        </div>
-                        <div class="tracking-step current">
-                            <div class="tracking-step-icon current">
-                                <i class="fas fa-sync-alt"></i>
-                            </div>
-                            <div class="tracking-step-content">
-                                <p class="text-sm text-slate-500">${new Date(Date.now() - 2*24*60*60*1000).toLocaleString()}</p>
-                                <h5 class="font-bold text-slate-900 mb-1">Processing</h5>
-                                <p class="text-slate-600">Your order is being processed and verified.</p>
-                            </div>
-                        </div>
-                        <div class="tracking-step">
-                            <div class="tracking-step-icon pending">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <div class="tracking-step-content">
-                                <p class="text-sm text-slate-500">Not started</p>
-                                <h5 class="font-bold text-slate-900 mb-1">Manufacturing</h5>
-                                <p class="text-slate-600">Components are being manufactured.</p>
-                            </div>
-                        </div>
-                        <div class="tracking-step">
-                            <div class="tracking-step-icon pending">
-                                <i class="fas fa-truck"></i>
-                            </div>
-                            <div class="tracking-step-content">
-                                <p class="text-sm text-slate-500">Not shipped</p>
-                                <h5 class="font-bold text-slate-900 mb-1">Shipping</h5>
-                                <p class="text-slate-600">Order will be shipped soon.</p>
-                            </div>
-                        </div>
-                    `;
-                    
-                    hideLoading();
+                    showError('tracking-modal .error-message', 'Order not found');
                     return;
                 }
                 
@@ -4124,20 +3983,20 @@ function openOrderModal() {
                 document.getElementById('tracking-loading').classList.add('hidden');
                 
                 document.getElementById('tracking-order-id').textContent = `#${order.id}`;
-                document.getElementById('tracking-product-name').textContent = order.productName;
-                document.getElementById('tracking-status').textContent = order.status ? order.status.charAt(0).toUpperCase() + order.status.slice(1) : 'Unknown';
+                document.getElementById('tracking-product-name').textContent = order.productName || 'Product';
+                document.getElementById('tracking-status').textContent = order.status ? order.status.charAt(0).toUpperCase() + order.status.slice(1) : 'Pending';
                 document.getElementById('tracking-quantity').textContent = `${order.quantity || 0} pieces`;
-                document.getElementById('tracking-date').textContent = order.date ? new Date(order.date).toLocaleDateString() : 'N/A';
-                document.getElementById('tracking-delivery').textContent = new Date(Date.now() + 7*24*60*60*1000).toLocaleDateString();
+                document.getElementById('tracking-date').textContent = order.createdAt ? new Date(order.createdAt).toLocaleDateString() : 'N/A';
+                document.getElementById('tracking-delivery').textContent = order.estimatedDelivery ? new Date(order.estimatedDelivery).toLocaleDateString() : 'TBD';
                 document.getElementById('tracking-amount').textContent = `₹${(order.amount || 0).toLocaleString()}`;
                 document.getElementById('tracking-customer-name').textContent = order.customerName || 'N/A';
                 document.getElementById('tracking-company').textContent = order.customerCompany || 'N/A';
                 document.getElementById('tracking-contact').textContent = order.customerEmail || 'N/A';
                 document.getElementById('tracking-supplier').textContent = order.supplierName || 'N/A';
-                document.getElementById('tracking-supplier-contact').textContent = 'supplier@example.com';
-                document.getElementById('tracking-supplier-phone').textContent = order.customerPhone || '+91 9876543210';
+                document.getElementById('tracking-supplier-contact').textContent = order.supplierEmail || 'N/A';
+                document.getElementById('tracking-supplier-phone').textContent = order.supplierPhone || 'N/A';
                 
-                // Update timeline
+                // Update timeline based on order status
                 const steps = {
                     'pending': ['pending', 'pending', 'pending', 'pending'],
                     'processing': ['completed', 'current', 'pending', 'pending'],
@@ -4145,48 +4004,52 @@ function openOrderModal() {
                     'completed': ['completed', 'completed', 'completed', 'completed']
                 }[order.status || 'pending'] || ['pending', 'pending', 'pending', 'pending'];
                 
-                document.getElementById('tracking-timeline').innerHTML = `
-                    <div class="tracking-step ${steps[0] === 'completed' ? 'completed' : steps[0] === 'current' ? 'current' : ''}">
-                        <div class="tracking-step-icon ${steps[0]}">
-                            <i class="fas fa-check"></i>
+                const timelineEl = document.getElementById('tracking-timeline');
+                if (timelineEl) {
+                    timelineEl.innerHTML = `
+                        <div class="tracking-step ${steps[0] === 'completed' ? 'completed' : steps[0] === 'current' ? 'current' : ''}">
+                            <div class="tracking-step-icon ${steps[0]}">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="tracking-step-content">
+                                <p class="text-sm text-slate-500">${order.createdAt ? new Date(order.createdAt).toLocaleString() : 'N/A'}</p>
+                                <h5 class="font-bold text-slate-900 mb-1">Order Received</h5>
+                                <p class="text-slate-600">Your order has been received by the supplier.</p>
+                            </div>
                         </div>
-                        <div class="tracking-step-content">
-                            <p class="text-sm text-slate-500">${order.date ? new Date(order.date).toLocaleString() : 'N/A'}</p>
-                            <h5 class="font-bold text-slate-900 mb-1">Order Received</h5>
-                            <p class="text-slate-600">Your order has been received by the supplier.</p>
+                        <div class="tracking-step ${steps[1] === 'completed' ? 'completed' : steps[1] === 'current' ? 'current' : ''}">
+                            <div class="tracking-step-icon ${steps[1]}">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <div class="tracking-step-content">
+                                <p class="text-sm text-slate-500">${steps[1] !== 'pending' ? (order.processingDate ? new Date(order.processingDate).toLocaleString() : 'Processing in progress') : 'Processing soon'}</p>
+                                <h5 class="font-bold text-slate-900 mb-1">Processing</h5>
+                                <p class="text-slate-600">Your order is being processed and verified.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tracking-step ${steps[1] === 'completed' ? 'completed' : steps[1] === 'current' ? 'current' : ''}">
-                        <div class="tracking-step-icon ${steps[1]}">
-                            <i class="fas fa-sync-alt"></i>
+                        <div class="tracking-step ${steps[2] === 'completed' ? 'completed' : steps[2] === 'current' ? 'current' : ''}">
+                            <div class="tracking-step-icon ${steps[2]}">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="tracking-step-content">
+                                <p class="text-sm text-slate-500">${steps[2] !== 'pending' ? 'In progress' : 'Not started'}</p>
+                                <h5 class="font-bold text-slate-900 mb-1">Manufacturing</h5>
+                                <p class="text-slate-600">Components are being manufactured.</p>
+                            </div>
                         </div>
-                        <div class="tracking-step-content">
-                            <p class="text-sm text-slate-500">${steps[1] !== 'pending' ? new Date(Date.now() - 2*24*60*60*1000).toLocaleString() : 'Processing soon'}</p>
-                            <h5 class="font-bold text-slate-900 mb-1">Processing</h5>
-                            <p class="text-slate-600">Your order is being processed and verified.</p>
+                        <div class="tracking-step ${steps[3] === 'completed' ? 'completed' : steps[3] === 'current' ? 'current' : ''}">
+                            <div class="tracking-step-icon ${steps[3]}">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="tracking-step-content">
+                                <p class="text-sm text-slate-500">${steps[3] !== 'pending' ? 'Shipped' : 'Not shipped'}</p>
+                                <h5 class="font-bold text-slate-900 mb-1">Shipping</h5>
+                                <p class="text-slate-600">Order will be shipped soon.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tracking-step ${steps[2] === 'completed' ? 'completed' : steps[2] === 'current' ? 'current' : ''}">
-                        <div class="tracking-step-icon ${steps[2]}">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <div class="tracking-step-content">
-                            <p class="text-sm text-slate-500">${steps[2] !== 'pending' ? 'In progress' : 'Not started'}</p>
-                            <h5 class="font-bold text-slate-900 mb-1">Manufacturing</h5>
-                            <p class="text-slate-600">Components are being manufactured.</p>
-                        </div>
-                    </div>
-                    <div class="tracking-step ${steps[3] === 'completed' ? 'completed' : steps[3] === 'current' ? 'current' : ''}">
-                        <div class="tracking-step-icon ${steps[3]}">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <div class="tracking-step-content">
-                            <p class="text-sm text-slate-500">${steps[3] !== 'pending' ? 'Shipped' : 'Not shipped'}</p>
-                            <h5 class="font-bold text-slate-900 mb-1">Shipping</h5>
-                            <p class="text-slate-600">Order will be shipped soon.</p>
-                        </div>
-                    </div>
-                `;
+                    `;
+                }
+                
             } catch (error) {
                 showError('tracking-modal .error-message', error.message);
             } finally {
@@ -4195,7 +4058,7 @@ function openOrderModal() {
         }
 
         async function showMyOrders() {
-            if (!appState.isAuthenticated || appState.currentUser.type === 'visitor') {
+            if (!appState.isAuthenticated) {
                 showError('tracking-modal .error-message', 'Please login to view your orders.');
                 openAuthModal();
                 return;
@@ -4204,7 +4067,7 @@ function openOrderModal() {
             showLoading('Loading your orders...');
             
             try {
-                const orders = await getCustomerOrders(appState.currentUser.email);
+                const orders = await getCustomerOrders();
                 
                 document.getElementById('tracking-results').classList.add('hidden');
                 document.getElementById('tracking-empty').classList.add('hidden');
@@ -4213,41 +4076,7 @@ function openOrderModal() {
                 
                 const ordersList = document.getElementById('my-orders-list');
                 if (orders.length === 0) {
-                    // FIXED: Show demo orders
-                    ordersList.innerHTML = `
-                        <div class="bg-white p-4 rounded-xl border border-slate-200">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <div class="flex items-center gap-3">
-                                        <h4 class="font-bold text-slate-900">#ORD-123456</h4>
-                                        <span class="badge badge-warning">pending</span>
-                                    </div>
-                                    <p class="text-sm text-slate-600 mt-1">MS Plate Flange - 50 pieces</p>
-                                    <p class="text-xs text-slate-500 mt-1">Ordered: ${new Date().toLocaleDateString()}</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-bold">₹125,000</p>
-                                    <button onclick="trackOrder('ORD-123456')" class="text-sm text-blue-600 hover:text-blue-800">Track</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-xl border border-slate-200">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <div class="flex items-center gap-3">
-                                        <h4 class="font-bold text-slate-900">#ORD-123457</h4>
-                                        <span class="badge badge-success">completed</span>
-                                    </div>
-                                    <p class="text-sm text-slate-600 mt-1">Forged Flange - 25 pieces</p>
-                                    <p class="text-xs text-slate-500 mt-1">Ordered: ${new Date(Date.now() - 30*24*60*60*1000).toLocaleDateString()}</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-bold">₹42,500</p>
-                                    <button onclick="trackOrder('ORD-123457')" class="text-sm text-blue-600 hover:text-blue-800">Track</button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
+                    ordersList.innerHTML = '<div class="text-center py-8 text-slate-500">No orders found</div>';
                 } else {
                     ordersList.innerHTML = orders.map(o => `
                         <div class="bg-white p-4 rounded-xl border border-slate-200">
@@ -4255,10 +4084,10 @@ function openOrderModal() {
                                 <div>
                                     <div class="flex items-center gap-3">
                                         <h4 class="font-bold text-slate-900">#${o.id}</h4>
-                                        <span class="badge badge-${o.status === 'pending' ? 'warning' : o.status === 'processing' ? 'info' : o.status === 'completed' ? 'success' : 'danger'}">${o.status}</span>
+                                        <span class="badge badge-${o.status === 'pending' ? 'warning' : o.status === 'processing' ? 'info' : o.status === 'completed' ? 'success' : 'danger'}">${o.status || 'pending'}</span>
                                     </div>
-                                    <p class="text-sm text-slate-600 mt-1">${o.productName} - ${o.quantity || 0} pieces</p>
-                                    <p class="text-xs text-slate-500 mt-1">Ordered: ${o.date ? new Date(o.date).toLocaleDateString() : 'N/A'}</p>
+                                    <p class="text-sm text-slate-600 mt-1">${o.productName || 'Product'} - ${o.quantity || 0} pieces</p>
+                                    <p class="text-xs text-slate-500 mt-1">Ordered: ${o.createdAt ? new Date(o.createdAt).toLocaleDateString() : 'N/A'}</p>
                                 </div>
                                 <div class="text-right">
                                     <p class="font-bold">₹${(o.amount || 0).toLocaleString()}</p>
@@ -4286,13 +4115,16 @@ function openOrderModal() {
 
         function contactSupplier() {
             const supplierEmail = document.getElementById('tracking-supplier-contact').textContent;
-            window.location.href = `mailto:${supplierEmail}`;
+            if (supplierEmail && supplierEmail !== 'N/A') {
+                window.location.href = `mailto:${supplierEmail}`;
+            } else {
+                showError('tracking-modal .error-message', 'Supplier contact information not available');
+            }
         }
 
         // ========== CHAT FUNCTIONS ==========
-        
         function openChat(supplier) {
-            if (!appState.isAuthenticated || appState.currentUser.type === 'visitor') {
+            if (!appState.isAuthenticated) {
                 showError('login-error-container', 'Please login to chat.');
                 openAuthModal();
                 return;
@@ -4302,42 +4134,10 @@ function openOrderModal() {
             document.getElementById('chat-modal').classList.add('active');
             document.getElementById('chat-supplier-name').textContent = supplier.name;
             document.getElementById('chat-supplier-status').textContent = supplier.status || 'Online';
-            loadChatMessages();
         }
 
         function closeChat() {
             document.getElementById('chat-modal').classList.remove('active');
-        }
-
-        function loadChatMessages() {
-            const supplierId = appState.selectedSupplier?.id || 'default';
-            
-            if (!appState.chatMessages[supplierId]) {
-                appState.chatMessages[supplierId] = [{
-                    id: 1,
-                    sender: 'supplier',
-                    text: `Hello! How can I help you with your order?`,
-                    time: new Date().toLocaleTimeString()
-                }];
-            }
-            
-            updateChatDisplay(supplierId);
-        }
-
-        function updateChatDisplay(supplierId) {
-            const chatContainer = document.getElementById('chat-messages');
-            const messages = appState.chatMessages[supplierId] || [];
-            
-            chatContainer.innerHTML = messages.map(msg => `
-                <div class="chat-message ${msg.sender === 'user' ? 'sent' : ''}">
-                    <div class="bg-${msg.sender === 'user' ? 'blue' : 'slate'}-100 p-3 rounded-lg">
-                        <p class="text-slate-800">${msg.text}</p>
-                        <p class="text-xs text-slate-500 mt-1 text-right">${msg.time}</p>
-                    </div>
-                </div>
-            `).join('');
-            
-            chatContainer.scrollTop = chatContainer.scrollHeight;
         }
 
         function sendChatMessage() {
@@ -4345,74 +4145,41 @@ function openOrderModal() {
             const message = input.value.trim();
             if (!message) return;
             
-            const supplierId = appState.selectedSupplier?.id || 'default';
-            
-            if (!appState.chatMessages[supplierId]) {
-                appState.chatMessages[supplierId] = [];
-            }
-            
-            appState.chatMessages[supplierId].push({
-                id: Date.now(),
-                sender: 'user',
-                text: message,
-                time: new Date().toLocaleTimeString()
-            });
-            
+            showInfo('chat-modal .error-message', 'Chat feature is under development.');
             input.value = '';
-            updateChatDisplay(supplierId);
-            
-            // Simulate response
-            setTimeout(() => {
-                const responses = [
-                    "Thank you for your message. We'll get back to you shortly.",
-                    "Can you please share more details?",
-                    "I'll check availability for you.",
-                    "Would you like a quotation for this?"
-                ];
-                
-                appState.chatMessages[supplierId].push({
-                    id: Date.now() + 1,
-                    sender: 'supplier',
-                    text: responses[Math.floor(Math.random() * responses.length)],
-                    time: new Date().toLocaleTimeString()
-                });
-                
-                updateChatDisplay(supplierId);
-            }, 2000);
         }
 
         // ========== UTILITY FUNCTIONS ==========
-        
-         function showLoading(message = 'Loading...') {
-        document.getElementById('loading-message').textContent = message;
-        document.getElementById('loading-overlay').classList.remove('hidden');
-    }
-
-         function hideLoading() {
-        document.getElementById('loading-overlay').classList.add('hidden');
-    }
-
-    function showError(containerId, message) {
-        const container = document.querySelector(containerId);
-        if (container) {
-            container.innerHTML = `<i class="fas fa-exclamation-circle"></i><span>${message}</span>`;
-            container.classList.remove('hidden');
-            container.className = 'error-message';
-            setTimeout(() => container.classList.add('hidden'), 5000);
-        } else {
-            alert(message);
+        function showLoading(message = 'Loading...') {
+            document.getElementById('loading-message').textContent = message;
+            document.getElementById('loading-overlay').classList.remove('hidden');
         }
-    }
 
-    function showSuccess(containerId, message) {
-        const container = document.querySelector(containerId);
-        if (container) {
-            container.innerHTML = `<i class="fas fa-check-circle"></i><span>${message}</span>`;
-            container.classList.remove('hidden');
-            container.className = 'success-message';
-            setTimeout(() => container.classList.add('hidden'), 5000);
+        function hideLoading() {
+            document.getElementById('loading-overlay').classList.add('hidden');
         }
-    }
+
+        function showError(containerId, message) {
+            const container = document.querySelector(containerId);
+            if (container) {
+                container.innerHTML = `<i class="fas fa-exclamation-circle"></i><span>${message}</span>`;
+                container.classList.remove('hidden');
+                container.className = 'error-message';
+                setTimeout(() => container.classList.add('hidden'), 5000);
+            } else {
+                alert(message);
+            }
+        }
+
+        function showSuccess(containerId, message) {
+            const container = document.querySelector(containerId);
+            if (container) {
+                container.innerHTML = `<i class="fas fa-check-circle"></i><span>${message}</span>`;
+                container.classList.remove('hidden');
+                container.className = 'success-message';
+                setTimeout(() => container.classList.add('hidden'), 5000);
+            }
+        }
 
         function showInfo(containerId, message) {
             const container = document.querySelector(containerId);
@@ -4424,14 +4191,13 @@ function openOrderModal() {
             }
         }
 
-          function validateEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
 
         function validateRequired(value) {
-        return value && value.trim() !== '';
-    }
-
+            return value && value.trim() !== '';
+        }
 
         function clearValidationErrors() {
             document.querySelectorAll('.validation-message').forEach(el => el.classList.add('hidden'));
@@ -4518,8 +4284,8 @@ function openOrderModal() {
             
             const products = await getProducts();
             const matched = products.find(p => 
-                p.name.toLowerCase().includes(term) || 
-                p.key.includes(term) || 
+                p.name?.toLowerCase().includes(term) || 
+                p.key?.includes(term) || 
                 (p.description && p.description.toLowerCase().includes(term))
             );
             
@@ -4541,19 +4307,17 @@ function openOrderModal() {
         }
 
         // ========== UI UPDATE FUNCTIONS ==========
-        
         function updateUIAfterAuth() {
             const statusBadge = document.getElementById('user-status');
             const mobileStatus = document.getElementById('mobile-user-status');
             const orderNowBtn = document.getElementById('order-now-btn');
             const productOrderBtn = document.getElementById('product-order-btn');
             
-            if (appState.isAuthenticated && appState.currentUser.type !== 'visitor') {
-                const userType = appState.currentUser.type === 'supplier' ? 'Supplier' : 'Partner';
-                statusBadge.innerHTML = `<i class="fas fa-${appState.currentUser.type === 'supplier' ? 'building' : 'user-shield'} mr-1"></i>${userType}`;
+            if (appState.isAuthenticated && appState.currentUser) {
+                const userType = appState.currentUser.userType === 'supplier' ? 'Supplier' : 'Partner';
+                statusBadge.innerHTML = `<i class="fas fa-${appState.currentUser.userType === 'supplier' ? 'building' : 'user-shield'} mr-1"></i>${userType}`;
                 mobileStatus.innerHTML = userType;
                 
-                // Hide/show buttons based on user type
                 document.getElementById('logout-btn')?.classList.remove('hidden');
                 document.getElementById('mobile-logout-btn')?.classList.remove('hidden');
                 document.getElementById('login-btn')?.classList.add('hidden');
@@ -4561,8 +4325,7 @@ function openOrderModal() {
                 document.getElementById('profile-btn')?.classList.remove('hidden');
                 document.getElementById('mobile-profile-link')?.classList.remove('hidden');
                 
-                // Suppliers: Hide order buttons, show dashboard
-                if (appState.currentUser.type === 'supplier') {
+                if (appState.currentUser.userType === 'supplier') {
                     document.getElementById('dashboard-btn')?.classList.remove('hidden');
                     document.getElementById('mobile-dashboard-link')?.classList.remove('hidden');
                     if (orderNowBtn) orderNowBtn.style.display = 'none';
@@ -4571,7 +4334,6 @@ function openOrderModal() {
                         btn.style.display = 'none';
                     });
                 } else {
-                    // Partners: Show order buttons, hide dashboard
                     document.getElementById('dashboard-btn')?.classList.add('hidden');
                     document.getElementById('mobile-dashboard-link')?.classList.add('hidden');
                     if (orderNowBtn) orderNowBtn.style.display = 'flex';
@@ -4581,7 +4343,6 @@ function openOrderModal() {
                     });
                 }
             } else {
-                // Visitor mode
                 statusBadge.innerHTML = '<i class="fas fa-user mr-1"></i>Visitor';
                 mobileStatus.innerHTML = 'Visitor';
                 
@@ -4594,7 +4355,6 @@ function openOrderModal() {
                 document.getElementById('dashboard-btn')?.classList.add('hidden');
                 document.getElementById('mobile-dashboard-link')?.classList.add('hidden');
                  
-                // Visitors: Show order buttons
                 if (orderNowBtn) orderNowBtn.style.display = 'flex';
                 if (productOrderBtn) productOrderBtn.style.display = 'block';
                 document.querySelectorAll('.order-button').forEach(btn => {
@@ -4637,7 +4397,6 @@ function openOrderModal() {
         }
 
         // ========== INITIALIZATION ==========
-        
         document.addEventListener('DOMContentLoaded', function() {
             initializeAuth();
             setUserType('partner');
