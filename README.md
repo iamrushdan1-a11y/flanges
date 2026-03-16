@@ -60,7 +60,36 @@
             position: relative;
             z-index: 10;
         }
-        
+        /* Supplier Profile Styles */
+.profile-tab {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.profile-tab:hover {
+    color: #2563eb;
+}
+
+.profile-tab-content {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#profile-products-table tr:hover {
+    background-color: #f8fafc;
+}
+
+.order-filter-btn {
+    transition: all 0.2s ease;
+}
+
+.order-filter-btn:hover {
+    transform: translateY(-1px);
+}
         /* ===== GLASS NAVIGATION ===== */
         .glass-nav {
             background: rgba(255, 255, 255, 0.92);
@@ -4403,6 +4432,702 @@
             initReveal();
             setupEventListeners();
         });
+        // Add these functions to your existing script section
+
+// ========== SUPPLIER PROFILE MANAGEMENT ==========
+async function openSupplierProfile() {
+    if (!appState.isAuthenticated || !appState.isSupplier) {
+        showError('login-error-container', 'Only suppliers can access profile.');
+        openAuthModal();
+        return;
+    }
+    
+    // Create supplier profile modal if it doesn't exist
+    if (!document.getElementById('supplier-profile-modal')) {
+        createSupplierProfileModal();
+    }
+    
+    document.getElementById('supplier-profile-modal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    await loadSupplierProfileData();
+}
+
+function closeSupplierProfile() {
+    document.getElementById('supplier-profile-modal').classList.add('hidden');
+    document.body.style.overflow = 'auto';
+}
+
+function createSupplierProfileModal() {
+    const modal = document.createElement('div');
+    modal.id = 'supplier-profile-modal';
+    modal.className = 'fixed inset-0 bg-black/60 backdrop-blur-md hidden items-center justify-center p-4 z-50';
+    modal.innerHTML = `
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden relative flex flex-col">
+            <div class="px-6 md:px-8 py-4 border-b border-slate-200 flex justify-between items-center">
+                <h2 class="text-xl md:text-2xl font-bold text-slate-900">Supplier Profile Management</h2>
+                <button onclick="closeSupplierProfile()" class="text-slate-400 hover:text-slate-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="flex-1 overflow-auto p-6 md:p-8">
+                <!-- Profile Tabs -->
+                <div class="flex gap-2 mb-6 border-b border-slate-200">
+                    <button onclick="switchProfileTab('overview')" class="profile-tab px-4 py-2 font-medium text-blue-600 border-b-2 border-blue-600" id="profile-tab-overview">
+                        <i class="fas fa-user mr-2"></i>Overview
+                    </button>
+                    <button onclick="switchProfileTab('inventory')" class="profile-tab px-4 py-2 font-medium text-slate-600 hover:text-blue-600" id="profile-tab-inventory">
+                        <i class="fas fa-boxes mr-2"></i>My Inventory
+                    </button>
+                    <button onclick="switchProfileTab('orders')" class="profile-tab px-4 py-2 font-medium text-slate-600 hover:text-blue-600" id="profile-tab-orders">
+                        <i class="fas fa-shopping-cart mr-2"></i>Incoming Orders
+                    </button>
+                    <button onclick="switchProfileTab('settings')" class="profile-tab px-4 py-2 font-medium text-slate-600 hover:text-blue-600" id="profile-tab-settings">
+                        <i class="fas fa-cog mr-2"></i>Settings
+                    </button>
+                </div>
+                
+                <!-- Overview Tab -->
+                <div id="profile-overview" class="profile-tab-content">
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-2xl p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-blue-200 text-sm">Total Products</p>
+                                    <p class="text-3xl font-bold mt-2" id="profile-total-products">0</p>
+                                </div>
+                                <i class="fas fa-boxes text-3xl opacity-50"></i>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-600 to-green-800 text-white rounded-2xl p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-green-200 text-sm">Pending Orders</p>
+                                    <p class="text-3xl font-bold mt-2" id="profile-pending-orders">0</p>
+                                </div>
+                                <i class="fas fa-clock text-3xl opacity-50"></i>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-600 to-purple-800 text-white rounded-2xl p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-purple-200 text-sm">Total Revenue</p>
+                                    <p class="text-3xl font-bold mt-2" id="profile-total-revenue">₹0</p>
+                                </div>
+                                <i class="fas fa-rupee-sign text-3xl opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Company Info -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 mb-6">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4">Company Information</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-sm text-slate-500">Company Name</label>
+                                <p class="font-medium" id="profile-company">-</p>
+                            </div>
+                            <div>
+                                <label class="text-sm text-slate-500">Email</label>
+                                <p class="font-medium" id="profile-email">-</p>
+                            </div>
+                            <div>
+                                <label class="text-sm text-slate-500">Phone</label>
+                                <p class="font-medium" id="profile-phone">-</p>
+                            </div>
+                            <div>
+                                <label class="text-sm text-slate-500">Location</label>
+                                <p class="font-medium" id="profile-location">-</p>
+                            </div>
+                            <div>
+                                <label class="text-sm text-slate-500">Member Since</label>
+                                <p class="font-medium" id="profile-joined">-</p>
+                            </div>
+                            <div>
+                                <label class="text-sm text-slate-500">Rating</label>
+                                <p class="font-medium" id="profile-rating">4.5 <i class="fas fa-star text-yellow-500"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <button onclick="switchProfileTab('inventory')" class="p-4 border border-slate-200 rounded-xl hover:bg-blue-50 transition text-center">
+                            <i class="fas fa-plus-circle text-blue-600 text-2xl mb-2"></i>
+                            <p class="font-medium">Add New Product</p>
+                        </button>
+                        <button onclick="switchProfileTab('orders')" class="p-4 border border-slate-200 rounded-xl hover:bg-green-50 transition text-center">
+                            <i class="fas fa-truck text-green-600 text-2xl mb-2"></i>
+                            <p class="font-medium">View Orders</p>
+                        </button>
+                        <button onclick="switchProfileTab('settings')" class="p-4 border border-slate-200 rounded-xl hover:bg-purple-50 transition text-center">
+                            <i class="fas fa-edit text-purple-600 text-2xl mb-2"></i>
+                            <p class="font-medium">Edit Profile</p>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Inventory Management Tab -->
+                <div id="profile-inventory" class="profile-tab-content hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-slate-900">Manage Inventory</h3>
+                        <button onclick="showAddProductForm()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
+                            <i class="fas fa-plus"></i> Add Product
+                        </button>
+                    </div>
+                    
+                    <!-- Add/Edit Product Form -->
+                    <div id="profile-product-form" class="hidden mb-6">
+                        <div class="bg-slate-50 rounded-xl p-6">
+                            <h4 class="font-bold text-lg mb-4" id="profile-product-form-title">Add New Product</h4>
+                            <form id="profile-product-form-element" class="space-y-4" onsubmit="saveProfileProduct(event)">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Product Name *</label>
+                                        <input type="text" id="profile-product-name" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Product Key *</label>
+                                        <input type="text" id="profile-product-key" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500" required>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Description</label>
+                                    <textarea id="profile-product-description" rows="2" class="w-full px-3 py-2 rounded-lg border border-slate-300"></textarea>
+                                </div>
+                                
+                                <div class="grid md:grid-cols-3 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Price (₹) *</label>
+                                        <input type="number" id="profile-product-price" class="w-full px-3 py-2 rounded-lg border border-slate-300" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Stock *</label>
+                                        <input type="number" id="profile-product-stock" class="w-full px-3 py-2 rounded-lg border border-slate-300" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Unit</label>
+                                        <input type="text" id="profile-product-unit" value="pieces" class="w-full px-3 py-2 rounded-lg border border-slate-300">
+                                    </div>
+                                </div>
+                                
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Category</label>
+                                        <select id="profile-product-category" class="w-full px-3 py-2 rounded-lg border border-slate-300">
+                                            <option value="flanges">Flanges</option>
+                                            <option value="fittings">Fittings</option>
+                                            <option value="pipes">Pipes</option>
+                                            <option value="custom">Custom</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Material</label>
+                                        <input type="text" id="profile-product-material" class="w-full px-3 py-2 rounded-lg border border-slate-300">
+                                    </div>
+                                </div>
+                                
+                                <div class="flex gap-3 pt-4">
+                                    <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">Save Product</button>
+                                    <button type="button" onclick="cancelProfileProductForm()" class="px-6 py-2 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Inventory Stats -->
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="bg-white border border-slate-200 rounded-xl p-4">
+                            <p class="text-sm text-slate-500">Total Stock Value</p>
+                            <p class="text-xl font-bold text-slate-900" id="profile-stock-value">₹0</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-xl p-4">
+                            <p class="text-sm text-slate-500">Low Stock Items</p>
+                            <p class="text-xl font-bold text-yellow-600" id="profile-low-stock">0</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-xl p-4">
+                            <p class="text-sm text-slate-500">Out of Stock</p>
+                            <p class="text-xl font-bold text-red-600" id="profile-out-stock">0</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Products Table -->
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                        <table class="w-full">
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">Product</th>
+                                    <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">Key</th>
+                                    <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">Price</th>
+                                    <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">Stock</th>
+                                    <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">Status</th>
+                                    <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="profile-products-table" class="divide-y divide-slate-200">
+                                <tr>
+                                    <td colspan="6" class="px-4 py-8 text-center text-slate-500">Loading products...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Incoming Orders Tab -->
+                <div id="profile-orders" class="profile-tab-content hidden">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6">Incoming Orders</h3>
+                    
+                    <!-- Order Filters -->
+                    <div class="flex gap-2 mb-6">
+                        <button onclick="filterProfileOrders('all')" class="order-filter-btn px-4 py-2 bg-blue-600 text-white rounded-lg text-sm" id="filter-all">All</button>
+                        <button onclick="filterProfileOrders('pending')" class="order-filter-btn px-4 py-2 bg-slate-200 text-slate-700 rounded-lg text-sm hover:bg-slate-300" id="filter-pending">Pending</button>
+                        <button onclick="filterProfileOrders('processing')" class="order-filter-btn px-4 py-2 bg-slate-200 text-slate-700 rounded-lg text-sm hover:bg-slate-300" id="filter-processing">Processing</button>
+                        <button onclick="filterProfileOrders('completed')" class="order-filter-btn px-4 py-2 bg-slate-200 text-slate-700 rounded-lg text-sm hover:bg-slate-300" id="filter-completed">Completed</button>
+                    </div>
+                    
+                    <!-- Orders List -->
+                    <div class="space-y-4" id="profile-orders-list">
+                        <div class="text-center py-8 text-slate-500">Loading orders...</div>
+                    </div>
+                </div>
+                
+                <!-- Settings Tab -->
+                <div id="profile-settings" class="profile-tab-content hidden">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6">Profile Settings</h3>
+                    
+                    <form onsubmit="updateSupplierProfile(event)" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Company Name</label>
+                                <input type="text" id="settings-company" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Contact Person</label>
+                                <input type="text" id="settings-contact" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                                <input type="email" id="settings-email" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Phone</label>
+                                <input type="tel" id="settings-phone" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Location/City</label>
+                                <input type="text" id="settings-location" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Business Type</label>
+                                <select id="settings-type" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500">
+                                    <option value="manufacturer">Manufacturer</option>
+                                    <option value="distributor">Distributor</option>
+                                    <option value="trader">Trader</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Business Description</label>
+                            <textarea id="settings-description" rows="3" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Payment Terms</label>
+                            <select id="settings-terms" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500">
+                                <option value="advance">100% Advance</option>
+                                <option value="partial">50% Advance</option>
+                                <option value="credit">Credit (30 days)</option>
+                                <option value="negotiable">Negotiable</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex gap-4 pt-4">
+                            <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">Save Changes</button>
+                            <button type="button" onclick="resetSettings()" class="px-6 py-2 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+}
+
+function switchProfileTab(tabName) {
+    // Update tab buttons
+    document.querySelectorAll('.profile-tab').forEach(btn => {
+        btn.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+        btn.classList.add('text-slate-600');
+    });
+    document.getElementById(`profile-tab-${tabName}`).classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+    document.getElementById(`profile-tab-${tabName}`).classList.remove('text-slate-600');
+    
+    // Show selected tab content
+    document.querySelectorAll('.profile-tab-content').forEach(content => {
+        content.classList.add('hidden');
+    });
+    document.getElementById(`profile-${tabName}`).classList.remove('hidden');
+    
+    // Load data for the tab
+    if (tabName === 'inventory') loadProfileInventory();
+    if (tabName === 'orders') loadProfileOrders();
+}
+
+async function loadSupplierProfileData() {
+    if (!appState.currentUser) return;
+    
+    document.getElementById('profile-company').textContent = appState.currentUser.company || 'Not set';
+    document.getElementById('profile-email').textContent = appState.currentUser.email || '-';
+    document.getElementById('profile-phone').textContent = appState.currentUser.phone || 'Not provided';
+    document.getElementById('profile-location').textContent = appState.currentUser.location || 'India';
+    document.getElementById('profile-joined').textContent = appState.currentUser.createdAt ? new Date(appState.currentUser.createdAt).toLocaleDateString() : '2024';
+    
+    // Load stats
+    await loadProfileStats();
+}
+
+async function loadProfileStats() {
+    try {
+        const products = await getSupplierProducts(appState.currentUser.id);
+        const orders = await getSupplierOrders(appState.currentUser.id);
+        
+        const totalRevenue = orders.filter(o => o.status === 'completed').reduce((sum, o) => sum + (o.amount || 0), 0);
+        const pendingOrders = orders.filter(o => o.status === 'pending').length;
+        
+        document.getElementById('profile-total-products').textContent = products.length;
+        document.getElementById('profile-pending-orders').textContent = pendingOrders;
+        document.getElementById('profile-total-revenue').textContent = `₹${totalRevenue.toLocaleString()}`;
+        
+        const stockValue = products.reduce((sum, p) => sum + ((p.price || 0) * (p.stock || 0)), 0);
+        const lowStock = products.filter(p => (p.stock || 0) < 10).length;
+        const outStock = products.filter(p => (p.stock || 0) === 0).length;
+        
+        document.getElementById('profile-stock-value').textContent = `₹${stockValue.toLocaleString()}`;
+        document.getElementById('profile-low-stock').textContent = lowStock;
+        document.getElementById('profile-out-stock').textContent = outStock;
+        
+        // Load settings
+        document.getElementById('settings-company').value = appState.currentUser.company || '';
+        document.getElementById('settings-contact').value = appState.currentUser.contactName || '';
+        document.getElementById('settings-email').value = appState.currentUser.email || '';
+        document.getElementById('settings-phone').value = appState.currentUser.phone || '';
+        document.getElementById('settings-location').value = appState.currentUser.location || 'Mumbai, India';
+        document.getElementById('settings-type').value = appState.currentUser.businessType || 'manufacturer';
+        document.getElementById('settings-description').value = appState.currentUser.description || '';
+        document.getElementById('settings-terms').value = appState.currentUser.paymentTerms || 'advance';
+        
+    } catch (error) {
+        console.error('Failed to load stats:', error);
+    }
+}
+
+async function loadProfileInventory() {
+    try {
+        const products = await getSupplierProducts(appState.currentUser.id);
+        const tableBody = document.getElementById('profile-products-table');
+        
+        if (products.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="6" class="px-4 py-8 text-center text-slate-500">No products added yet. Click "Add Product" to get started.</td></tr>';
+            return;
+        }
+        
+        tableBody.innerHTML = products.map(p => `
+            <tr>
+                <td class="px-4 py-3">
+                    <div class="font-medium">${p.name || 'N/A'}</div>
+                    <div class="text-xs text-slate-500">${p.category || 'General'}</div>
+                </td>
+                <td class="px-4 py-3 text-sm">${p.key || 'N/A'}</td>
+                <td class="px-4 py-3 font-medium">₹${p.price?.toLocaleString() || '0'}</td>
+                <td class="px-4 py-3">
+                    <span class="font-medium ${p.stock < 10 ? 'text-yellow-600' : p.stock === 0 ? 'text-red-600' : 'text-green-600'}">${p.stock || 0}</span>
+                </td>
+                <td class="px-4 py-3">
+                    <span class="px-2 py-1 text-xs rounded-full ${p.stock === 0 ? 'bg-red-100 text-red-700' : p.stock < 10 ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'}">
+                        ${p.stock === 0 ? 'Out of Stock' : p.stock < 10 ? 'Low Stock' : 'In Stock'}
+                    </span>
+                </td>
+                <td class="px-4 py-3">
+                    <button onclick="editProfileProduct('${p.id}')" class="text-blue-600 hover:text-blue-800 mr-2">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteProfileProduct('${p.id}')" class="text-red-600 hover:text-red-800">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+        
+    } catch (error) {
+        console.error('Failed to load inventory:', error);
+    }
+}
+
+async function loadProfileOrders(filter = 'all') {
+    try {
+        const orders = await getSupplierOrders(appState.currentUser.id);
+        const filteredOrders = filter === 'all' ? orders : orders.filter(o => o.status === filter);
+        const list = document.getElementById('profile-orders-list');
+        
+        if (filteredOrders.length === 0) {
+            list.innerHTML = '<div class="text-center py-8 text-slate-500">No orders found</div>';
+            return;
+        }
+        
+        list.innerHTML = filteredOrders.map(o => `
+            <div class="bg-white border border-slate-200 rounded-xl p-4">
+                <div class="flex flex-col md:flex-row justify-between items-start gap-4">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="font-bold text-slate-900">#${o.id}</span>
+                            <span class="px-2 py-1 text-xs rounded-full ${o.status === 'pending' ? 'bg-yellow-100 text-yellow-700' : o.status === 'processing' ? 'bg-blue-100 text-blue-700' : o.status === 'completed' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
+                                ${o.status || 'pending'}
+                            </span>
+                        </div>
+                        <h4 class="font-medium">${o.productName || 'Product'}</h4>
+                        <p class="text-sm text-slate-500">Quantity: ${o.quantity || 0} pieces</p>
+                        <p class="text-sm text-slate-500">Customer: ${o.customerName || o.customerEmail || 'N/A'}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xl font-bold text-slate-900">₹${(o.amount || 0).toLocaleString()}</p>
+                        <p class="text-sm text-slate-500">${o.createdAt ? new Date(o.createdAt).toLocaleDateString() : 'N/A'}</p>
+                        <div class="mt-2 flex gap-2">
+                            <button onclick="updateProfileOrderStatus('${o.id}', 'processing')" class="px-3 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700">Process</button>
+                            <button onclick="updateProfileOrderStatus('${o.id}', 'completed')" class="px-3 py-1 text-xs bg-green-600 text-white rounded hover:bg-green-700">Complete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+    } catch (error) {
+        console.error('Failed to load orders:', error);
+    }
+}
+
+function filterProfileOrders(filter) {
+    // Update filter buttons
+    document.querySelectorAll('.order-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white');
+        btn.classList.add('bg-slate-200', 'text-slate-700');
+    });
+    document.getElementById(`filter-${filter}`).classList.add('bg-blue-600', 'text-white');
+    document.getElementById(`filter-${filter}`).classList.remove('bg-slate-200', 'text-slate-700');
+    
+    loadProfileOrders(filter);
+}
+
+async function updateProfileOrderStatus(orderId, status) {
+    try {
+        await updateOrderStatus(orderId, status);
+        loadProfileOrders();
+        loadProfileStats();
+        showSuccess('profile-orders .success-message', `Order status updated to ${status}`);
+    } catch (error) {
+        showError('profile-orders .error-message', error.message);
+    }
+}
+
+function showAddProductForm() {
+    document.getElementById('profile-product-form-title').textContent = 'Add New Product';
+    document.getElementById('profile-product-form-element').reset();
+    document.getElementById('profile-product-form').classList.remove('hidden');
+}
+
+function cancelProfileProductForm() {
+    document.getElementById('profile-product-form').classList.add('hidden');
+}
+
+async function saveProfileProduct(event) {
+    event.preventDefault();
+    
+    showLoading('Saving product...');
+    
+    try {
+        const product = {
+            key: document.getElementById('profile-product-key').value.toLowerCase().replace(/\s+/g, '-'),
+            name: document.getElementById('profile-product-name').value,
+            description: document.getElementById('profile-product-description').value || 'No description',
+            price: parseFloat(document.getElementById('profile-product-price').value),
+            stock: parseInt(document.getElementById('profile-product-stock').value),
+            unit: document.getElementById('profile-product-unit').value,
+            category: document.getElementById('profile-product-category').value,
+            material: document.getElementById('profile-product-material').value || 'Various',
+            supplierId: appState.currentUser.id,
+            features: [
+                'Precision manufactured',
+                'Quality assured',
+                'Industry standard'
+            ]
+        };
+        
+        await saveProduct(product);
+        cancelProfileProductForm();
+        await loadProfileInventory();
+        await loadProfileStats();
+        await fetchAndUpdateProducts();
+        
+        showSuccess('profile-inventory .success-message', 'Product added successfully!');
+    } catch (error) {
+        showError('profile-inventory .error-message', error.message);
+    } finally {
+        hideLoading();
+    }
+}
+
+async function editProfileProduct(productId) {
+    try {
+        const products = await getSupplierProducts(appState.currentUser.id);
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        
+        document.getElementById('profile-product-form-title').textContent = 'Edit Product';
+        document.getElementById('profile-product-key').value = product.key || '';
+        document.getElementById('profile-product-name').value = product.name || '';
+        document.getElementById('profile-product-description').value = product.description || '';
+        document.getElementById('profile-product-price').value = product.price || '';
+        document.getElementById('profile-product-stock').value = product.stock || '';
+        document.getElementById('profile-product-unit').value = product.unit || 'pieces';
+        document.getElementById('profile-product-category').value = product.category || 'flanges';
+        document.getElementById('profile-product-material').value = product.material || '';
+        
+        document.getElementById('profile-product-form').classList.remove('hidden');
+    } catch (error) {
+        console.error('Failed to load product:', error);
+    }
+}
+
+async function deleteProfileProduct(productId) {
+    if (confirm('Are you sure you want to delete this product?')) {
+        showLoading('Deleting product...');
+        try {
+            await deleteProduct(productId);
+            await loadProfileInventory();
+            await loadProfileStats();
+            await fetchAndUpdateProducts();
+            showSuccess('profile-inventory .success-message', 'Product deleted successfully!');
+        } catch (error) {
+            showError('profile-inventory .error-message', error.message);
+        } finally {
+            hideLoading();
+        }
+    }
+}
+
+async function updateSupplierProfile(event) {
+    event.preventDefault();
+    
+    showLoading('Updating profile...');
+    
+    try {
+        // In a real app, this would call an API to update the supplier profile
+        const updatedData = {
+            company: document.getElementById('settings-company').value,
+            contactName: document.getElementById('settings-contact').value,
+            email: document.getElementById('settings-email').value,
+            phone: document.getElementById('settings-phone').value,
+            location: document.getElementById('settings-location').value,
+            businessType: document.getElementById('settings-type').value,
+            description: document.getElementById('settings-description').value,
+            paymentTerms: document.getElementById('settings-terms').value
+        };
+        
+        // Update local state
+        if (appState.currentUser) {
+            appState.currentUser = { ...appState.currentUser, ...updatedData };
+        }
+        
+        showSuccess('profile-settings .success-message', 'Profile updated successfully!');
+    } catch (error) {
+        showError('profile-settings .error-message', error.message);
+    } finally {
+        hideLoading();
+    }
+}
+
+function resetSettings() {
+    if (appState.currentUser) {
+        document.getElementById('settings-company').value = appState.currentUser.company || '';
+        document.getElementById('settings-contact').value = appState.currentUser.contactName || '';
+        document.getElementById('settings-email').value = appState.currentUser.email || '';
+        document.getElementById('settings-phone').value = appState.currentUser.phone || '';
+        document.getElementById('settings-location').value = appState.currentUser.location || 'Mumbai, India';
+        document.getElementById('settings-type').value = appState.currentUser.businessType || 'manufacturer';
+        document.getElementById('settings-description').value = appState.currentUser.description || '';
+        document.getElementById('settings-terms').value = appState.currentUser.paymentTerms || 'advance';
+    }
+}
+
+// Update the updateUIAfterAuth function to include supplier profile link
+function updateUIAfterAuth() {
+    const statusBadge = document.getElementById('user-status');
+    const mobileStatus = document.getElementById('mobile-user-status');
+    const orderNowBtn = document.getElementById('order-now-btn');
+    const productOrderBtn = document.getElementById('product-order-btn');
+    
+    if (appState.isAuthenticated && appState.currentUser) {
+        const userType = appState.currentUser.userType === 'supplier' ? 'Supplier' : 'Partner';
+        statusBadge.innerHTML = `<i class="fas fa-${appState.currentUser.userType === 'supplier' ? 'building' : 'user-shield'} mr-1"></i>${userType}`;
+        mobileStatus.innerHTML = userType;
+        
+        document.getElementById('logout-btn')?.classList.remove('hidden');
+        document.getElementById('mobile-logout-btn')?.classList.remove('hidden');
+        document.getElementById('login-btn')?.classList.add('hidden');
+        document.getElementById('mobile-login-btn')?.classList.add('hidden');
+        document.getElementById('profile-btn')?.classList.remove('hidden');
+        document.getElementById('mobile-profile-link')?.classList.remove('hidden');
+        
+        if (appState.currentUser.userType === 'supplier') {
+            document.getElementById('dashboard-btn')?.classList.remove('hidden');
+            document.getElementById('mobile-dashboard-link')?.classList.remove('hidden');
+            // Change profile link to open supplier profile
+            document.getElementById('profile-btn').innerHTML = '<i class="fas fa-user-tie mr-1"></i>Supplier Profile';
+            document.getElementById('profile-btn').onclick = openSupplierProfile;
+            document.getElementById('mobile-profile-link').innerHTML = '<i class="fas fa-user-tie mr-2"></i>Supplier Profile';
+            document.getElementById('mobile-profile-link').onclick = function() { toggleMobileMenu(); openSupplierProfile(); };
+            
+            if (orderNowBtn) orderNowBtn.style.display = 'none';
+            if (productOrderBtn) productOrderBtn.style.display = 'none';
+            document.querySelectorAll('.order-button').forEach(btn => {
+                btn.style.display = 'none';
+            });
+        } else {
+            document.getElementById('dashboard-btn')?.classList.add('hidden');
+            document.getElementById('mobile-dashboard-link')?.classList.add('hidden');
+            document.getElementById('profile-btn').innerHTML = '<i class="fas fa-user-circle mr-1"></i>My Profile';
+            document.getElementById('profile-btn').onclick = showProfile;
+            document.getElementById('mobile-profile-link').innerHTML = '<i class="fas fa-user-circle mr-2"></i>My Profile';
+            document.getElementById('mobile-profile-link').onclick = function() { toggleMobileMenu(); showProfile(); };
+            
+            if (orderNowBtn) orderNowBtn.style.display = 'flex';
+            if (productOrderBtn) productOrderBtn.style.display = 'block';
+            document.querySelectorAll('.order-button').forEach(btn => {
+                btn.style.display = 'flex';
+            });
+        }
+    } else {
+        statusBadge.innerHTML = '<i class="fas fa-user mr-1"></i>Visitor';
+        mobileStatus.innerHTML = 'Visitor';
+        
+        document.getElementById('logout-btn')?.classList.add('hidden');
+        document.getElementById('mobile-logout-btn')?.classList.add('hidden');
+        document.getElementById('login-btn')?.classList.remove('hidden');
+        document.getElementById('mobile-login-btn')?.classList.remove('hidden');
+        document.getElementById('profile-btn')?.classList.add('hidden');
+        document.getElementById('mobile-profile-link')?.classList.add('hidden');
+        document.getElementById('dashboard-btn')?.classList.add('hidden');
+        document.getElementById('mobile-dashboard-link')?.classList.add('hidden');
+         
+        if (orderNowBtn) orderNowBtn.style.display = 'flex';
+        if (productOrderBtn) productOrderBtn.style.display = 'block';
+        document.querySelectorAll('.order-button').forEach(btn => {
+            btn.style.display = 'flex';
+        });
+    }
+}
     </script>
 </body>
 </html>
